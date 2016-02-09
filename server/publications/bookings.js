@@ -13,7 +13,7 @@ export default function () {
 
   Meteor.publish('bookings.single', function (bookingId) {
     check(bookingId, String);
-    const selector = {_id: postId};
+    const selector = {_id: bookingId};
 
     return Bookings.find(selector);
   });
