@@ -8,4 +8,4 @@ export default {
   load(context) {
     methodStubs(context);
   }
-}
+};
