@@ -27,9 +27,9 @@ class Signup extends React.Component {
   _signup() {
     const {signup} = this.props;
     const {emailRef, passwordRef, orgRef} = this.refs;
-    const email = emailRef.getInputDOMNode().value;
-    const password = passwordRef.getInputDOMNode().value;
-    const org = orgRef.getInputDOMNode().value;
+    const email = emailRef.getValue();
+    const password = passwordRef.getValue();
+    const org = orgRef.getValue();
 
     signup(email, password, org);
   }

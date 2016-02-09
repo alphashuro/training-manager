@@ -1,4 +1,4 @@
-import {Clients, Students} from '/lib/collections';
+import {Clients, Students, Users} from '/lib/collections';
 
 import {Meteor} from 'meteor/meteor';
 import {check} from 'meteor/check';
@@ -6,7 +6,12 @@ import {check} from 'meteor/check';
 // TODO: Add publish composite
 export default function () {
   Meteor.publish('clients.list', function () {
-    const selector = {};
+    const userId = this.userId;
+    if (!userId) { return null; }
+
+    const user = Users.findOne(userId);
+
+    const selector = {org: user.profile.org};
     const options = {};
 
     return Clients.find(selector, options);
@@ -14,7 +19,16 @@ export default function () {
 
   Meteor.publish('clients.single', function (clientId) {
     check(clientId, String);
-    const selector = {_id: clientId};
+
+    const userId = this.userId;
+    if (!userId) { return null; }
+
+    const user = Users.findOne(userId);
+
+    const selector = {
+      _id: clientId,
+      org: user.profile.org
+    };
     const options = {};
 
     return Clients.find(selector, options);
