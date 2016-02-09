@@ -1,11 +1,17 @@
-import { Bookings, Sessions } from '/lib/collections';
+import {Bookings, Users} from '/lib/collections';
+
 import {Meteor} from 'meteor/meteor';
 import {check} from 'meteor/check';
 
 // TODO: Add publish composite
 export default function () {
   Meteor.publish('bookings.list', function () {
-    const selector = {};
+    const userId = this.userId;
+    if (!userId) { return null; }
+
+    const user = Users.findOne(userId);
+
+    const selector = {org: user.profile.org};
     const options = {};
 
     return Bookings.find(selector, options);
@@ -13,16 +19,18 @@ export default function () {
 
   Meteor.publish('bookings.single', function (bookingId) {
     check(bookingId, String);
-    const selector = {_id: bookingId};
 
-    return Bookings.find(selector);
-  });
+    const userId = this.userId;
+    if (!userId) { return null; }
 
-  Meteor.publish('bookings.sessions', function (bookingId) {
-    check(bookingId, String);
+    const user = Users.findOne(userId);
 
-    const selector = {bookingId};
+    const selector = {
+      _id: bookingId,
+      org: user.profile.org
+    };
+    const options = {};
 
-    return Sessions.find(bookingId);
+    return Bookings.find(selector, options);
   });
 }
