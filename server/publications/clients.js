@@ -1,4 +1,4 @@
-import {Clients, Students, Users} from '/lib/collections';
+import {Clients, Users} from '/lib/collections';
 
 import {Meteor} from 'meteor/meteor';
 import {check} from 'meteor/check';
@@ -32,12 +32,5 @@ export default function () {
     const options = {};
 
     return Clients.find(selector, options);
-  });
-
-  Meteor.publish('client.students', function (clientId) {
-    check(clientId, String);
-
-    const selector = {clientId};
-    return Students.find(selector);
   });
 }
