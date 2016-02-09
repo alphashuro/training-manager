@@ -12,7 +12,12 @@ export const composer = ({context}, onData) => {
   }
 };
 
+export const depsMapper = (context, actions) => ({
+  context: () => context,
+  logout: actions.auth.logout
+});
+
 export default composeAll(
   composeWithTracker(composer),
-  useDeps()
+  useDeps(depsMapper)
 )(MainLayout);
