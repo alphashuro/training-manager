@@ -1,9 +1,9 @@
 import React from 'react';
 import Navigation from './navigation.jsx';
 
-const Layout = ({content = () => null, user}) => (
+const Layout = ({content = () => null, user, logout}) => (
   <div>
-    <Navigation user={user}/>
+    <Navigation user={user} onLogout={logout}/>
     <div>
       {content()}
     </div>
