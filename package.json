@@ -33,7 +33,6 @@
     "react-bootstrap": "^0.28.2",
     "react-dom": "^0.14.6",
     "react-mounter": "^1.0.0",
-    "react-select": "^1.0.0-beta8"
   },
   "private": true
 }
