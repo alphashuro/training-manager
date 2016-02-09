@@ -14,8 +14,11 @@ const Navigation = ({onLogout, user}) => (
       <NavItem eventKey={3} href="/courses">Courses</NavItem>
       <NavItem eventKey={4} href="/facilitators">Facilitators</NavItem>
       <NavItem eventKey={5} href="/bookings">Bookings</NavItem>
-      <NavItem onClick={onLogout}>Logout</NavItem>
     </Nav>
+
+      <Nav pullRight={true}>
+        <NavItem onClick={onLogout}>Logout</NavItem>
+      </Nav>
   </Navbar>
 );
 
