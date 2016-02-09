@@ -115,7 +115,7 @@ const facilitators = [
     org: 'aepit'
   },
   {
-    _id: '1',
+    _id: '2',
     name: 'Anoruda Surisipala',
     phone: '012 243 3425',
     email: 'afacilitator@aepit.co.za',
