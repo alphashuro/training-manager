@@ -13,7 +13,6 @@ export default {
 
     Meteor.call( 'clients.create', { _id, name, phone, email, org }, (error) => {
       if (error) {
-        console.log(error);
         return LocalState.set('CLIENT_ERROR', error.reason);
       }
     });
