@@ -7,20 +7,24 @@ const Navigation = ({onLogout, user}) => (
       <Navbar.Brand>
         <a href="/">{user.profile.org}</a>
       </Navbar.Brand>
+      <Navbar.Toggle />
     </Navbar.Header>
-    <Nav bsStyle='tabs' activeKey={1}>
-      <NavItem eventKey={1} href="/"> Dashboard </NavItem>
-      <NavItem eventKey={2} href="/clients">Clients</NavItem>
-      <NavItem eventKey={3} href="/courses">Courses</NavItem>
-      <NavItem eventKey={4} href="/facilitators">Facilitators</NavItem>
-      <NavItem eventKey={5} href="/bookings">Bookings</NavItem>
-    </Nav>
+    <Navbar.Collapse>
+      <Nav>
+        <NavItem eventKey={1} href="/"> Dashboard </NavItem>
+        <NavItem eventKey={2} href="/clients">Clients</NavItem>
+        <NavItem eventKey={3} href="/courses">Courses</NavItem>
+        <NavItem eventKey={4} href="/facilitators">Facilitators</NavItem>
+        <NavItem eventKey={5} href="/bookings">Bookings</NavItem>
+      </Nav>
 
-      <Nav pullRight={true}>
+      <Nav pullRight>
         <NavDropdown eventKey={1} title={ user.emails[0].address } id='nav-dropdown'>
+          {/*<MenuItem divider />*/}
           <MenuItem eventKey={1.1} onClick={onLogout}>Logout</MenuItem>
         </NavDropdown>
       </Nav>
+    </Navbar.Collapse>
   </Navbar>
 );
 
