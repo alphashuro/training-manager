@@ -10,9 +10,7 @@ export default function () {
     const userId = this.userId;
     if (!userId) { return null; };
 
-    const selector = {
-      courseId: courseId
-    };
+    const selector = {courseId};
     const options = {};
 
     return Classes.find(selector, options);

@@ -4,13 +4,10 @@ export default {
     if ( !courseId ) {
       return LocalState.set('CLASSES_ERROR', 'CourseId invalid!');
     }
-    debugger
 
     LocalState.set('CLASSES_ERROR', null);
 
     const _id = Meteor.uuid();
-    const user = Meteor.user();
-    const org = user.profile.org;
 
     _class = {
       _id,

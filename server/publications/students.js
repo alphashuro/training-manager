@@ -1,13 +1,18 @@
-import {Students, Users} from '/lib/collections';
+import {Students} from '/lib/collections';
 
 import {Meteor} from 'meteor/meteor';
 import {check} from 'meteor/check';
 
 export default function () {
-  Meteor.publish('client.students', function (clientId) {
+  Meteor.publish('clients.students', function (clientId) {
     check(clientId, String);
 
+    const userId = this.userId;
+    if (!userId) { return null; };
+
     const selector = {clientId};
-    return Students.find(selector);
+    const options = {};
+
+    return Students.find(selector, options);
   });
 }

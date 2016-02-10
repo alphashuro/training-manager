@@ -3,10 +3,15 @@ import initContext from './configs/context';
 
 // modules
 import coreModule from './modules/core';
+
 import clientsModule from './modules/clients';
+import studentsModule from './modules/students';
+
 import facilitatorsModule from './modules/facilitators';
+
 import coursesModule from './modules/courses';
 import classesModule from './modules/classes';
+
 import bookingsModule from './modules/bookings';
 
 // init context
@@ -14,11 +19,17 @@ const context = initContext();
 
 // create app
 const app = createApp(context);
+
 app.loadModule(coreModule);
+
 app.loadModule(clientsModule);
+app.loadModule(studentsModule);
+
 app.loadModule(facilitatorsModule);
+
 app.loadModule(coursesModule);
 app.loadModule(classesModule);
+
 app.loadModule(bookingsModule);
 
 app.init();
