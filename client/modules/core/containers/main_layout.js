@@ -3,9 +3,11 @@ import {useDeps, composeWithTracker, composeAll} from 'mantra-core';
 
 export const composer = ({context}, onData) => {
   const {Meteor, FlowRouter} = context();
-  if (Meteor.user() || Meteor.loggingIn()) {
-    if (Meteor.user()) {
-      onData(null, { user: Meteor.user() });
+  const user = Meteor.user();
+  const path = FlowRouter.current().path;
+  if (user || Meteor.loggingIn()) {
+    if (user) {
+      onData(null, { user, path });
     }
   } else {
     FlowRouter.go('/login');
