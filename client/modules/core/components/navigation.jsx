@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar, Nav, NavItem } from 'react-bootstrap';
+import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 
 const Navigation = ({onLogout, user}) => (
   <Navbar>
@@ -17,7 +17,9 @@ const Navigation = ({onLogout, user}) => (
     </Nav>
 
       <Nav pullRight={true}>
-        <NavItem onClick={onLogout}>Logout</NavItem>
+        <NavDropdown eventKey={1} title={ user.emails[0].address } id='nav-dropdown'>
+          <MenuItem eventKey={1.1} onClick={onLogout}>Logout</MenuItem>
+        </NavDropdown>
       </Nav>
   </Navbar>
 );
