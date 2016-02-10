@@ -2,7 +2,7 @@ import React from 'react';
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 
 const Navigation = ({onLogout, user}) => (
-  <Navbar>
+  <Navbar fixedTop>
     <Navbar.Header>
       <Navbar.Brand>
         {user.profile.org}
