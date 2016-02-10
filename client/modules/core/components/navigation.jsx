@@ -5,7 +5,7 @@ const Navigation = ({onLogout, user}) => (
   <Navbar fixedTop>
     <Navbar.Header>
       <Navbar.Brand>
-        {user.profile.org}
+        <a href="/">{user.profile.org}</a>
       </Navbar.Brand>
     </Navbar.Header>
     <Nav bsStyle='tabs' activeKey={1}>
