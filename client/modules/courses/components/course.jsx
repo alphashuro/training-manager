@@ -52,7 +52,7 @@ class Course extends Component {
               <PageHeader>
                   <span>Classes</span>
                   <Button bsStyle="default"
-                          classTitle="pull-right"
+                          className="pull-right"
                          >
                       <span>Add</span>
                   </Button>
