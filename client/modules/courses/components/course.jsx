@@ -10,11 +10,12 @@ import { Input } from 'react-bootstrap';
 // import { ListGroupItem } from 'react-bootstrap';
 import { PageHeader } from 'react-bootstrap';
 
+import ClassesList from '../../classes/containers/classes_list';
 
 class Course extends Component {
   render() {
     const {error, course} = this.props;
-    const { title, description } = course;
+    const { _id, title, description } = course;
     return (
       <div>
         <PageHeader>
@@ -48,44 +49,7 @@ class Course extends Component {
           </Panel>
           </Col>
           <Col md={ 6 }>
-          <Panel>
-              <PageHeader>
-                  <span>Classes</span>
-                  <Button bsStyle="default"
-                          className="pull-right"
-                         >
-                      <span>Add</span>
-                  </Button>
-              </PageHeader>
-              {/* Classes List
-              <ListGroup>
-                {
-                  classes
-                }
-                  <ListGroupItem>
-                      <Input type="text"
-                             placeholder="Class Title"
-                             label="Title"
-                             value={class.title}
-                            ></Input>
-                      <Input type="text"
-                             placeholder="Class Description"
-                             label="Description"
-                             value={class.description}
-                            ></Input>
-                      <Input type="text"
-                             placeholder="Class duration"
-                             label=""
-                             value={class.duration}
-                            ></Input>
-                      <Input type="text"
-                             placeholder="Class price"
-                             label=""
-                             value={class.price}
-                            ></Input>
-                  </ListGroupItem>
-              </ListGroup> */}
-          </Panel>
+            <ClassesList courseId={ _id } />
           </Col>
         </Row>
     </div>
