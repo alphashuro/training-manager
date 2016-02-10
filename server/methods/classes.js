@@ -8,10 +8,10 @@ export default function () {
     'classes.create'({ _id, title, description, duration, price, courseId } ) {
       check(_id, String);
 
-      // check(title, String);
-      // check(description, String);
-      // check(duration, Number);
-      // check(price, Number);
+      check(title, String);
+      check(description, String);
+      check(duration, Number);
+      check(price, Number);
       check(courseId, String);
 
       if (!_id || !courseId) {
@@ -38,9 +38,9 @@ export default function () {
       check(duration, Number);
       check(price, Number);
 
-      if (!title || !description ) {
-        throw new Meteor.Error('args-missing', 'All fields are required');
-      }
+      // if (!title || !description ) {
+      //   throw new Meteor.Error('args-missing', 'All fields are required');
+      // }
 
       Classes.update(_id, { $set: {
         title,
