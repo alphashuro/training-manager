@@ -35,20 +35,6 @@ export default function () {
         Sessions.insert(session);
       });
     },
-    // Dont allow updates for now
-    // 'bookings.update'( _id, { courseId, facilitatorId, studentIds}) {
-    //   check(_id, String);
-
-    //   check(courseId, String);
-    //   check(facilitatorId, String);
-    //   check(studentIds, Array);
-
-    //   if (!courseId || !facilitatorId || !studentIds) {
-    //     throw new Meteor.Error('args-missing', 'All fields are required');
-    //   }
-
-    //   Bookings.update(_id, { $set: { courseId, facilitatorId, studentIds } });
-    // },
     'bookings.remove'(_id) {
       check(_id, String);
 

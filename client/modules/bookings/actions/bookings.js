@@ -29,16 +29,6 @@ export default {
     });
   },
 
-  // Dont allow updates for now
-  // update({Meteor, LocalState}, id, { courseId, facilitatorId, studentIds }) {
-  //   Meteor.call(
-  //     'bookings.update',
-  //     id, { courseId, facilitatorId, studentIds },
-  //     (err) => {
-  //       if (err) { LocalState.set('BOOKING_ERROR', err.reason); }
-  //     });
-  // },
-
   clearErrors({LocalState}) {
     return LocalState.set('BOOKING_ERROR', null);
   }
