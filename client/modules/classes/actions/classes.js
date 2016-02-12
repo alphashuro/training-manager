@@ -9,14 +9,14 @@ export default {
 
     const _id = Meteor.uuid();
 
-    _class = {
+    const _class = {
       _id,
       title: '',
       description: '',
       duration: 0,
       price: 0,
       courseId
-    }
+    };
 
     Meteor.call( 'classes.create', _class, (error) => {
       if (error) {
@@ -42,10 +42,10 @@ export default {
       if (err) {
         LocalState.set('CLASSES_ERROR', err.reason);
       }
-    })
+    });
   },
 
   clearErrors({LocalState}) {
     return LocalState.set('CLASSES_ERROR', null);
   }
-}
+};
