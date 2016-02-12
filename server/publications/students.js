@@ -15,4 +15,16 @@ export default function () {
 
     return Students.find(selector, options);
   });
+
+  Meteor.publish('bookings.students', function (studentIds = []) {
+    check(studentIds, Array);
+
+    const userId = this.userId;
+    if (!userId) { return null; };
+
+    const selector = {_id: { $in: studentIds } };
+    const options = {};
+
+    return Students.find(selector, options);
+  });
 }

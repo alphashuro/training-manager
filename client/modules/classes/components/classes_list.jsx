@@ -78,8 +78,8 @@ class ClassListItem extends Component {
 
     const title = titleRef.getValue();
     const description = descriptionRef.getValue();
-    const duration = +durationRef.getValue();
-    const price = +priceRef.getValue();
+    const duration = Number(durationRef.getValue());
+    const price = Number(priceRef.getValue());
 
     saveClass(c._id, { title, description, duration, price });
   }

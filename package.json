@@ -29,10 +29,12 @@
   "dependencies": {
     "domready": "^1.0.8",
     "mantra-core": "^1.2.0",
+    "moment": "^2.11.2",
     "react": "^0.14.6",
     "react-bootstrap": "^0.28.2",
+    "react-datetime": "^2.0.3",
     "react-dom": "^0.14.6",
-    "react-mounter": "^1.0.0",
+    "react-mounter": "^1.0.0"
   },
   "private": true
 }
