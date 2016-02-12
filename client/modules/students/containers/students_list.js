@@ -6,22 +6,25 @@ export const composer = ({context, clientId, clearErrors}, onData) => {
 
   const studentsSub = Meteor.subscribe('clients.students', clientId);
 
-  if(studentsSub.ready()) {
+  if (studentsSub.ready()) {
     const students = Collections.Students.find().fetch();
     const error = LocalState.get('STUDENTS_ERROR');
     onData(null, {students, error});
   }
 
-  return clearErrors
+  return clearErrors;
 };
 
-export const depsMapper = (context, actions) => ({
-  context: () => context,
-  removeStudent: actions.students.remove,
-  addStudent: actions.students.create,
-  saveStudent: actions.students.update,
-  clearErrors: actions.students.clearErrors
-});
+export const depsMapper = function (context, actions) {
+  console.log(actions);
+  return {
+    context: () => context,
+    remove: actions.students.remove,
+    create: actions.students.create,
+    update: actions.students.update,
+    clearErrors: actions.students.clearErrors
+  };
+};
 
 export default composeAll(
   composeWithTracker(composer),
