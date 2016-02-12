@@ -39,6 +39,26 @@ export default function () {
       check(_id, String);
 
       Bookings.remove(_id);
+    },
+    'bookings.addStudent'(bookingId, studentId) {
+      check(bookingId, String);
+      check(studentId, String);
+
+      Bookings.update(bookingId,
+        { $addToSet:
+          { studentIds: studentId }
+        }
+      );
+    },
+    'bookings.removeStudent'(bookingId, studentId) {
+      check(bookingId, String);
+      check(studentId, String);
+
+      Bookings.update(bookingId,
+        { $pull:
+          { studentIds: studentId }
+        }
+      );
     }
   });
 }

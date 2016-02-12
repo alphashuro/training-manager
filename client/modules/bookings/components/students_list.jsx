@@ -4,15 +4,18 @@ import { ListGroup } from 'react-bootstrap';
 import { ListGroupItem } from 'react-bootstrap';
 import { Panel, PageHeader, Button, Badge } from 'react-bootstrap';
 
+import AddStudentsModal from '../containers/add_students_modal';
+
 class StudentsList extends Component {
   render() {
-    const {students} = this.props;
+    const {students, bookingId} = this.props;
 
     return (
       <Panel>
         <PageHeader>
           <span>Students</span>
-          <Button className='pull-right'>Add</Button>
+          <Button className='pull-right' onClick={this.addStudents.bind(this)}>Add</Button>
+          <AddStudentsModal bookingId={bookingId} />
         </PageHeader>
         <ListGroup>
           {
@@ -29,6 +32,12 @@ class StudentsList extends Component {
         </ListGroup>
       </Panel>
     );
+  }
+
+  addStudents() {
+    const {showStudentsModal} = this.props;
+
+    showStudentsModal();
   }
 }
 

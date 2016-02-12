@@ -3,42 +3,42 @@ import React, { Component } from 'react';
 import { Panel, PageHeader, Button, Input, ListGroup, ListGroupItem, Alert, Glyphicon }
   from 'react-bootstrap';
 
-const StudentsList = ({
-  students,
-  saveStudent,
-  removeStudent,
-  addStudent,
-  clientId,
-  error
-}) => (
-  <Panel>
-    <PageHeader>
-      <span>Students</span>
-      <Button bsStyle="default"
-        className="pull-right"
-        onClick={ addStudent.bind(this, clientId) }
-        >
-        <span>Add</span>
-      </Button>
-    </PageHeader>
-    { error ? <Alert bsStyle='danger'>{error}</Alert> : null}
-    <ListGroup>
-      {
-        students.map(student => (
-          <StudentListItem
-            student={student}
-            key={ student._id }
-            saveStudent={saveStudent}
-            removeStudent={removeStudent} />
-        ))
-      }
-    </ListGroup>
-  </Panel>
-);
+class StudentsList extends Component {
+  render() {
+    console.log(this.props);
+    const { error, students, create, clientId, update, remove } = this.props;
+
+    return (
+      <Panel>
+        <PageHeader>
+          <span>Students</span>
+          <Button bsStyle="default"
+            className="pull-right"
+            onClick={ create.bind(this, clientId) }
+            >
+            <span>Add</span>
+          </Button>
+        </PageHeader>
+        { error ? <Alert bsStyle='danger'>{error}</Alert> : null}
+        <ListGroup>
+          {
+            students.map(student => (
+              <StudentListItem
+                student={student}
+                key={ student._id }
+                saveStudent={update}
+                removeStudent={remove} />
+            ))
+          }
+        </ListGroup>
+      </Panel>
+    );
+  }
+}
 
 class StudentListItem extends Component {
   render() {
-    const {student, onSave, onRemove} = this.props;
+    const {student} = this.props;
 
     return (
       <ListGroupItem>
@@ -87,6 +87,6 @@ class StudentListItem extends Component {
 
     removeStudent(_id);
   }
-};
+}
 
 export default StudentsList;
