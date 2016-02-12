@@ -19,9 +19,10 @@ export const composer = ({context, studentIds, clearErrors}, onData) => {
 
 export const depsMapper = (context, actions) => ({
   context: () => context,
-  removeStudent: actions.students.removeStudent,
-  addStudent: actions.students.addStudent,
-  clearErrors: actions.students.clearErrors
+  removeStudent: actions.bookingStudents.remove,
+  addStudent: actions.bookingStudents.add,
+  clearErrors: actions.bookingStudents.clearErrors,
+  showStudentsModal: actions.bookingStudents.showModal
 });
 
 export default composeAll(

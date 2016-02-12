@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import { Row } from 'react-bootstrap';
 import { Col } from 'react-bootstrap';
-import { Button } from 'react-bootstrap';
 import { Panel } from 'react-bootstrap';
 
 import { PageHeader, FormControls } from 'react-bootstrap';
@@ -27,13 +26,21 @@ class Booking extends Component {
                 </PageHeader>
                 { error ? <Alert bsStyle='danger'>{error}</Alert> : null }
 
-                <FormControls.Static label="Course" labelClassName="col-xs-2" wrapperClassName="col-xs-10" value={booking.courseId} />
-                <FormControls.Static label="Facilitator" labelClassName="col-xs-2" wrapperClassName="col-xs-10" value={booking.facilitatorId} />
+                <FormControls.Static
+                  label="Course"
+                  labelClassName="col-xs-2"
+                  wrapperClassName="col-xs-10"
+                  value={booking.courseId} />
+                <FormControls.Static
+                  label="Facilitator"
+                  labelClassName="col-xs-2"
+                  wrapperClassName="col-xs-10"
+                  value={booking.facilitatorId} />
 
             </Panel>
           </Col>
           <Col md={ 6 }>
-            <StudentsList studentIds={booking.studentIds} />
+            <StudentsList studentIds={booking.studentIds} bookingId={booking._id} />
           </Col>
           <Col md={ 6 }>
             <SessionsList bookingId={booking._id} />

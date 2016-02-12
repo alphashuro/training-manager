@@ -8,19 +8,20 @@ export default function () {
     check(clientId, String);
 
     const userId = this.userId;
-    if (!userId) { return null; };
+    if (!userId) { return null; }
 
     const selector = {clientId};
     const options = {};
 
-    return Students.find(selector, options);
+    const cursor = Students.find(selector, options);
+    return cursor;
   });
 
   Meteor.publish('bookings.students', function (studentIds = []) {
     check(studentIds, Array);
 
     const userId = this.userId;
-    if (!userId) { return null; };
+    if (!userId) { return null; }
 
     const selector = {_id: { $in: studentIds } };
     const options = {};
