@@ -8,6 +8,7 @@ import { Panel } from 'react-bootstrap';
 import { PageHeader, FormControls } from 'react-bootstrap';
 
 import StudentsList from './students_list.jsx';
+import SessionsList from '../../sessions/containers/sessions_list';
 
 class Booking extends Component {
   render() {
@@ -45,12 +46,7 @@ class Booking extends Component {
             </Panel>
           </Col>
           <Col md={ 6 }>
-            <Panel>
-                <PageHeader>
-                    <span>Sessions</span>
-                </PageHeader>
-                <StudentsList />
-            </Panel>
+            <SessionsList bookingId={booking._id} />
           </Col>
         </Row>
     </div>

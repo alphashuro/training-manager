@@ -94,7 +94,7 @@ const classes = [
     description: 'We do class-like things in this class.',
     duration: 2,
     price: 1000,
-    courseId: '3'
+    courseId: '2'
   },
   {
     _id: '4',
@@ -156,31 +156,37 @@ const sessions = [
   {
     _id: '1',
     bookingId: '1',
-    date: new Date('February 15, 2016 08:00:00'),
+    classId: '1',
+    date: new Date('February 13, 2016 08:00:00'),
   },
   {
     _id: '2',
     bookingId: '1',
-    date: new Date('February 15, 2016 12:00:00'),
+    classId: '2',
+    date: new Date('February 13, 2016 12:00:00'),
   },
   {
     _id: '3',
     bookingId: '2',
+    classId: '3',
     date: new Date('February 16, 2016 08:00:00'),
   },
   {
     _id: '4',
     bookingId: '2',
+    classId: '4',
     date: new Date('February 16, 2016 13:00:00'),
   },
   {
     _id: '5',
     bookingId: '3',
+    classId: '1',
     date: new Date('February 17, 2016 12:00:00'),
   },
   {
     _id: '6',
     bookingId: '3',
+    classId: '2',
     date: new Date('February 18, 2016 11:00:00'),
   },
 ];

@@ -1,4 +1,4 @@
-import { Bookings } from '/lib/collections';
+import { Bookings, Sessions, Classes } from '/lib/collections';
 
 import {Meteor} from 'meteor/meteor';
 import {check} from 'meteor/check';
@@ -22,6 +22,18 @@ export default function () {
       // XXX: Do user authorization
       const booking = {_id, courseId, facilitatorId, studentIds, org };
       Bookings.insert(booking);
+
+      // Create sessions for the created booking;
+      const classes = Classes.find({ courseId });
+      classes.forEach(c => {
+        let session = {
+          classId: c._id,
+          date: null,
+          bookingId: _id
+        };
+
+        Sessions.insert(session);
+      });
     },
     // Dont allow updates for now
     // 'bookings.update'( _id, { courseId, facilitatorId, studentIds}) {

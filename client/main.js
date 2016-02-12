@@ -13,6 +13,7 @@ import coursesModule from './modules/courses';
 import classesModule from './modules/classes';
 
 import bookingsModule from './modules/bookings';
+import sessionsModule from './modules/sessions';
 
 // init context
 const context = initContext();
@@ -31,5 +32,6 @@ app.loadModule(coursesModule);
 app.loadModule(classesModule);
 
 app.loadModule(bookingsModule);
+app.loadModule(sessionsModule);
 
 app.init();
