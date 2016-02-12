@@ -22,7 +22,7 @@ class FacilitatorsList extends React.Component {
           <tbody>
           {
             facilitators.map( facilitator => (
-            <tr key={facilitator._id}>
+            <tr key={facilitator._id} className='facilitator-item'>
               <td>
                 {facilitator.name}
               </td>
