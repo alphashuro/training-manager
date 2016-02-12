@@ -16,7 +16,7 @@ class Booking extends Component {
     return (
       <div>
         <PageHeader>
-          <span>{ name }</span>
+          <span>Booking</span>
         </PageHeader>
 
         <Row>
