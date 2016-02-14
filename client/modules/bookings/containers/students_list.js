@@ -24,8 +24,8 @@ export const composer = ({context, clearErrors, bookingId}, onData) => {
 
 export const depsMapper = (context, actions) => ({
   context: () => context,
-  removeStudent: actions.bookingStudents.remove,
-  addStudent: actions.bookingStudents.add,
+  remove: actions.bookingStudents.remove,
+  add: actions.bookingStudents.add,
   clearErrors: actions.bookingStudents.clearErrors,
   showStudentsModal: actions.bookingStudents.showModal
 });
