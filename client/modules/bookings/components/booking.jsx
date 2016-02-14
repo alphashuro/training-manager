@@ -40,7 +40,7 @@ class Booking extends Component {
             </Panel>
           </Col>
           <Col md={ 6 }>
-            <StudentsList studentIds={booking.studentIds} bookingId={booking._id} />
+            <StudentsList bookingId={booking._id} />
           </Col>
           <Col md={ 6 }>
             <SessionsList bookingId={booking._id} />
@@ -63,4 +63,3 @@ class Booking extends Component {
 }
 
 export default Booking;
-
