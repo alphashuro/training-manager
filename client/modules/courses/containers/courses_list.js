@@ -4,18 +4,16 @@ import {useDeps, composeWithTracker, composeAll} from 'mantra-core';
 export const composer = ({context}, onData) => {
   const {Meteor, Collections} = context();
 
-  if (Meteor.subscribe('courses.list').ready()) {
-    const courses = Collections.Courses.find().fetch();
-    onData(null, {courses});
+  if (Meteor.subscribe('courses.ids').ready()) {
+    const courseIds = Collections.Courses
+      .find()
+      .fetch()
+      .map(c => c._id);
+    onData(null, {courseIds});
   }
 };
 
-export const depsMapper = (context, actions) => ({
-  context: () => context,
-  remove: actions.courses.remove
-});
-
 export default composeAll(
   composeWithTracker(composer),
-  useDeps(depsMapper)
+  useDeps()
 )(CoursesList);

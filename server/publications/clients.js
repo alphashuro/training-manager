@@ -3,7 +3,6 @@ import {Clients, Users} from '/lib/collections';
 import {Meteor} from 'meteor/meteor';
 import {check} from 'meteor/check';
 
-// TODO: Add publish composite
 export default function () {
   Meteor.publish('clients.list', function () {
     const userId = this.userId;
@@ -13,6 +12,18 @@ export default function () {
 
     const selector = {org: user.profile.org};
     const options = {};
+
+    return Clients.find(selector, options);
+  });
+
+  Meteor.publish('clients.ids', function () {
+    const userId = this.userId;
+    if (!userId) { return null; }
+
+    const user = Users.findOne(userId);
+
+    const selector = {org: user.profile.org};
+    const options = { fields: { _id: 1 }};
 
     return Clients.find(selector, options);
   });

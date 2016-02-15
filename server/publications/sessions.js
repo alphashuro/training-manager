@@ -15,6 +15,7 @@ export default function () {
 
     return Sessions.find(selector, options);
   });
+
   Meteor.publishComposite('sessions.all', {
     find() {
       const userId = this.userId;
@@ -32,5 +33,19 @@ export default function () {
         }
       }
     ]
+  });
+
+  Meteor.publish('sessions.single', function (sessionId) {
+    const userId = this.userId;
+    if (!userId) { return null; }
+
+    const selector = {_id: sessionId};
+    const options = {};
+
+    const sessionCursor = Sessions.find(selector, options);
+    const session = Sessions.findOne(selector);
+    const _classCursor = Classes.find(session.classId);
+
+    return [ sessionCursor, _classCursor ];
   });
 }

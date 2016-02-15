@@ -1,91 +1,32 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-import { Panel, PageHeader, Button, Input, ListGroup, ListGroupItem, Alert, Glyphicon }
+import { Panel, PageHeader, Button, ListGroup, Alert }
   from 'react-bootstrap';
 
-class StudentsList extends Component {
-  render() {
-    const { error, students, create, clientId, update, remove } = this.props;
+import StudentsListItem from '../containers/students_list_item';
 
-    return (
-      <Panel>
-        <PageHeader>
-          <span>Students</span>
-          <Button bsStyle="default"
-            className="pull-right"
-            onClick={ create.bind(this, clientId) }
-            >
-            <span>Add</span>
-          </Button>
-        </PageHeader>
-        { error ? <Alert bsStyle='danger'>{error}</Alert> : null}
-        <ListGroup>
-          {
-            students.map(student => (
-              <StudentListItem
-                student={student}
-                key={ student._id }
-                saveStudent={update}
-                removeStudent={remove} />
-            ))
-          }
-        </ListGroup>
-      </Panel>
-    );
-  }
-}
-
-class StudentListItem extends Component {
-  render() {
-    const {student} = this.props;
-
-    return (
-      <ListGroupItem>
-        <Input
-          type='text'
-          placeholder='Name'
-          label='Name'
-          defaultValue={student.name}
-          ref='nameRef'/>
-        <div className="form-inline">
-          <Input
-            type='text'
-            placeholder='Phone'
-            addonBefore={<Glyphicon glyph='earphone'/>}
-            ref='phoneRef'
-            defaultValue={student.phone} />
-          <Input
-            type='email'
-            placeholder='Email'
-            addonBefore='@'
-            ref='emailRef'
-            defaultValue={student.email} />
-        </div>
-        <div className="inline-form">
-          <Button onClick={this._save.bind(this)}>Save</Button>
-          <Button onClick={this._remove.bind(this)}>Delete</Button>
-        </div>
-      </ListGroupItem>
-    );
-  }
-
-  _save() {
-    const {student, saveStudent} = this.props;
-    const {nameRef, phoneRef, emailRef} = this.refs;
-
-    const name = nameRef.getValue();
-    const phone = phoneRef.getValue();
-    const email = emailRef.getValue();
-
-    saveStudent(student._id, { name, phone, email });
-  }
-
-  _remove() {
-    const {removeStudent} = this.props;
-    const {_id} = this.props.c;
-
-    removeStudent(_id);
-  }
-}
+const StudentsList = ({ error, studentIds, create, clientId }) => (
+  <Panel>
+    <PageHeader>
+      <span>Students</span>
+      <Button bsStyle="default"
+        className="pull-right"
+        onClick={ create.bind(this, clientId) }
+        >
+        <span>Add</span>
+      </Button>
+    </PageHeader>
+    { error ? <Alert bsStyle='danger'>{error}</Alert> : null}
+    <ListGroup>
+      {
+        studentIds.map(id => (
+          <StudentsListItem
+            key={ id }
+            studentId={id} />
+        ))
+      }
+    </ListGroup>
+  </Panel>
+);
 
 export default StudentsList;

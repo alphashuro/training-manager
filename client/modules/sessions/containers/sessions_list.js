@@ -7,9 +7,12 @@ export const composer = ({context, bookingId, clearErrors}, onData) => {
   const sub = Meteor.subscribe('bookings.sessions', bookingId);
 
   if (sub.ready()) {
-    const sessions = Collections.Sessions.find().fetch();
+    const sessionIds = Collections.Sessions
+      .find()
+      .fetch()
+      .map(s => s._id);
     const error = LocalState.get('SESSIONS_ERROR');
-    onData(null, {sessions, error});
+    onData(null, {sessionIds, error});
   }
 
   return clearErrors;
@@ -17,8 +20,7 @@ export const composer = ({context, bookingId, clearErrors}, onData) => {
 
 export const depsMapper = (context, actions) => ({
   context: () => context,
-  clearErrors: actions.sessions.clearErrors,
-  update: actions.sessions.update,
+  clearErrors: actions.sessions.clearErrors
 });
 
 export default composeAll(

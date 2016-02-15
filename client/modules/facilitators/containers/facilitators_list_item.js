@@ -6,6 +6,7 @@ export const composer = ({context, facilitatorId}, onData) => {
   const {Meteor, Collections} = context();
 
   const sub = Meteor.subscribe('facilitators.single', facilitatorId);
+
   if (sub.ready()) {
     const facilitator = Collections.Facilitators.findOne(facilitatorId);
     onData(null, {...facilitator});

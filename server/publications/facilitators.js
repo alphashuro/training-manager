@@ -3,7 +3,6 @@ import {Facilitators, Users} from '/lib/collections';
 import {Meteor} from 'meteor/meteor';
 import {check} from 'meteor/check';
 
-// TODO: Add publish composite
 export default function () {
   Meteor.publish('facilitators.list', function () {
     const userId = this.userId;

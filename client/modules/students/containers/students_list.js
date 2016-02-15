@@ -4,12 +4,15 @@ import {useDeps, composeWithTracker, composeAll} from 'mantra-core';
 export const composer = ({context, clientId, clearErrors}, onData) => {
   const {Meteor, Collections, LocalState} = context();
 
-  const studentsSub = Meteor.subscribe('clients.students', clientId);
+  const sub = Meteor.subscribe('clients.students.ids', clientId);
 
-  if (studentsSub.ready()) {
-    const students = Collections.Students.find().fetch();
+  if (sub.ready()) {
+    const studentIds = Collections.Students
+      .find()
+      .fetch()
+      .map(s => s._id);
     const error = LocalState.get('STUDENTS_ERROR');
-    onData(null, {students, error});
+    onData(null, {studentIds, error});
   }
 
   return clearErrors;
@@ -18,9 +21,7 @@ export const composer = ({context, clientId, clearErrors}, onData) => {
 export const depsMapper = function (context, actions) {
   return {
     context: () => context,
-    remove: actions.students.remove,
     create: actions.students.create,
-    update: actions.students.update,
     clearErrors: actions.students.clearErrors
   };
 };
