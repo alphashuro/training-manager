@@ -1,3 +1,5 @@
+import core from './core';
+
 export default function (context) {
-  return;
+  core(context);
 }

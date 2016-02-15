@@ -41,5 +41,5 @@ export default {
 
   clearErrors({LocalState}) {
     return LocalState.set('FACILITATOR_ERROR', null);
-  }
+  },
 };

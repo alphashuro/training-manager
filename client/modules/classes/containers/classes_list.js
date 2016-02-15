@@ -6,13 +6,13 @@ export const composer = ({context, courseId, clearErrors}, onData) => {
 
   const classesSub = Meteor.subscribe('courses.classes', courseId);
 
-  if(classesSub.ready()) {
+  if (classesSub.ready()) {
     const classes = Collections.Classes.find().fetch();
     const error = LocalState.get('CLASSES_ERROR');
     onData(null, {classes, error});
   }
 
-  return clearErrors
+  return clearErrors;
 };
 
 export const depsMapper = (context, actions) => ({

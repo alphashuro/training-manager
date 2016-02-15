@@ -5,7 +5,6 @@ import { Panel, PageHeader, Button, Input, ListGroup, ListGroupItem, Alert, Glyp
 
 class StudentsList extends Component {
   render() {
-    console.log(this.props);
     const { error, students, create, clientId, update, remove } = this.props;
 
     return (

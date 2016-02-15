@@ -25,7 +25,11 @@ const ClassesList = ({
     <ListGroup>
       {
         classes.map(c => (
-          <ClassListItem c={c} key={ c._id } saveClass={saveClass} removeClass={removeClass} ></ClassListItem>
+          <ClassListItem
+            c={c}
+            key={ c._id }
+            saveClass={saveClass}
+            removeClass={removeClass} />
         ))
       }
     </ListGroup>
@@ -34,7 +38,7 @@ const ClassesList = ({
 
 class ClassListItem extends Component {
   render() {
-    const {c, onSave, onRemove} = this.props;
+    const {c} = this.props;
 
     return (
       <ListGroupItem>
@@ -90,6 +94,6 @@ class ClassListItem extends Component {
 
     removeClass(_id);
   }
-};
+}
 
 export default ClassesList;

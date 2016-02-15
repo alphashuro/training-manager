@@ -16,7 +16,6 @@ export const composer = ({context, clientId, clearErrors}, onData) => {
 };
 
 export const depsMapper = function (context, actions) {
-  console.log(actions);
   return {
     context: () => context,
     remove: actions.students.remove,

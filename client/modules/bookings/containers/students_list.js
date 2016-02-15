@@ -7,7 +7,7 @@ export const composer = ({context, clearErrors, bookingId}, onData) => {
 
   const bookingSub = Meteor.subscribe('bookings.single', bookingId);
 
-  if(bookingSub.ready()) {
+  if (bookingSub.ready()) {
     const booking = Collections.Bookings.findOne(bookingId);
     const sub = Meteor.subscribe('bookings.students', booking.studentIds);
 

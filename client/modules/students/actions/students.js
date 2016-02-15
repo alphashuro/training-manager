@@ -1,7 +1,7 @@
 export default {
   create({ Meteor, LocalState }, clientId) {
     if ( !clientId ) {
-      return LocalState.set('STUDENTS_ERROR', 'ClientId invalid!');
+      return LocalState.set('STUDENTS_ERROR', 'Client\'s Id is required!');
     }
 
     LocalState.set('STUDENTS_ERROR', null);
@@ -25,7 +25,7 @@ export default {
 
   remove({Meteor, LocalState}, id) {
     if (!id) {
-      return LocalState.set('STUDENTS_ERROR', 'Id is required to remove class.');
+      return LocalState.set('STUDENTS_ERROR', 'Id is required to remove student.');
     }
 
     Meteor.call('students.remove', id, (error) => {
@@ -35,7 +35,16 @@ export default {
     });
   },
 
-  update({Meteor, LocalState}, id, { name, phone, email }) {
+  update({Meteor, LocalState}, id, options) {
+    if (!id) {
+      return LocalState.set('STUDENTS_ERROR', 'Student id is required for updates');
+    }
+
+    if (!options) {
+      return LocalState.set('STUDENTS_ERROR', 'Update options required!');
+    }
+    const {name, phone, email} = options;
+
     Meteor.call( 'students.update', id, { name, phone, email }, (err) => {
       if (err) {
         LocalState.set('STUDENTS_ERROR', err.reason);

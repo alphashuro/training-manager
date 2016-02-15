@@ -1,1 +1,1 @@
-export default function(context) {}
+export default function ({}) {}
