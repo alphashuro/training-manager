@@ -7,7 +7,11 @@
     "lintfix": "npm run lint -- --fix",
     "testonly": "mocha client/**/tests/**/*.js --compilers js:babel-core/register",
     "test": "npm run lint && npm run testonly",
-    "test-watch": "npm run testonly -- --watch --watch-extensions js,jsx"
+    "test-watch": "npm run testonly -- --watch --watch-extensions js,jsx",
+    "deploy-staging": "",
+    "deploy-production": "",
+    "stage": "npm run deploy-staging",
+    "prod": "npm run deploy-production"
   },
   "author": "Alpha Shuro",
   "devDependencies": {
@@ -31,6 +35,7 @@
     "mantra-core": "^1.2.0",
     "moment": "^2.11.2",
     "react": "^0.14.6",
+    "react-big-calendar": "^0.9.8",
     "react-bootstrap": "^0.28.2",
     "react-datetime": "^2.0.3",
     "react-dom": "^0.14.6",
