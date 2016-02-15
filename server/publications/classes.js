@@ -8,7 +8,7 @@ export default function () {
     check(courseId, String);
 
     const userId = this.userId;
-    if (!userId) { return null; };
+    if (!userId) { return null; }
 
     const selector = {courseId};
     const options = {};
