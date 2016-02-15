@@ -6,34 +6,16 @@ import StudentsList from '../students_list.jsx';
 import React from 'react';
 
 describe('students.components.studentslist', () => {
-  const students = [
-    {
-      _id: '1',
-      name: 's-one',
-      phone: 'sp-one',
-      email: 's1@email.com',
-      clientId: 'client-one'
-    },
-    {
-      _id: '2',
-      name: 's-two',
-      phone: 'sp-one',
-      email: 's2@email.com',
-      clientId: 'client-one'
-    }
-  ];
+  const studentIds = [ '1', '2' ];
 
   it('should list the given number of students', () => {
     const props = {
       create: spy(),
-      update: spy(),
-      remove: spy(),
-      clientId: 'client-one'
+      clientId: 'client-one',
+      studentIds
     };
 
-    const el = shallow(<StudentsList students={students} {...props} />);
-    expect(el.find('StudentListItem').length).to.be.equal(students.length);
+    const el = shallow(<StudentsList {...props} />);
+    expect(el.find('UseDeps(Container(StudentsListItem))').length).to.be.equal(studentIds.length);
   });
-
-  // it('should list student ');
 });
