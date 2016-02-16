@@ -63,7 +63,6 @@ describe('facilitators.actions.facilitators', () => {
 
     it('should call Meteor.call to save the facilitator', () => {
       const Meteor = {
-        uuid: () => '1',
         call: spy(),
         user: () => ({
           profile: {
@@ -84,7 +83,6 @@ describe('facilitators.actions.facilitators', () => {
 
       expect(methodArgs[0]).to.equal( 'facilitators.create' );
       expect(methodArgs[1]).to.deep.equal({
-        _id: '1',
         name: 'name',
         phone: 'phone',
         email: 'email',
@@ -96,7 +94,6 @@ describe('facilitators.actions.facilitators', () => {
     it('should redirect user to the facilitator\'s detail page', () => {
       const id = '1';
       const Meteor = {
-        uuid: () => id,
         call: stub(),
         user: () => ({
           profile: {
@@ -107,7 +104,7 @@ describe('facilitators.actions.facilitators', () => {
       const LocalState = {set: spy()};
       const FlowRouter = {go: spy()};
 
-      Meteor.call.callsArg(2);
+      Meteor.call.callsArgWith(2, null, id);
 
       const facilitator = {
         name: 'name',
@@ -122,9 +119,7 @@ describe('facilitators.actions.facilitators', () => {
     describe('after Meteor.call', () => {
       describe('if there is error', () => {
         it('should set FACILITATOR_ERROR with the error message', () => {
-          const id = '1';
           const Meteor = {
-            uuid: () => id,
             call: stub(),
             user: () => ({
               profile: {
@@ -247,15 +242,12 @@ describe('facilitators.actions.facilitators', () => {
       const Meteor = {call: spy(), user: stub()};
       Meteor.user.returns({ profile: { org: 'an-org' }});
 
-      actions.invite({LocalState, Meteor}, 'email');
+      actions.invite({LocalState, Meteor}, 'id');
       const args = Meteor.call.args[0];
 
       expect(Meteor.call.calledOnce).to.be.equal(true);
       expect(args[0]).to.be.equal('facilitators.invite');
-      expect(args[1]).to.deep.equal({
-        email: 'email',
-        org: 'an-org'
-      });
+      expect(args[1]).to.be.equal('id');
       expect(args[2]).to.be.a('function');
     });
     describe('after Meteor.call', () => {
