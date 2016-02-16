@@ -18,4 +18,16 @@ describe('students.components.studentslist', () => {
     const el = shallow(<StudentsList {...props} />);
     expect(el.find('UseDeps(Container(StudentsListItem))').length).to.be.equal(studentIds.length);
   });
+
+  it('should show an error when given error', () => {
+    const props = {
+      create: spy(),
+      clientId: 'client-one',
+      studentIds,
+      error: 'oops'
+    };
+
+    const el = shallow(<StudentsList {...props} />);
+    expect(el.find('Alert').length).to.be.equal(1);
+  });
 });

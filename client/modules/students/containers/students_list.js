@@ -19,11 +19,11 @@ export const composer = ({context, clientId, clearErrors}, onData) => {
 };
 
 export const depsMapper = function (context, actions) {
-  return {
-    context: () => context,
-    create: actions.students.create,
-    clearErrors: actions.students.clearErrors
-  };
+  const map = {};
+  map.context = () => context;
+  map.create = actions.students.create;
+  map.clearErrors = actions.students.clearErrors;
+  return map;
 };
 
 export default composeAll(
