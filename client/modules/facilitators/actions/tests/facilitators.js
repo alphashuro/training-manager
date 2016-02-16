@@ -16,6 +16,7 @@ describe('facilitators.actions.facilitators', () => {
       const args = LocalState.set.args[0];
 
       expect(args[0]).to.be.equal('FACILITATOR_ERROR');
+      expect(args[1]).to.match(/[Nn]ame/);
       expect(args[1]).to.match(/required/);
     });
 
