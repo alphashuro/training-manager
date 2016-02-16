@@ -15,11 +15,7 @@ module.exports = function (wallaby) {
         presets: [ 'es2015', 'stage-2', 'react' ]
       })
     },
-    env: {
-      type: 'node',
-      type: 'browser'
-    },
-    testFramework: 'mocha'
+    testFramework: 'mocha',
   };
 };
 

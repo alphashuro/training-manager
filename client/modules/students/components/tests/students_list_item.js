@@ -5,23 +5,6 @@ import {shallow, mount} from 'enzyme';
 import {spy} from 'sinon';
 import StudentsListItem from '../students_list_item.jsx';
 
-var jsdom = require('jsdom').jsdom;
-
-var exposedProperties = [ 'window', 'navigator', 'document' ];
-
-global.document = jsdom('');
-global.window = document.defaultView;
-Object.keys(document.defaultView).forEach((property) => {
-  if (typeof global[property] === 'undefined') {
-    exposedProperties.push(property);
-    global[property] = document.defaultView[property];
-  }
-});
-
-global.navigator = {
-  userAgent: 'node.js'
-};
-
 describe('students.components.student_list_item', () => {
   it('should show an input with the name', () => {
     const props = {
