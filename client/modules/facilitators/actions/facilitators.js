@@ -42,4 +42,19 @@ export default {
   clearErrors({LocalState}) {
     return LocalState.set('FACILITATOR_ERROR', null);
   },
+
+  invite({LocalState, Meteor}, email) {
+    if (!email) {
+      return LocalState.set('FACILITATOR_ERROR', 'Email is required to invite a user!');
+    }
+
+    const user = Meteor.user();
+    const org = user.profile.org;
+
+    Meteor.call('facilitators.invite', {email, org}, (err) => {
+      if (err) {
+        LocalState.set('FACILITATOR_ERROR', err.reason);
+      }
+    });
+  },
 };
