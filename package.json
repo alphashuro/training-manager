@@ -32,6 +32,7 @@
   },
   "dependencies": {
     "domready": "^1.0.8",
+    "jsdom": "^8.0.2",
     "mantra-core": "^1.2.0",
     "moment": "^2.11.2",
     "react": "^0.14.6",
