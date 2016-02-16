@@ -40,7 +40,7 @@ describe('facilitators.components.facilitators_list_item', () => {
     expect(props.onRemove.args[0]).to.deep.equal([ props._id ]);
   });
 
-  it('should call invite when .invite is clicked', () => {
+  it('should call onInvite when .invite is clicked', () => {
     const props = {
       _id: '1',
       name: 'Alpha Shuro',

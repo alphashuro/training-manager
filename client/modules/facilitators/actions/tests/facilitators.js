@@ -196,6 +196,52 @@ describe('facilitators.actions.facilitators', () => {
     });
   });
 
+  describe('invite', () => {
+    it('should reject if email is not defined', () => {
+      const LocalState = {set: spy()};
+
+      actions.invite({LocalState}, null);
+      const args = LocalState.set.args[0];
+
+      expect(LocalState.set.calledOnce).to.be.equal(true);
+      expect(args[0]).to.be.equal( 'FACILITATOR_ERROR' );
+      expect(args[1]).to.match(/required/);
+    });
+
+    it('should call Meteor.call with the email to invite', () => {
+      const LocalState = {set: spy()};
+      const Meteor = {call: spy(), user: stub()};
+      Meteor.user.returns({ profile: { org: 'an-org' }});
+
+      actions.invite({LocalState, Meteor}, 'email');
+      const args = Meteor.call.args[0];
+
+      expect(Meteor.call.calledOnce).to.be.equal(true);
+      expect(args[0]).to.be.equal('facilitators.invite');
+      expect(args[1]).to.deep.equal({
+        email: 'email',
+        org: 'an-org'
+      });
+      expect(args[2]).to.be.a('function');
+    });
+    describe('after Meteor.call', () => {
+      describe('if there is error', () => {
+        it('should set FACILITATOR_ERROR with the error', () => {
+          const Meteor = {call: stub(), user: stub()};
+          Meteor.user.returns({profile: { org: 'an-org' }});
+          const err = {reason: 'oops'};
+          Meteor.call.callsArgWith(2, err);
+          const LocalState = {set: spy()};
+
+          actions.invite({Meteor, LocalState}, 'email');
+          const args = LocalState.set.args[0];
+
+          expect(args[0]).to.be.equal('FACILITATOR_ERROR');
+          expect(args[1]).to.be.equal(err.reason);
+        });
+      });
+    });
+  });
 
   describe('clearErrors', () => {
     it('should clear FACILITATOR_ERROR local state', () => {
