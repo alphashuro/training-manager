@@ -15,13 +15,13 @@ export default function () {
       }
 
       if (!email) {
-        error('email-not-set', 'Need to set an email address.');
+        error('email-not-set', 'Email is required!');
       }
       if (!password) {
-        error('password-not-set', 'Need to set a password');
+        error('password-not-set', 'Password is required!');
       }
       if (!org) {
-        error('org-not-set', 'Need to set an organization name');
+        error('org-not-set', 'Organization/Company name is required!');
       }
 
       const user = {

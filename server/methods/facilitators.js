@@ -1,25 +1,34 @@
-import { Facilitators } from '/lib/collections';
+import { Facilitators, Users } from '/lib/collections';
 
 import {Meteor} from 'meteor/meteor';
 import {check} from 'meteor/check';
+import {Roles} from 'meteor/alanning:roles';
+import {Accounts} from 'meteor/accounts-base';
 
 export default function () {
   Meteor.methods({
-    'facilitators.create'({ _id, name, phone, email, org } ) {
-      check(_id, String);
+    'facilitators.create'({ name, phone, email, org } ) {
 
       check(name, String);
       check(phone, String);
       check(email, String);
       check(org, String);
 
-      if (!_id || !name || !phone || !email || !org) {
+      if ( !name || !phone || !email || !org) {
         throw new Meteor.Error('args-missing', 'All fields are required');
       }
 
-      // XXX: Do user authorization
-      const facilitator = {_id, name, phone, email, org};
-      Facilitators.insert(facilitator);
+      const facilitator = {
+        email,
+        profile: {
+          name,
+          phone,
+          org
+        }
+      };
+
+      const id = Accounts.createUser(facilitator);
+      Roles.addUsersToRoles(id, 'facilitator');
     },
     'facilitators.update'( _id, { name, phone, email}) {
       check(_id, String);
@@ -32,12 +41,16 @@ export default function () {
         throw new Meteor.Error('args-missing', 'All fields are required');
       }
 
-      Facilitators.update(_id, { $set: { name, phone, email } });
+      Users.update(_id, { $set: { profile: { name, phone, email } } });
     },
     'facilitators.remove'(_id) {
       check(_id, String);
 
-      Facilitators.remove(_id);
+      Users.remove(_id);
+    },
+    'facilitators.invite'(id) {
+      check(id, String);
+      Accounts.sendEnrollmentEmail(id);
     }
   });
 }

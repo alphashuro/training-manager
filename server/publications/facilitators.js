@@ -10,10 +10,13 @@ export default function () {
 
     const user = Users.findOne(userId);
 
-    const selector = {org: user.profile.org};
+    const selector = {
+      'profile.org': user.profile.org,
+      roles: 'facilitator'
+    };
     const options = {};
 
-    return Facilitators.find(selector, options);
+    return Users.find(selector, options);
   });
 
   Meteor.publish('facilitators.ids', function () {
@@ -22,10 +25,13 @@ export default function () {
 
     const user = Users.findOne(userId);
 
-    const sel = {org: user.profile.org};
+    const sel = {
+      'profile.org': user.profile.org,
+      roles: 'facilitator'
+    };
     const options = { fields: { _id: 1 }};
 
-    return Facilitators.find(sel, options);
+    return Users.find(sel, options);
   });
 
   Meteor.publish('facilitators.single', function (facilitatorId) {
@@ -38,10 +44,11 @@ export default function () {
 
     const selector = {
       _id: facilitatorId,
-      org: user.profile.org
+      'profile.org': user.profile.org,
+      roles: 'facilitator'
     };
     const options = {};
 
-    return Facilitators.find(selector, options);
+    return Users.find(selector, options);
   });
 }

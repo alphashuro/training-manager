@@ -4,11 +4,13 @@ import {useDeps, composeWithTracker, composeAll} from 'mantra-core';
 export const composer = ({context, facilitatorId, clearErrors}, onData) => {
   const {Meteor, Collections, LocalState} = context();
 
-  Meteor.subscribe('facilitators.single', facilitatorId, () => {
-    const facilitator = Collections.Facilitators.findOne(facilitatorId);
+  const sub = Meteor.subscribe('facilitators.single', facilitatorId);
+
+  if (sub.ready()) {
+    const facilitator = Collections.Users.findOne(facilitatorId);
     const error = LocalState.get('FACILITATOR_ERROR');
     onData(null, {facilitator, error});
-  });
+  }
 
   return clearErrors;
 };

@@ -7,7 +7,12 @@ describe('facilitators.actions.facilitators', () => {
   describe('create', () => {
     it('should reject if the name is not there', () => {
       const LocalState = {set: spy()};
-      actions.create({LocalState}, null, 'phone', 'email');
+      const facilitator = {
+        name: null,
+        email: 'email',
+        phone: 'phone'
+      };
+      actions.create({LocalState},facilitator);
       const args = LocalState.set.args[0];
 
       expect(args[0]).to.be.equal('FACILITATOR_ERROR');
@@ -16,7 +21,12 @@ describe('facilitators.actions.facilitators', () => {
 
     it('should reject if the phone is not there', () => {
       const LocalState = {set: spy()};
-      actions.create({LocalState}, 'name', null, 'email');
+      const facilitator = {
+        name: 'name',
+        email: null,
+        phone: 'phone'
+      };
+      actions.create({LocalState},facilitator);
       const args = LocalState.set.args[0];
 
       expect(args[0]).to.be.equal('FACILITATOR_ERROR');
@@ -25,7 +35,12 @@ describe('facilitators.actions.facilitators', () => {
 
     it('should reject if the email is not there', () => {
       const LocalState = {set: spy()};
-      actions.create({LocalState}, 'name', 'phone', null);
+      const facilitator = {
+        name: 'name',
+        email: 'email',
+        phone: null
+      };
+      actions.create({LocalState},facilitator);
       const args = LocalState.set.args[0];
 
       expect(args[0]).to.be.equal('FACILITATOR_ERROR');
@@ -36,8 +51,12 @@ describe('facilitators.actions.facilitators', () => {
       const Meteor = {uuid: spy(), call: spy(), user: stub().returns({profile: {org: 'org'}})};
       const LocalState = {set: spy()};
       const FlowRouter = {go: spy()};
-
-      actions.create({LocalState, Meteor,FlowRouter}, 'name', 'phone', 'email');
+      const facilitator = {
+        name: 'name',
+        email: 'email',
+        phone: 'phone'
+      };
+      actions.create({LocalState, Meteor,FlowRouter}, facilitator);
 
       expect(LocalState.set.args[0]).to.deep.equal([ 'FACILITATOR_ERROR', null ]);
     });
@@ -54,8 +73,13 @@ describe('facilitators.actions.facilitators', () => {
       };
       const LocalState = {set: spy()};
       const FlowRouter = {go: spy()};
+      const facilitator = {
+        name: 'name',
+        email: 'email',
+        phone: 'phone'
+      };
+      actions.create({LocalState, Meteor,FlowRouter}, facilitator);
 
-      actions.create({LocalState, Meteor,FlowRouter}, 'name', 'phone', 'email');
       const methodArgs = Meteor.call.args[0];
 
       expect(methodArgs[0]).to.equal( 'facilitators.create' );
@@ -85,7 +109,12 @@ describe('facilitators.actions.facilitators', () => {
 
       Meteor.call.callsArg(2);
 
-      actions.create({LocalState, Meteor,FlowRouter}, 'name', 'phone', 'email');
+      const facilitator = {
+        name: 'name',
+        email: 'email',
+        phone: 'phone'
+      };
+      actions.create({LocalState, Meteor,FlowRouter}, facilitator);
 
       expect(FlowRouter.go.args[0][0]).to.be.equal(`/facilitators/${id}`);
     });
@@ -109,7 +138,12 @@ describe('facilitators.actions.facilitators', () => {
 
           Meteor.call.callsArgWith(2, err);
 
-          actions.create({LocalState, Meteor,FlowRouter}, 'name', 'phone', 'email');
+          const facilitator = {
+            name: 'name',
+            email: 'email',
+            phone: 'phone'
+          };
+          actions.create({LocalState, Meteor,FlowRouter}, facilitator);
 
           expect(LocalState.set.calledTwice).to.be.equal(true);
 

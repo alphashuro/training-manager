@@ -19,7 +19,7 @@ const FacilitatorsListItem = ({_id, name, email, phone, onRemove, onInvite}) => 
         </Button>
       <Button
         className='invite'
-        onClick={ onInvite.bind(this, email) }>
+        onClick={ onInvite.bind(this, _id) }>
           Invite
         </Button>
       <Button

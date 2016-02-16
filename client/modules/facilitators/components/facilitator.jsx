@@ -6,15 +6,15 @@ import { Col } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import { Panel } from 'react-bootstrap';
 import { Input } from 'react-bootstrap';
-// import { ListGroup } from 'react-bootstrap';
-// import { ListGroupItem } from 'react-bootstrap';
+import { Alert } from 'react-bootstrap';
 import { PageHeader } from 'react-bootstrap';
 
 
 class Facilitator extends Component {
   render() {
     const {error, facilitator} = this.props;
-    const { name, email, phone } = facilitator;
+    const email = facilitator.emails[0].address;
+    const { name, phone } = facilitator.profile;
     return (
       <div>
         <PageHeader>

@@ -109,17 +109,21 @@ const classes = [
 const facilitators = [
   {
     _id: '1',
-    name: 'Alpha Shuro',
-    phone: '073 790 7955',
-    email: 'alpha@aepit.co.za',
-    org: 'aepit'
+    email: 'alphashuro@gmail.com',
+    profile: {
+      name: 'Alpha Shuro',
+      phone: '073 790 7955',
+      org: 'aepit'
+    }
   },
   {
     _id: '2',
-    name: 'Anoruda Surisipala',
-    phone: '012 243 3425',
     email: 'afacilitator@aepit.co.za',
-    org: 'aepit'
+    profile: {
+      name: 'Anoruda Surisipala',
+      phone: '012 243 3425',
+      org: 'aepit'
+    }
   }
 ];
 
@@ -218,9 +222,10 @@ export default function () {
       Collections.Classes.insert( c );
     });
   }
-  if (!Collections.Facilitators.findOne()) {
+  if (!Collections.Users.findOne({roles: 'facilitator'})) {
     facilitators.forEach(facilitator => {
-      Collections.Facilitators.insert( facilitator );
+      const id = Accounts.createUser( facilitator );
+      Roles.addUsersToRole(id, 'facilitator');
     });
   }
   if (!Collections.Bookings.findOne()) {

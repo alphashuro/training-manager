@@ -23,14 +23,18 @@ describe('facilitators.containers.facilitators_list_item', () => {
       it('should call onData with the facilitator\'s details', () => {
         const Meteor = {subscribe: stub()};
         Meteor.subscribe.returns({ready: () => true});
-        const Collections = {Facilitators: { findOne: stub() }};
+        const Collections = {Users: { findOne: stub() }};
         const facilitator = {
           _id: '1',
-          name: 'name',
-          phone: 'phone',
-          email: 'email'
+          emails: [
+            { address: 'email' }
+          ],
+          profile: {
+            name: 'name',
+            phone: 'phone'
+          }
         };
-        Collections.Facilitators.findOne.returns(facilitator);
+        Collections.Users.findOne.returns(facilitator);
         const facilitatorId = 'id';
 
         const context = () => ({Meteor, Collections});
@@ -41,7 +45,7 @@ describe('facilitators.containers.facilitators_list_item', () => {
 
         expect(onData.calledOnce).to.be.equal(true);
         expect(args[0]).to.be.equal(null);
-        expect(args[1]).to.deep.equal({...facilitator});
+        expect(args[1]).to.deep.equal({_id: '1', email: 'email', ...facilitator.profile});
       });
     });
   });

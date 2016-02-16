@@ -7,7 +7,7 @@ export const composer = ({context}, onData) => {
   const sub = Meteor.subscribe('facilitators.ids');
 
   if (sub.ready()) {
-    const facilitatorIds = Collections.Facilitators
+    const facilitatorIds = Collections.Users
       .find()
       .fetch()
       .map(f => f._id);

@@ -8,8 +8,12 @@ export const composer = ({context, facilitatorId}, onData) => {
   const sub = Meteor.subscribe('facilitators.single', facilitatorId);
 
   if (sub.ready()) {
-    const facilitator = Collections.Facilitators.findOne(facilitatorId);
-    onData(null, {...facilitator});
+    const facilitator = Collections.Users.findOne(facilitatorId);
+    onData(null, {
+      _id: facilitator._id,
+      email: facilitator.emails[0].address,
+      ...facilitator.profile
+    });
   }
 };
 

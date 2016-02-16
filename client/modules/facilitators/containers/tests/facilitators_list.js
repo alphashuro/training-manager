@@ -19,9 +19,9 @@ describe('facilitators.containers.facilitators_list', () => {
       it('gets facilitator ids and passes them on to onData', () => {
         const Meteor = { subscribe: stub() };
         Meteor.subscribe.returns({ready: () => true});
-        const Collections = { Facilitators: {find: stub()} };
+        const Collections = { Users: {find: stub()} };
         const cursor = {fetch: stub()};
-        Collections.Facilitators.find.returns(cursor);
+        Collections.Users.find.returns(cursor);
         const facilitators = [
           {_id: '1'},
           {_id: '2'}
@@ -42,9 +42,9 @@ describe('facilitators.containers.facilitators_list', () => {
         it('passes error on to onData', () => {
           const Meteor = { subscribe: stub() };
           Meteor.subscribe.returns({ready: () => true});
-          const Collections = { Facilitators: {find: stub()} };
+          const Collections = { Users: {find: stub()} };
           const cursor = {fetch: stub()};
-          Collections.Facilitators.find.returns(cursor);
+          Collections.Users.find.returns(cursor);
           const facilitators = [];
           cursor.fetch.returns(facilitators);
           const LocalState = {get: stub()};

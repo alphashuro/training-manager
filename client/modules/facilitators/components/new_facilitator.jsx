@@ -56,7 +56,7 @@ class NewFacilitator extends React.Component {
     const email = emailRef.getValue();
     const phone = phoneRef.getValue();
 
-    create( name, email, phone );
+    create( { name, phone, email } );
   }
 }
 
