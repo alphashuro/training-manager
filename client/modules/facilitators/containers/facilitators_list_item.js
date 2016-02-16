@@ -13,11 +13,15 @@ export const composer = ({context, facilitatorId}, onData) => {
   }
 };
 
-export const depsMapper = (context, actions) => ({
-  context: () => context,
-  onRemove: actions.facilitators.remove,
-  onInvite: actions.users.invite
-});
+export const depsMapper = (context, actions) => {
+  const props = {};
+
+  props.context = () => context;
+  props.onRemove = actions.facilitators.remove;
+  props.onInvite = actions.facilitators.invite;
+
+  return props;
+};
 
 
 export default composeAll(
