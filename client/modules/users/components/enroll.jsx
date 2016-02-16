@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Enroll = ({token}) => (
-  <div>Enroll</div>
+  <div>Enroll {token}</div>
 );
 
 export default Enroll;

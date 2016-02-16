@@ -55,7 +55,6 @@ describe('students.containers.students_list', () => {
         const onData = spy();
 
         composer({context, clientId, LocalState}, onData);
-        const args = onData.args[0];
         expect(LocalState.get.calledOnce).to.be.equal(true);
       });
 

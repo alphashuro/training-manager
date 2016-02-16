@@ -1,4 +1,4 @@
-import {Facilitators, Users} from '/lib/collections';
+import {Users} from '/lib/collections';
 
 import {Meteor} from 'meteor/meteor';
 import {check} from 'meteor/check';
