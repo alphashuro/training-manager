@@ -16,7 +16,8 @@ module.exports = function (wallaby) {
       })
     },
     env: {
-      type: 'node'
+      type: 'node',
+      type: 'browser'
     },
     testFramework: 'mocha'
   };
