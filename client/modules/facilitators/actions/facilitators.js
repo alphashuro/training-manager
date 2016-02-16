@@ -7,17 +7,16 @@ export default {
 
     LocalState.set('FACILITATOR_ERROR', null);
 
-    const _id = Meteor.uuid();
     const user = Meteor.user();
     const org = user.profile.org;
 
-    Meteor.call( 'facilitators.create', { _id, name, phone, email, org }, (error) => {
+    Meteor.call( 'facilitators.create', { name, phone, email, org }, (error, id) => {
       if (error) {
-        return LocalState.set('FACILITATOR_ERROR', error.reason);
+        LocalState.set('FACILITATOR_ERROR', error.reason);
+      } else {
+        FlowRouter.go(`/facilitators/${id}`);
       }
     });
-
-    FlowRouter.go(`/facilitators/${_id}`);
   },
 
   remove({Meteor, LocalState}, id) {

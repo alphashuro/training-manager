@@ -1,4 +1,4 @@
-import { Facilitators, Users } from '/lib/collections';
+import { Users } from '/lib/collections';
 
 import {Meteor} from 'meteor/meteor';
 import {check} from 'meteor/check';
@@ -29,19 +29,24 @@ export default function () {
 
       const id = Accounts.createUser(facilitator);
       Roles.addUsersToRoles(id, 'facilitator');
+      return id;
     },
-    'facilitators.update'( _id, { name, phone, email}) {
+    'facilitators.update'( _id, { name, phone }) {
       check(_id, String);
 
       check(name, String);
       check(phone, String);
-      check(email, String);
 
-      if (!name || !phone || !email) {
+      if (!name || !phone ) {
         throw new Meteor.Error('args-missing', 'All fields are required');
       }
 
-      Users.update(_id, { $set: { profile: { name, phone, email } } });
+      Users.update(_id, {
+        $set: {
+          'profile.name': name,
+          'profile.phone': phone
+        }
+      });
     },
     'facilitators.remove'(_id) {
       check(_id, String);
