@@ -2,14 +2,17 @@ import FacilitatorsList from '../components/facilitators_list.jsx';
 import {useDeps, composeWithTracker, composeAll} from 'mantra-core';
 
 export const composer = ({context}, onData) => {
-  const {Meteor, Collections} = context();
+  const {Meteor, Collections, LocalState} = context();
 
-  if (Meteor.subscribe('facilitators.ids').ready()) {
+  const sub = Meteor.subscribe('facilitators.ids');
+
+  if (sub.ready()) {
     const facilitatorIds = Collections.Facilitators
       .find()
       .fetch()
       .map(f => f._id);
-    onData(null, {facilitatorIds});
+    const error = LocalState.get('FACILITATOR_ERROR');
+    onData(null, {facilitatorIds, error});
   }
 };
 

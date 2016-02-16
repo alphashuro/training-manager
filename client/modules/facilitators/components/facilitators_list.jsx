@@ -1,13 +1,17 @@
 import React from 'react';
 import {Table, PageHeader, Button} from 'react-bootstrap';
+import {Alert} from 'react-bootstrap';
 import FacilitatorsListItem from '../containers/facilitators_list_item';
 
-export const FacilitatorsList = ({ facilitatorIds }) => (
+export const FacilitatorsList = ({ facilitatorIds, error }) => (
   <div>
     <PageHeader>
       Facilitators
       <Button href='/new-facilitator' className='pull-right'>New Facilitator</Button>
     </PageHeader>
+    {
+      error ? <Alert bsStyle='danger'>{error}</Alert> : null
+    }
     <Table>
       <thead>
         <tr>
