@@ -1,2 +1,4 @@
 node_modules
 *.log
+.deploy
+deployment_token.json
