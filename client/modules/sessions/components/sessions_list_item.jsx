@@ -2,14 +2,15 @@ import React from 'react';
 import moment from 'moment';
 
 import {ListGroupItem} from 'react-bootstrap';
-import DateTime from 'react-bootstrap-datetimepicker';
+import DateTimeField from 'react-bootstrap-datetimepicker';
 
-class SessionListItem extends React.Component {
+class SessionsListItem extends React.Component {
   render() {
     const { date } = this.props;
     return (
       <ListGroupItem>
-        <DateTime
+        <DateTimeField
+          ref='dateRef'
           dateTime={moment(date).format('x')}
           inputFormat='llll'
           daysOfWeekDisabled={[ 0, 6 ]}
@@ -29,4 +30,4 @@ class SessionListItem extends React.Component {
   }
 }
 
-export default SessionListItem;
+export default SessionsListItem;

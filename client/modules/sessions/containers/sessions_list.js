@@ -18,10 +18,14 @@ export const composer = ({context, bookingId, clearErrors}, onData) => {
   return clearErrors;
 };
 
-export const depsMapper = (context, actions) => ({
-  context: () => context,
-  clearErrors: actions.sessions.clearErrors
-});
+export const depsMapper = (context, actions) => {
+  const props = {};
+
+  props.context = () => context;
+  props.clearErrors = actions.sessions.clearErrors;
+
+  return props;
+};
 
 export default composeAll(
   composeWithTracker(composer),

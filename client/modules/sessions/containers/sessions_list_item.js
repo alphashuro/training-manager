@@ -14,12 +14,20 @@ export const composer = ({context, sessionId}, onData) => {
   }
 };
 
-export const depsMapper = (context, actions) => ({
-  context: () => context,
-  update: actions.sessions.update
-});
+export const depsMapper = (context, actions) => {
+  const props = {};
 
-export default composeAll(
+  props.context = () => context;
+  props.update = actions.sessions.update;
+
+  return props;
+};
+
+const Container = composeAll(
   composeWithTracker(composer),
   useDeps(depsMapper)
 )(SessionsListItem);
+
+Container.displayName = 'SessionsListItem';
+
+export default Container;
