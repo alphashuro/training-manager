@@ -8,7 +8,7 @@
     "testonly": "mocha --require .mocha.config.js client/**/tests/**/*.js --compilers js:babel-core/register",
     "test": "npm run lint && npm run testonly",
     "test-watch": "npm run testonly -- --watch --watch-extensions js,jsx",
-    "deploy-staging": "meteor deploy training-app",
+    "deploy-staging": "meteor deploy aep-training",
     "deploy-production": "cd .deploy/production && mup deploy",
     "stage": "npm run deploy-staging",
     "prod": "npm run deploy-production"
