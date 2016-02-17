@@ -1,6 +1,6 @@
 const {describe, it} = global;
 import {expect} from 'chai';
-import {spy, stub} from 'sinon';
+import {spy} from 'sinon';
 import {mount} from 'enzyme';
 import React from 'react';
 import moment from 'moment';
