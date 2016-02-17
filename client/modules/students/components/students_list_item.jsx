@@ -10,34 +10,38 @@ class StudentsListItem extends Component {
           <div className="form-inline">
             <Input
               type='text'
-              placeholder='Name'
-              label='Name'
               id='name'
+              ref='nameRef'
+              placeholder='Name'
+              addonBefore='Name'
               defaultValue={name}
-              ref='nameRef'/>
+              />
             <Input
               type='text'
-              placeholder='ID'
               id='ID'
-              addonAfter='ID'
               ref='IDRef'
-              defaultValue={ID} />
+              placeholder='ID'
+              addonBefore='ID'
+              defaultValue={ID}
+              />
           </div>
         <div className="form-inline">
           <Input
             type='text'
-            placeholder='Phone'
             id='phone'
-            addonBefore={<Glyphicon glyph='earphone'/>}
             ref='phoneRef'
-            defaultValue={phone} />
+            placeholder='Phone'
+            addonBefore={<Glyphicon glyph='earphone'/>}
+            defaultValue={phone}
+            />
           <Input
             type='email'
-            placeholder='Email'
             id='email'
-            addonBefore='@'
             ref='emailRef'
-            defaultValue={email} />
+            placeholder='Email'
+            addonBefore='@'
+            defaultValue={email}
+            />
         </div>
         <div className="inline-form">
           <Button
