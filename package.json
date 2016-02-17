@@ -39,7 +39,7 @@
     "react": "^0.14.6",
     "react-big-calendar": "^0.9.8",
     "react-bootstrap": "^0.28.2",
-    "react-bootstrap-datetimepicker": "^0.0.16",
+    "react-bootstrap-datetimepicker": "^0.0.22",
     "react-datetime": "^2.0.3",
     "react-dom": "^0.14.6",
     "react-mounter": "^1.0.0"
