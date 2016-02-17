@@ -9,7 +9,7 @@
   ],
   "setupMongo": true,
   "setupNode": true,
-  "nodeVersion": "0.10.36",
+  "nodeVersion": "0.10.41",
   "setupPhantom": true,
   "enableUploadProgressBar": true,
 
