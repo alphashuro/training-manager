@@ -1,0 +1,1694 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"Fac",
+				"FACILITATOR_ERROR	(new_facilitator.js)"
+			],
+			[
+				"facili",
+				"facilitatorId"
+			],
+			[
+				"facil",
+				"facilitators"
+			],
+			[
+				"facilit",
+				"facilitator	(facilitator.js)"
+			],
+			[
+				"clea",
+				"clearErrors"
+			],
+			[
+				"newD",
+				"newDateMoment"
+			],
+			[
+				"sessions",
+				"sessions_list_item	(sessions_list.jsx)"
+			],
+			[
+				"Session",
+				"SessionsList"
+			],
+			[
+				"Lo",
+				"LocalState"
+			],
+			[
+				"subscr",
+				"subscribe"
+			],
+			[
+				"session",
+				"sessions_list_item	(sessions_list_item.js)"
+			],
+			[
+				"defau",
+				"defaultValue"
+			],
+			[
+				"deploy",
+				"deployment_token"
+			],
+			[
+				"clear",
+				"clearSignupErrors"
+			],
+			[
+				"call",
+				"calledOnce"
+			],
+			[
+				"clearLog",
+				"clearLogoutErrors	(auth.js)"
+			],
+			[
+				"Sign",
+				"Signup"
+			],
+			[
+				"Sin",
+				"Signup"
+			],
+			[
+				"descri",
+				"describeWithDOM"
+			],
+			[
+				"defa",
+				"defaultValue	(students_list_item.js)"
+			],
+			[
+				"email",
+				"emailRef"
+			],
+			[
+				"password",
+				"passwordRef"
+			],
+			[
+				"ema",
+				"emailRef"
+			],
+			[
+				"compos",
+				"composeWithTracker"
+			],
+			[
+				"com",
+				"composeAll"
+			],
+			[
+				"MainL",
+				"MainLayoutCtx"
+			],
+			[
+				"Main",
+				"MainLayout"
+			],
+			[
+				"enrollme",
+				"enrollmentConfig"
+			],
+			[
+				"onEnrol",
+				"onEnrollmentLink	(onEnrollment_link.js)"
+			],
+			[
+				"facilt",
+				"facilitator"
+			],
+			[
+				"cal",
+				"calledOnce"
+			],
+			[
+				"sub",
+				"subscribe	(facilitators_list.js)"
+			],
+			[
+				"fac",
+				"facilitators"
+			],
+			[
+				"facilitators",
+				"facilitators_list_item"
+			],
+			[
+				"subs",
+				"subscribe"
+			],
+			[
+				"Facil",
+				"FacilitatorsList"
+			],
+			[
+				"Faci",
+				"FACILITATOR_ERROR"
+			],
+			[
+				"fu",
+				"function"
+			],
+			[
+				"exp",
+				"expect"
+			],
+			[
+				"students",
+				"studentIds"
+			],
+			[
+				"default",
+				"defaultValue	(students_list_item.jsx)"
+			],
+			[
+				"student",
+				"student_list_item"
+			],
+			[
+				"ListG",
+				"ListGroupItem"
+			],
+			[
+				"Student",
+				"StudentListItem"
+			],
+			[
+				"compso",
+				"composeWithTracker"
+			],
+			[
+				"Sess",
+				"SessionListItem"
+			],
+			[
+				"compose",
+				"composeAll	(sessions_list.js)"
+			],
+			[
+				"List",
+				"ListGroupItem"
+			],
+			[
+				"ClientsList",
+				"ClientsListItem"
+			],
+			[
+				"compo",
+				"composeAll	(bookings_list.js)"
+			],
+			[
+				"depl",
+				"deploy-production"
+			],
+			[
+				"faci",
+				"facilitators	(facilitators_list.js)"
+			],
+			[
+				"bookings_",
+				"bookings_list_item	(bookings_list_item.js)"
+			],
+			[
+				"BookingsList",
+				"BookingsListItem"
+			],
+			[
+				"bookings_list",
+				"bookings_list_item	(bookings_list.jsx)"
+			],
+			[
+				"Bookings",
+				"BookingsListItem	(bookings_list_item.jsx)"
+			],
+			[
+				"use",
+				"useDeps"
+			],
+			[
+				"Facili",
+				"FacilitatorsListItem	(facilitators_list_item.jsx)"
+			],
+			[
+				"Facl",
+				"FacilitatorsListItem"
+			],
+			[
+				"calls",
+				"callsArgWith	(posts.js)"
+			],
+			[
+				"method",
+				"methodStubs"
+			],
+			[
+				"Facilit",
+				"FacilitatorsListItem"
+			],
+			[
+				"time",
+				"timestampable"
+			],
+			[
+				"callsAr",
+				"callsArgWith"
+			],
+			[
+				"select",
+				"selectedClient"
+			],
+			[
+				"selec",
+				"selectedClient"
+			],
+			[
+				"sess",
+				"sessionsApi"
+			],
+			[
+				"puib",
+				"publishComposite"
+			],
+			[
+				"pub",
+				"publishComposite"
+			],
+			[
+				"remove",
+				"removeStudent"
+			],
+			[
+				"update",
+				"updateSession"
+			],
+			[
+				"clients",
+				"clientsCrud"
+			],
+			[
+				"cru",
+				"crudApi	(crud-routes.js)"
+			],
+			[
+				"facilia",
+				"facilitator"
+			],
+			[
+				"crud",
+				"crudApi"
+			],
+			[
+				"signu",
+				"signupForm"
+			],
+			[
+				"conest",
+				"constellation:schema	(packages)"
+			],
+			[
+				"studnet",
+				"students"
+			],
+			[
+				"courses",
+				"coursesCollections"
+			],
+			[
+				"cou",
+				"coursesCollections"
+			],
+			[
+				"craete",
+				"createClass"
+			],
+			[
+				"upda",
+				"updateClass"
+			],
+			[
+				"create",
+				"createClass"
+			],
+			[
+				"trainig",
+				"training-manager"
+			],
+			[
+				"Clients",
+				"ClientsCollections"
+			],
+			[
+				"remoev",
+				"removeStudent"
+			],
+			[
+				"Clien",
+				"ClientsCollections"
+			],
+			[
+				"Clei",
+				"ClientsCollections"
+			],
+			[
+				"web",
+				"webUtils"
+			],
+			[
+				"Bo",
+				"BookingsCollections"
+			],
+			[
+				"Traini",
+				"training-manager"
+			],
+			[
+				"traiin",
+				"training-manager"
+			],
+			[
+				"traini",
+				"training:manager:lib"
+			],
+			[
+				"training",
+				"training-manager"
+			],
+			[
+				"trainin",
+				"training-manager"
+			],
+			[
+				"date",
+				"datetimepicker"
+			],
+			[
+				"add",
+				"addStudent	(registration-detail.jade.tag)"
+			],
+			[
+				"registration",
+				"registration_id"
+			],
+			[
+				"facilitato",
+				"facilitatorSelect"
+			],
+			[
+				"registra",
+				"registration"
+			],
+			[
+				"regist",
+				"registration"
+			],
+			[
+				"reg",
+				"registration"
+			],
+			[
+				"reset",
+				"resetRegistrations"
+			],
+			[
+				"Create",
+				"createClients"
+			],
+			[
+				"cre",
+				"createClients"
+			],
+			[
+				"Colle",
+				"Collections"
+			],
+			[
+				"course",
+				"course-detail"
+			],
+			[
+				"cous",
+				"courseId"
+			],
+			[
+				"descr",
+				"description"
+			],
+			[
+				"collec",
+				"Collections"
+			],
+			[
+				"to",
+				"toHaveBeenCalled"
+			],
+			[
+				"si",
+				"signup"
+			],
+			[
+				"sign",
+				"signupForm"
+			],
+			[
+				"sp",
+				"spyOn"
+			],
+			[
+				"toHa",
+				"toHaveBeenCalled"
+			],
+			[
+				"toHave",
+				"toHaveBeenCalledWith"
+			],
+			[
+				"login",
+				"loginWithPassword"
+			],
+			[
+				"SysIn",
+				"SysInfoContainer"
+			],
+			[
+				"Sys",
+				"SysInfoComponent"
+			],
+			[
+				"Sysin",
+				"SysInfoComponent"
+			],
+			[
+				"Invoi",
+				"invoices"
+			],
+			[
+				"invoic",
+				"invoiceRoutes"
+			],
+			[
+				"pla",
+				"placehold"
+			],
+			[
+				"Rea",
+				"ReactDOM"
+			],
+			[
+				"name",
+				"nameInput"
+			],
+			[
+				"uSER",
+				"User"
+			],
+			[
+				"op",
+				"opts"
+			],
+			[
+				"ma",
+				"makeAdmin"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 370.0,
+		"last_filter": "reload",
+		"selected_items":
+		[
+			[
+				"reload",
+				"LiveReload: Enable/disable plug-ins"
+			],
+			[
+				"server",
+				"SublimeServer: Start SublimeServer"
+			],
+			[
+				"start",
+				"Wallaby.js: Start"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"wallab sta",
+				"Wallaby.js: Start"
+			],
+			[
+				"user",
+				"Preferences: Settings - User"
+			],
+			[
+				"failing",
+				"Wallaby.js: Jump to failing test"
+			],
+			[
+				"wallaby cons",
+				"Wallaby.js: Show Console"
+			],
+			[
+				"stop",
+				"Wallaby.js: Stop"
+			],
+			[
+				"fail",
+				"Wallaby.js: Jump to failing test"
+			],
+			[
+				"wallaby",
+				"Wallaby.js: Stop"
+			],
+			[
+				"stop ",
+				"Wallaby.js: Stop"
+			],
+			[
+				"git status",
+				"Git: Status"
+			],
+			[
+				"walla",
+				"Wallaby.js: Show Uncovered Regions"
+			],
+			[
+				"git diff",
+				"Git: Diff"
+			],
+			[
+				"Wallaby.js",
+				"Wallaby.js: Stop"
+			],
+			[
+				"wallaby sta",
+				"Wallaby.js: Start"
+			],
+			[
+				"wallab",
+				"Wallaby.js: Show Last Screenshot"
+			],
+			[
+				"jump",
+				"Wallaby.js: Jump to error source"
+			],
+			[
+				"jump to",
+				"Wallaby.js: Jump to failing test"
+			],
+			[
+				"javascri",
+				"Set Syntax: JavaScript (Babel)"
+			],
+			[
+				"wall",
+				"Wallaby.js: Jump to error source"
+			],
+			[
+				"status",
+				"Git: Status"
+			],
+			[
+				"git stats",
+				"Git: Status"
+			],
+			[
+				"coff",
+				"Coffee: Fast Compile"
+			],
+			[
+				"git statu",
+				"Git: Status"
+			],
+			[
+				"mark",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"",
+				"Coffee: Compile File"
+			],
+			[
+				"json",
+				"Set Syntax: JSON"
+			],
+			[
+				"cof",
+				"Coffee: Fast Compile"
+			],
+			[
+				"disable",
+				"Package Control: Disable Package"
+			],
+			[
+				"ena",
+				"Package Control: Enable Package"
+			],
+			[
+				"disabl",
+				"Package Control: Disable Package"
+			],
+			[
+				"compile ",
+				"Compile Selected ES6"
+			],
+			[
+				"lint",
+				"SublimeLinter: Lint This View"
+			],
+			[
+				"es6",
+				"Compile Selected ES6"
+			],
+			[
+				"comi",
+				"Compile Selected ES6"
+			],
+			[
+				"compil",
+				"Compile Selected ES6"
+			],
+			[
+				"coffee",
+				"Coffee: Display JavaScript"
+			],
+			[
+				"coffe",
+				"Coffee: Fast Compile"
+			],
+			[
+				"set java",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"compile",
+				"Coffee: Fast Compile"
+			],
+			[
+				"displ",
+				"Coffee: Display JavaScript"
+			],
+			[
+				"compi",
+				"Coffee: Compile File"
+			],
+			[
+				"display",
+				"Coffee: Display JavaScript"
+			],
+			[
+				"staut",
+				"Git: Status"
+			],
+			[
+				"git merge",
+				"Git: Merge"
+			],
+			[
+				"git ",
+				"Git: Merge Branch"
+			],
+			[
+				"git staut",
+				"Git: Status"
+			],
+			[
+				"instlal",
+				"Package Control: Install Package"
+			],
+			[
+				"coffeelin",
+				"Coffee: Lint"
+			],
+			[
+				"new file",
+				"File: New File Relative to Project Root"
+			],
+			[
+				"java",
+				"Coffee: Display JavaScript"
+			],
+			[
+				"cofffee",
+				"Coffee: Compile File"
+			],
+			[
+				"riot",
+				"Set Syntax: Riot (Jade)"
+			],
+			[
+				"jade",
+				"Set Syntax: Jade"
+			],
+			[
+				"Package Control: disa",
+				"Package Control: Disable Package"
+			],
+			[
+				"remove pack",
+				"Package Control: Remove Package"
+			],
+			[
+				"project",
+				"Project Manager"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"heer",
+				"Huely: Extract color palette from file"
+			],
+			[
+				"git flow",
+				"Git Flow: Release Start"
+			],
+			[
+				"git branch",
+				"Git: Checkout New Branch"
+			],
+			[
+				"diff",
+				"Git: Diff All Files"
+			],
+			[
+				"preferences",
+				"Preferences: Settings - User"
+			],
+			[
+				" coffee",
+				"Set Syntax: CoffeeScript"
+			],
+			[
+				"co",
+				"Coffee: Fast Compile"
+			],
+			[
+				"INSTALL",
+				"Package Control: Install Package"
+			],
+			[
+				"git s",
+				"Git: Status"
+			],
+			[
+				"git",
+				"Git: Status"
+			],
+			[
+				"word",
+				"Word Wrap: Toggle"
+			],
+			[
+				"linter",
+				"SublimeLinter: Show All Errors"
+			],
+			[
+				"new fi",
+				"ANF: New File"
+			],
+			[
+				"rename",
+				"ANF: Rename File"
+			],
+			[
+				"creat",
+				"Quick File Creator: Create file"
+			],
+			[
+				"create ",
+				"Quick File Creator: Create directory"
+			],
+			[
+				"git comm",
+				"Git: Commit"
+			],
+			[
+				"git add",
+				"Git: Add..."
+			],
+			[
+				"sideb",
+				"View: Toggle Side Bar"
+			],
+			[
+				"wrap ",
+				"HTML: Wrap Selection With Tag"
+			],
+			[
+				"select ta",
+				"HTML: Wrap Selection With Tag"
+			],
+			[
+				"git com",
+				"Git: Commit"
+			],
+			[
+				"comp",
+				"Coffee: Compile File"
+			],
+			[
+				"commit",
+				"Git: Commit"
+			],
+			[
+				"add",
+				"Git: Add Current File"
+			],
+			[
+				"stat",
+				"Git: Status"
+			],
+			[
+				"comm",
+				"Git: Commit"
+			],
+			[
+				"add ",
+				"Git: Add Current File"
+			],
+			[
+				"git c",
+				"Git: Commit"
+			],
+			[
+				"git hist",
+				"Git: Diff Current File (Ignore Whitespace)"
+			],
+			[
+				"ad",
+				"Git: Add Current File"
+			],
+			[
+				"git ignore",
+				"Git: Update Project Ignored Files"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"install ",
+				"Package Control: Install Package"
+			],
+			[
+				"packa",
+				"Preferences: Browse Packages"
+			]
+		],
+		"width": 475.0
+	},
+	"console":
+	{
+		"height": 139.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) "
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/alpha/Documents/projects/mantra-tm"
+	],
+	"file_history":
+	[
+		"/home/alpha/Documents/projects/alphashuro.github.io/css/main.styl",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/facilitators/containers/tests/new_facilitator.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/facilitators/containers/new_facilitator.js",
+		"/home/alpha/.cache/.fr-EQWERm/sinon.assert.sublime-completions",
+		"/home/alpha/.cache/.fr-xn0kdU/it.sublime-snippet",
+		"/home/alpha/.cache/.fr-WHxG0d/describe.sublime-snippet",
+		"/home/alpha/.cache/.fr-ShNZyc/it.sublime-snippet",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/facilitators/containers/tests/facilitator.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/facilitators/containers/facilitator.js",
+		"/home/alpha/Documents/projects/mantra-tm/package.json",
+		"/home/alpha/Documents/projects/mantra-tm/node_modules/react-bootstrap-datetimepicker/package.json",
+		"/home/alpha/Documents/projects/mantra-tm/node_modules/react-bootstrap-datetimepicker/lib/DateTimePicker.js",
+		"/home/alpha/Documents/projects/mantra-tm/.meteor/packages",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/sessions/components/tests/sessions_list_item.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/sessions/actions/sessions.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/sessions/actions/tests/sessions.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/sessions/components/sessions_list_item.jsx",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/sessions/components/sessions_list.jsx",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/sessions/components/tests/sessions_list.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/sessions/containers/sessions_list_item.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/sessions/containers/sessions_list.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/sessions/containers/tests/sessions_list.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/sessions/containers/tests/sessions_list_item.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/students/components/tests/students_list_item.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/students/components/students_list_item.jsx",
+		"/home/alpha/Documents/projects/mantra-tm/README.md",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/students/actions/tests/students.js",
+		"/home/alpha/.config/sublime-text-3/Packages/User/GitGutter.sublime-settings",
+		"/home/alpha/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/home/alpha/Documents/projects/mantra-tm/.wallaby.js",
+		"/home/alpha/Documents/projects/mantra-sample-blog-app/wallaby.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/sessions/containers/tests/session_list_item.js",
+		"/home/alpha/Documents/projects/mantra-tm/.deploy/staging/mup.json",
+		"/home/alpha/Documents/projects/mantra-tm/.gitignore",
+		"/home/alpha/Documents/projects/mantra-tm/wallaby.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/facilitators/actions/facilitators.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/facilitators/actions/tests/facilitators.js",
+		"/home/alpha/Documents/projects/mantra-tm/.deploy/production/mup.json",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/users/containers/tests/signup.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/users/containers/tests/login.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/users/containers/login.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/users/containers/signup.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/users/actions/tests/users.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/users/actions/auth.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/users/actions/tests/auth.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/users/components/tests/login.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/users/components/login.jsx",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/users/components/tests/signup.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/users/components/signup.jsx",
+		"/home/alpha/Documents/projects/mantra-tm/.mocha.config.js",
+		"/home/alpha/.config/sublime-text-3/Packages/Wallaby/projects/0f20e00d337634b1/instrumented/screen.png",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/core/containers/navigation.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/users/actions/index.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/core/actions/index.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/users/routes.jsx",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/core/routes.jsx",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/core/components/login.jsx",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/core/components/signup.jsx",
+		"/home/alpha/Documents/projects/mantra-tm/server/main.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/users/containers/enroll.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/students/containers/tests/students_list.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/users/components/enroll.jsx",
+		"/home/alpha/Documents/projects/mantra-tm/server/publications/facilitators.js",
+		"/home/alpha/Documents/projects/mantra-tm/server/methods/facilitators.js",
+		"/home/alpha/Documents/projects/mantra-tm/server/publications/users.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/facilitators/routes.jsx",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/facilitators/components/facilitator.jsx",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/users/components/enrollment.jsx",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/users/index.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/users/configs/enrollment.js",
+		"/home/alpha/Documents/projects/mantra-tm/server/configs/accounts.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/users/configs/on_enrollment.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/users/configs/onEnrollment_link.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/facilitators/components/facilitators_list_item.jsx",
+		"/home/alpha/Documents/projects/mantra-tm/server/methods/users.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/facilitators/components/new_facilitator.jsx",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/facilitators/containers/facilitators_list_item.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/facilitators/containers/tests/faciliitators_list_item.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/facilitators/containers/tests/facilitators_list.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/facilitators/containers/facilitators_list.js",
+		"/home/alpha/Documents/projects/mantra-tm/server/configs/initial_adds.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/facilitators/components/tests/facilitators_list_item.js",
+		"/home/alpha/Documents/projects/mantra-sample-blog-app/client/modules/core/components/tests/post.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/facilitators/components/facilitators_list.jsx",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/facilitators/components/tests/facilitators_list.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/users/actions/users.js",
+		"/home/alpha/Documents/projects/mantra-sample-blog-app/client/modules/core/containers/tests/postlist.js",
+		"/home/alpha/Documents/projects/mantra-sample-blog-app/client/modules/core/containers/tests/post.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/students/containers/tests/students_list_item.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/students/containers/students_list.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/students/containers/students_list_item.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/configs/.jsdom_setup.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/configs/tests/.jsdom_setup.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/students/components/tests/students_list.js",
+		"/home/alpha/Documents/projects/mantra-tm/server/publications/students.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/students/components/students_list.jsx",
+		"/home/alpha/Documents/projects/mantra-tm/server/publications/sessions.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/courses/containers/courses_list.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/courses/containers/courses_list_item.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/courses/components/loading_row.jsx",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/courses/components/courses_list.jsx",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/courses/components/courses_list_item.jsx",
+		"/home/alpha/Documents/projects/mantra-tm/server/publications/courses.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/clients/containers/clients_list_item.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/clients/actions/clients.js",
+		"/home/alpha/Documents/projects/mantra-sample-blog-app/client/modules/core/containers/post.js",
+		"/home/alpha/Documents/projects/mantra-tm/server/publications/clients.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/clients/components/tests/clients_list_item.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/clients/containers/clients_list.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/clients/components/clients_list_item.jsx",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/clients/components/clients_list.jsx",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/clients/containers/tests/clients_list_item.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/clients/components/loading_row.jsx",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/bookings/containers/calendar.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/bookings/components/calendar.jsx",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/classes/configs/method_stubs/classes.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/core/components/navigation.jsx",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/core/configs/method_stubs/core.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/classes/configs/method_stubs/index.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/clients/configs/method_stubs/clients.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/core/configs/method_stubs/index.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/courses/configs/method_stubs/courses.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/students/configs/method_stubs/index.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/facilitators/configs/method_stubs/facilitators.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/sessions/configs/method_stubs/index.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/sessions/configs/method_stubs/sessions.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/students/configs/method_stubs/students.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/users/configs/method_stubs/index.js"
+	],
+	"find":
+	{
+		"height": 31.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			":",
+			"version",
+			"class",
+			"classSet",
+			"classnames",
+			"= ",
+			"=",
+			"()}};",
+			": ",
+			"name",
+			"phone",
+			"IDel",
+			"SIGNUP",
+			"signup",
+			":",
+			",",
+			": ",
+			"login",
+			"LOGIN",
+			",",
+			"login",
+			"password",
+			"email",
+			"emailRef",
+			"});\n",
+			" + token",
+			"\\+\\d\\d",
+			"+44",
+			"Facilitators",
+			"facilitators",
+			"Facilitators",
+			"call",
+			"facilitatorIds",
+			"LocalState.set.args[0]",
+			"map",
+			"create",
+			"clearErrors",
+			"student",
+			"course.",
+			"client.",
+			"/\\*",
+			"/*",
+			"/",
+			"facilitator.",
+			",\n      org: 'aepit'",
+			"Collections.",
+			"=",
+			"addStudentsModal",
+			"booking",
+			")\n",
+			"updated",
+			"updating",
+			"booking",
+			"updating",
+			"booking",
+			"sessions",
+			"crudApi",
+			"sessions",
+			"0.\\d.\\d",
+			"crudApi.",
+			"client",
+			"create",
+			"name",
+			"email",
+			"name",
+			"updating",
+			"creating",
+			"create",
+			"select",
+			"0.0.1|0.1.0",
+			"0.0.1",
+			"booking",
+			"\\{\\} (.+)",
+			"=>",
+			",\n",
+			"facilitator",
+			"crudApi",
+			"facilitator",
+			"docs",
+			"#",
+			"Courses",
+			"'(\\w+:\\w+-?\\w+).+",
+			"facilitators",
+			"(\\w+)(\\s+from .+:)(\\w+)(-api.+\\/)(.+).js",
+			"(\\w+)(\\s+from .+:)(\\w+)(-api.+).js",
+			"(\\w+)(\\s+from .+:)(\\w+)(api.+).js",
+			"(\\w+)(\\s+from .+:)(\\w+)(.+).js",
+			"(\\w+:) function\\(\\) \\{\\s+return (\\w+);\\s+\\},?",
+			": function",
+			"\"",
+			"(\\w+)\\['(\\w+)'\\]",
+			"_this",
+			": function",
+			"return ",
+			"(\\w+) = function",
+			"(\\w+ =) function\\(\\) \\{\\s+return (\\w+);\\s+\\},?",
+			"(\\w+:) function\\(\\) \\{\\s+return (\\w+);\\s+\\},?",
+			"(\\w+) = function",
+			"\"",
+			": function",
+			"return;",
+			"App.Collections.",
+			"(\\w+): \\1(,?)",
+			"App.Collections.",
+			": function",
+			"(\\w+:) function\\(\\) \\{\\s+return (\\w+);\\s+\\},?",
+			": function",
+			"import (\\w+)(\\s+from .+/)(\\w+)",
+			"^(\\w+) = function",
+			"App.Collections.",
+			"globals",
+			"no-un",
+			"App.Collections.",
+			"\\((\\w+)\\)\\s+\\{",
+			"\\((\\w+)\\)\\s+\\{(\\1)",
+			"(\\w+): \\1(,?)",
+			": function",
+			"(\\w+)(\\s+from .+/)(\\w+)",
+			"import (\\w+)\\s+from .+/(\\w+)",
+			"global",
+			"courses",
+			"Courses",
+			"courses",
+			"Courses",
+			"App.Collections.",
+			": function",
+			"(\\w+): \\1,",
+			"true"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": true,
+		"regex": true,
+		"replace_history":
+		[
+			"login",
+			"",
+			"1.0.0",
+			"0.2.0",
+			"user",
+			"\\{\\n    \\1\\n  \\},",
+			"\\{\\n    \\1\\n\\},",
+			"\\{\\n\\1\\n\\},",
+			"{}",
+			"course",
+			"student",
+			"client",
+			"booking",
+			"client",
+			"course",
+			"* \\1",
+			"\\1\\2\\1\\1",
+			"\\1\\2\\1\\1.js",
+			"\\1 () => \\2,",
+			"",
+			"'",
+			"\\1.\\2",
+			"",
+			"function \\1",
+			"",
+			"return null;",
+			"\\1,",
+			"",
+			"\\1 () => \\2,",
+			"",
+			"import \\1\\2\\1",
+			"function \\1",
+			"",
+			"\\1",
+			"",
+			"\\1\\2\\1",
+			"\\1",
+			"",
+			"\\1,",
+			"\\1",
+			"(\\w+)",
+			"-web",
+			"warn",
+			"registrations",
+			"phone",
+			"name",
+			"facilitator",
+			"email",
+			"name",
+			"facilitator",
+			"students",
+			"client",
+			"_class",
+			"class",
+			"Classe",
+			"Classes",
+			"'"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 31.0
+	},
+	"input":
+	{
+		"height": 34.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.coffeecompile_output":
+	{
+		"height": 356.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.git-commit":
+	{
+		"height": 118.0
+	},
+	"output.git-init":
+	{
+		"height": 112.0
+	},
+	"output.unsaved_changes":
+	{
+		"height": 178.0
+	},
+	"output.wallabyjs":
+	{
+		"height": 112.0
+	},
+	"output.wallabyjs_console":
+	{
+		"height": 180.0
+	},
+	"pinned_build_system": "",
+	"project": "mantra-tm.sublime-project",
+	"replace":
+	{
+		"height": 58.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"pack",
+				"mantra-tm/package.json"
+			],
+			[
+				"packa",
+				"mantra-tm/.meteor/packages"
+			],
+			[
+				"rea",
+				"mantra-tm/README.md"
+			],
+			[
+				".wa",
+				"mantra-tm/.wallaby.js"
+			],
+			[
+				"wal",
+				"mantra-sample-blog-app/wallaby.js"
+			],
+			[
+				"waal",
+				"mantra-sample-blog-app/wallaby.js"
+			],
+			[
+				"pa",
+				"mantra-tm/package.json"
+			],
+			[
+				"signup",
+				"mantra-tm/client/modules/core/components/signup.jsx"
+			],
+			[
+				"login",
+				"mantra-tm/client/modules/core/components/login.jsx"
+			],
+			[
+				"pakca",
+				"mantra-tm/package.json"
+			],
+			[
+				"fa",
+				"mantra-tm/client/modules/facilitators/containers/facilitators_list.js"
+			],
+			[
+				"facilitatorscontainer",
+				"mantra-tm/client/modules/facilitators/containers/facilitator.js"
+			],
+			[
+				"publicationsclient",
+				"mantra-tm/server/publications/clients.js"
+			],
+			[
+				"facilitators_list",
+				"mantra-tm/client/modules/facilitators/components/facilitators_list_item.jsx"
+			],
+			[
+				"releas",
+				"tm-android/.meteor/release"
+			],
+			[
+				"package",
+				"tm-web/.meteor/packages"
+			],
+			[
+				"libpackage",
+				"packages/lib/package.js"
+			],
+			[
+				"verison",
+				".meteor/versions"
+			],
+			[
+				"version",
+				".meteor/versions"
+			],
+			[
+				"rege",
+				"regexes"
+			],
+			[
+				".eslint",
+				".eslintrc"
+			],
+			[
+				"pak",
+				"package.json"
+			],
+			[
+				"eslin",
+				".eslintrc"
+			],
+			[
+				"courses",
+				"packages/courses-api/courses-api.js"
+			],
+			[
+				"ver",
+				".meteor/versions"
+			],
+			[
+				"versin",
+				".meteor/versions"
+			],
+			[
+				"auth",
+				"packages/auth-api/auth-api.js"
+			],
+			[
+				"es",
+				".eslintrc"
+			],
+			[
+				"esli",
+				".eslintrc"
+			],
+			[
+				"eslint",
+				".eslintrc"
+			],
+			[
+				".es",
+				"tests/.eslintrc"
+			],
+			[
+				"packag",
+				"packages/core/package.js"
+			],
+			[
+				"booking-deta",
+				"app/bookings/client/components/booking-detail.jade.tag"
+			],
+			[
+				"cofflin",
+				"coffeelint.json"
+			],
+			[
+				"bookings-metho",
+				"app/bookings/server/methods/bookings-methods.coffee"
+			],
+			[
+				"bookings",
+				"app/bookings/_api/bookings-api.coffee"
+			],
+			[
+				"session",
+				"app/bookings/client/components/session-list-item.jade.tag"
+			],
+			[
+				"booking-de",
+				"app/bookings/client/components/booking-detail.jade.tag"
+			],
+			[
+				"cofffee",
+				"packages/fixtures/fixtures.coffee"
+			],
+			[
+				"coffe",
+				"packages/fixtures/fixtures.coffee"
+			],
+			[
+				"modal",
+				"app/bookings/client/components/add-students-modal.jade.tag"
+			],
+			[
+				"pakc",
+				"package.json"
+			],
+			[
+				"methods",
+				"app/courses/server/methods/classes-methods.coffee"
+			],
+			[
+				"studnets",
+				"app/clients/server/methods/students.coffee"
+			],
+			[
+				"registraions",
+				"app/registrations/server/methods/registrations-methods.coffee"
+			],
+			[
+				"api",
+				"app/clients/_api/clients-crud-api.coffee"
+			],
+			[
+				"registrations",
+				"app/registrations/_api/registrations-crud-api.coffee"
+			],
+			[
+				"registration-de",
+				"app/registrations/client/components/registration-detail.jade.tag"
+			],
+			[
+				"versio",
+				".meteor/versions"
+			],
+			[
+				"registrations-page",
+				"app/registrations/client/components/registrations-page.jade.tag"
+			],
+			[
+				"clients-publicatio",
+				"app/facilitators/server/publications/facilitators-publications.coffee"
+			],
+			[
+				"fixtu",
+				"packages/fixtures/fixtures.coffee"
+			],
+			[
+				"packaga",
+				"packages/core/package.js"
+			],
+			[
+				"fixture",
+				"packages/fixtures/fixtures.coffee"
+			],
+			[
+				"registrat",
+				"app/registrations/both/collections/registrations-collection.coffee"
+			],
+			[
+				"versions",
+				"training-manager/.meteor/versions"
+			],
+			[
+				"form-control",
+				"training-manager/_app/core/client/components/form-control.jade.tag"
+			],
+			[
+				"form",
+				"training-manager/_app/core/client/components/form-control.jade.tag"
+			],
+			[
+				"nav",
+				"training-manager/_app/core/client/components/nav.jade.tag"
+			],
+			[
+				"invoiceslis",
+				"client/components/invoices-list.jsx"
+			],
+			[
+				"index",
+				"client/index.html"
+			],
+			[
+				"facilitatorform",
+				"App/Facilitators/client/tags/facilitator-form.jade.tag"
+			],
+			[
+				"pakcage",
+				".meteor/packages"
+			],
+			[
+				"profile",
+				"App/Users/client/tags/profile.jade.tag"
+			],
+			[
+				"app",
+				"App/Core/client/services/app-services.coffee"
+			],
+			[
+				"learner",
+				"App/Clients/client/tags/learners-table.jade.tag"
+			],
+			[
+				"classes",
+				"App/Courses/client/tags/classes-table.jade.tag"
+			],
+			[
+				"packages/riot-preprocessor/.npm/plugin/compileriot/",
+				"packages/riot-preprocessor/.npm/plugin/compileRiot/npm-shrinkwrap.json"
+			],
+			[
+				"npm-shri",
+				"packages/riot-preprocessor/.npm/package/npm-shrinkwrap.json"
+			],
+			[
+				"editfacil",
+				"App/Facilitators/client/tags/edit-facilitator-page.tag"
+			],
+			[
+				"packages",
+				".meteor/packages"
+			],
+			[
+				"",
+				"App"
+			],
+			[
+				"gulp",
+				"gulpfile.coffee"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"~/Documents/projects/ionic-test-app/ionic-test-project.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 268.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
