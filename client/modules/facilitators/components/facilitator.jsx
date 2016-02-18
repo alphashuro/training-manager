@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 
 import { Row } from 'react-bootstrap';
@@ -8,7 +7,6 @@ import { Panel } from 'react-bootstrap';
 import { Input } from 'react-bootstrap';
 import { Alert } from 'react-bootstrap';
 import { PageHeader } from 'react-bootstrap';
-
 
 class Facilitator extends Component {
   render() {
@@ -29,27 +27,28 @@ class Facilitator extends Component {
               </PageHeader>
               { error ? <Alert bsStyle='danger'>{error}</Alert> : null }
               <Input type="text"
-                     hasFeedback={ false }
+                     ref="nameRef"
                      placeholder="Facilitator name"
                      label="Name"
-                     ref="nameRef"
                      defaultValue={name}
                     ></Input>
               <Input type="text"
-                     hasFeedback={ false }
+                     ref="phoneRef"
                      placeholder="Facilitator phone"
                      label="Phone"
-                     ref="phoneRef"
                      defaultValue={phone}
                     ></Input>
               <Input type="text"
-                     hasFeedback={ false }
+                     ref="emailRef"
                      placeholder="Facilitator email"
                      label="Email"
-                     ref="emailRef"
                      defaultValue={email}
+                     value={email}
                     ></Input>
-              <Button onClick={ this.saveFacilitator.bind(this) } bsStyle="default">
+              <Button
+                ref='saveRef'
+                onClick={ this.saveFacilitator.bind(this) }
+                bsStyle="default">
                   <span>Save</span>
               </Button>
           </Panel>
@@ -60,14 +59,13 @@ class Facilitator extends Component {
   }
 
   saveFacilitator() {
-    const {update, facilitatorId} = this.props;
-    const {nameRef, emailRef, phoneRef} = this.refs;
+    const {update, facilitator} = this.props;
+    const {nameRef, phoneRef} = this.refs;
 
     const name = nameRef.getValue();
-    const email = emailRef.getValue();
     const phone = phoneRef.getValue();
 
-    update(facilitatorId, { name, email, phone });
+    update(facilitator._id, { name, phone });
   }
 }
 

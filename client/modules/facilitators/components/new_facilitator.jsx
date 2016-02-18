@@ -14,7 +14,7 @@ class NewFacilitator extends React.Component {
     return (
       <div>
         <PageHeader >
-          <span >New Facilitator</span>
+          <span>New Facilitator</span>
         </PageHeader>
         <Row >
           <Col md={ 6 }
@@ -22,24 +22,25 @@ class NewFacilitator extends React.Component {
                >
               {error ? <Alert bsStyle="danger" >{error}</Alert> : null}
               <Input type="text"
-                hasFeedback={ false }
-                placeholder="Enter the facilitator's name"
-                label="Name"
                 ref="nameRef"
+                label="Name"
+                placeholder="Enter the facilitator's name"
                 ></Input>
               <Input type="text"
-                hasFeedback={ false }
-                placeholder="Enter the facilitator's phone"
-                label="Phone"
                 ref="phoneRef"
+                label="Phone"
+                placeholder="Enter the facilitator's phone"
                 ></Input>
               <Input type="email"
-                hasFeedback={ false }
-                placeholder="Enter the facilitator's email"
-                label="Email"
                 ref="emailRef"
+                label="Email"
+                placeholder="Enter the facilitator's email"
                 ></Input>
-              <Button onClick={ this._createFacilitator.bind(this) } bsStyle="default" >
+              <Button
+                ref='saveRef'
+                onClick={ this._createFacilitator.bind(this) }
+                bsStyle="default"
+                >
                 <span >Save</span>
               </Button>
           </Col>
