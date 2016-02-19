@@ -4,16 +4,64 @@
 		"selected_items":
 		[
 			[
+				"desc",
+				"description"
+			],
+			[
+				"student",
+				"studentsCursor"
+			],
+			[
+				"Students",
+				"StudentsListItem"
+			],
+			[
+				"StudentsLis",
+				"StudentsListItem	(students_list.jsx)"
+			],
+			[
+				"phon",
+				"phoneI"
+			],
+			[
+				"email",
+				"emailI"
+			],
+			[
+				"ex",
+				"expect	expect"
+			],
+			[
+				"exp",
+				"expect	custom"
+			],
+			[
+				"New",
+				"NewFacilitator"
+			],
+			[
+				"La",
+				"LoadingRow"
+			],
+			[
+				"facil",
+				"facilitator"
+			],
+			[
+				"faci",
+				"facilitator"
+			],
+			[
+				"des",
+				"desc	describe"
+			],
+			[
 				"Fac",
 				"FACILITATOR_ERROR	(new_facilitator.js)"
 			],
 			[
 				"facili",
 				"facilitatorId"
-			],
-			[
-				"facil",
-				"facilitators"
 			],
 			[
 				"facilit",
@@ -84,10 +132,6 @@
 				"defaultValue	(students_list_item.js)"
 			],
 			[
-				"email",
-				"emailRef"
-			],
-			[
 				"password",
 				"passwordRef"
 			],
@@ -156,20 +200,12 @@
 				"function"
 			],
 			[
-				"exp",
-				"expect"
-			],
-			[
 				"students",
 				"studentIds"
 			],
 			[
 				"default",
 				"defaultValue	(students_list_item.jsx)"
-			],
-			[
-				"student",
-				"student_list_item"
 			],
 			[
 				"ListG",
@@ -206,10 +242,6 @@
 			[
 				"depl",
 				"deploy-production"
-			],
-			[
-				"faci",
-				"facilitators	(facilitators_list.js)"
 			],
 			[
 				"bookings_",
@@ -482,43 +514,35 @@
 			[
 				"Sysin",
 				"SysInfoComponent"
-			],
-			[
-				"Invoi",
-				"invoices"
-			],
-			[
-				"invoic",
-				"invoiceRoutes"
-			],
-			[
-				"pla",
-				"placehold"
-			],
-			[
-				"Rea",
-				"ReactDOM"
-			],
-			[
-				"name",
-				"nameInput"
-			],
-			[
-				"uSER",
-				"User"
-			],
-			[
-				"op",
-				"opts"
-			],
-			[
-				"ma",
-				"makeAdmin"
 			]
 		]
 	},
 	"buffers":
 	[
+		{
+			"file": "client/modules/courses/actions/tests/courses.js",
+			"settings":
+			{
+				"buffer_size": 2179,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "client/modules/core/components/main_layout.jsx",
+			"settings":
+			{
+				"buffer_size": 355,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "client/modules/courses/actions/courses.js",
+			"settings":
+			{
+				"buffer_size": 1257,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -527,10 +551,46 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 370.0,
-		"last_filter": "reload",
+		"height": 400.0,
+		"last_filter": "walla",
 		"selected_items":
 		[
+			[
+				"walla",
+				"Wallaby.js: Start"
+			],
+			[
+				"stop",
+				"Wallaby.js: Stop"
+			],
+			[
+				"livereload",
+				"LiveReload: Enable/disable plug-ins"
+			],
+			[
+				"wallaby start",
+				"Wallaby.js: Start"
+			],
+			[
+				"wallaby cons",
+				"Wallaby.js: Show Console"
+			],
+			[
+				"wallaby",
+				"Wallaby.js: Jump to failing test"
+			],
+			[
+				"start",
+				"Wallaby.js: Start"
+			],
+			[
+				"Snippet: ",
+				"Snippet: if"
+			],
+			[
+				"screen",
+				"Wallaby.js: Show Last Screenshot"
+			],
 			[
 				"reload",
 				"LiveReload: Enable/disable plug-ins"
@@ -538,10 +598,6 @@
 			[
 				"server",
 				"SublimeServer: Start SublimeServer"
-			],
-			[
-				"start",
-				"Wallaby.js: Start"
 			],
 			[
 				"install",
@@ -560,20 +616,8 @@
 				"Wallaby.js: Jump to failing test"
 			],
 			[
-				"wallaby cons",
-				"Wallaby.js: Show Console"
-			],
-			[
-				"stop",
-				"Wallaby.js: Stop"
-			],
-			[
 				"fail",
 				"Wallaby.js: Jump to failing test"
-			],
-			[
-				"wallaby",
-				"Wallaby.js: Stop"
 			],
 			[
 				"stop ",
@@ -582,10 +626,6 @@
 			[
 				"git status",
 				"Git: Status"
-			],
-			[
-				"walla",
-				"Wallaby.js: Show Uncovered Regions"
 			],
 			[
 				"git diff",
@@ -912,7 +952,7 @@
 				"Preferences: Browse Packages"
 			]
 		],
-		"width": 475.0
+		"width": 529.0
 	},
 	"console":
 	{
@@ -933,10 +973,49 @@
 	},
 	"expanded_folders":
 	[
-		"/home/alpha/Documents/projects/mantra-tm"
+		"/home/alpha/Documents/projects/mantra-tm",
+		"/home/alpha/Documents/projects/mantra-tm/client",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/clients",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/core",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/core/components",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/courses/actions",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/courses/actions/tests",
+		"/home/alpha/Documents/projects/mantra-tm/server",
+		"/home/alpha/Documents/projects/mantra-tm/server/publications"
 	],
 	"file_history":
 	[
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/core/routes.jsx",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/bookings/components/students_select.jsx",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/bookings/containers/bookings_list_item.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/bookings/containers/students_list_item.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/bookings/components/students_list_item.jsx",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/bookings/components/students_list.jsx",
+		"/home/alpha/Documents/projects/mantra-tm/server/publications/bookings.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/bookings/components/booking.jsx",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/bookings/components/add_students_modal.jsx",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/bookings/containers/booking.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/bookings/containers/students_list.js",
+		"/home/alpha/Documents/projects/mantra-tm/server/publications/students.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/bookings/components/new_booking.jsx",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/bookings/components/loading_row.jsx",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/bookings/actions/bookings.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/bookings/components/tests/bookingslist.js",
+		"/home/alpha/Documents/projects/mantra-tm/.wallaby.js",
+		"/home/alpha/.config/sublime-text-3/Packages/User/spy.sublime-snippet",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/facilitators/components/tests/new_facilitator.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/facilitators/components/new_facilitator.jsx",
+		"/home/alpha/.config/sublime-text-3/Packages/User/ref.sublime-snippet",
+		"/home/alpha/.config/sublime-text-3/Packages/User/mount.sublime-snippet",
+		"/home/alpha/.config/sublime-text-3/Packages/User/stub.sublime-snippet",
+		"/home/alpha/.config/sublime-text-3/Packages/User/find.sublime-snippet",
+		"/home/alpha/.config/sublime-text-3/Packages/User/shallow.sublime-snippet",
+		"/home/alpha/.config/sublime-text-3/Packages/User/expect.sublime-snippet",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/facilitators/components/tests/loading_row.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/facilitators/components/tests/facilitator.js",
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/facilitators/components/facilitator.jsx",
+		"/home/alpha/.config/sublime-text-3/Packages/Wallaby/projects/0f20e00d337634b1/instrumented/screen.png",
 		"/home/alpha/Documents/projects/alphashuro.github.io/css/main.styl",
 		"/home/alpha/Documents/projects/mantra-tm/client/modules/facilitators/containers/tests/new_facilitator.js",
 		"/home/alpha/Documents/projects/mantra-tm/client/modules/facilitators/containers/new_facilitator.js",
@@ -966,7 +1045,6 @@
 		"/home/alpha/Documents/projects/mantra-tm/client/modules/students/actions/tests/students.js",
 		"/home/alpha/.config/sublime-text-3/Packages/User/GitGutter.sublime-settings",
 		"/home/alpha/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
-		"/home/alpha/Documents/projects/mantra-tm/.wallaby.js",
 		"/home/alpha/Documents/projects/mantra-sample-blog-app/wallaby.js",
 		"/home/alpha/Documents/projects/mantra-tm/client/modules/sessions/containers/tests/session_list_item.js",
 		"/home/alpha/Documents/projects/mantra-tm/.deploy/staging/mup.json",
@@ -987,12 +1065,10 @@
 		"/home/alpha/Documents/projects/mantra-tm/client/modules/users/components/tests/signup.js",
 		"/home/alpha/Documents/projects/mantra-tm/client/modules/users/components/signup.jsx",
 		"/home/alpha/Documents/projects/mantra-tm/.mocha.config.js",
-		"/home/alpha/.config/sublime-text-3/Packages/Wallaby/projects/0f20e00d337634b1/instrumented/screen.png",
 		"/home/alpha/Documents/projects/mantra-tm/client/modules/core/containers/navigation.js",
 		"/home/alpha/Documents/projects/mantra-tm/client/modules/users/actions/index.js",
 		"/home/alpha/Documents/projects/mantra-tm/client/modules/core/actions/index.js",
 		"/home/alpha/Documents/projects/mantra-tm/client/modules/users/routes.jsx",
-		"/home/alpha/Documents/projects/mantra-tm/client/modules/core/routes.jsx",
 		"/home/alpha/Documents/projects/mantra-tm/client/modules/core/components/login.jsx",
 		"/home/alpha/Documents/projects/mantra-tm/client/modules/core/components/signup.jsx",
 		"/home/alpha/Documents/projects/mantra-tm/server/main.js",
@@ -1003,7 +1079,6 @@
 		"/home/alpha/Documents/projects/mantra-tm/server/methods/facilitators.js",
 		"/home/alpha/Documents/projects/mantra-tm/server/publications/users.js",
 		"/home/alpha/Documents/projects/mantra-tm/client/modules/facilitators/routes.jsx",
-		"/home/alpha/Documents/projects/mantra-tm/client/modules/facilitators/components/facilitator.jsx",
 		"/home/alpha/Documents/projects/mantra-tm/client/modules/users/components/enrollment.jsx",
 		"/home/alpha/Documents/projects/mantra-tm/client/modules/users/index.js",
 		"/home/alpha/Documents/projects/mantra-tm/client/modules/users/configs/enrollment.js",
@@ -1012,7 +1087,6 @@
 		"/home/alpha/Documents/projects/mantra-tm/client/modules/users/configs/onEnrollment_link.js",
 		"/home/alpha/Documents/projects/mantra-tm/client/modules/facilitators/components/facilitators_list_item.jsx",
 		"/home/alpha/Documents/projects/mantra-tm/server/methods/users.js",
-		"/home/alpha/Documents/projects/mantra-tm/client/modules/facilitators/components/new_facilitator.jsx",
 		"/home/alpha/Documents/projects/mantra-tm/client/modules/facilitators/containers/facilitators_list_item.js",
 		"/home/alpha/Documents/projects/mantra-tm/client/modules/facilitators/containers/tests/faciliitators_list_item.js",
 		"/home/alpha/Documents/projects/mantra-tm/client/modules/facilitators/containers/tests/facilitators_list.js",
@@ -1031,7 +1105,6 @@
 		"/home/alpha/Documents/projects/mantra-tm/client/configs/.jsdom_setup.js",
 		"/home/alpha/Documents/projects/mantra-tm/client/configs/tests/.jsdom_setup.js",
 		"/home/alpha/Documents/projects/mantra-tm/client/modules/students/components/tests/students_list.js",
-		"/home/alpha/Documents/projects/mantra-tm/server/publications/students.js",
 		"/home/alpha/Documents/projects/mantra-tm/client/modules/students/components/students_list.jsx",
 		"/home/alpha/Documents/projects/mantra-tm/server/publications/sessions.js",
 		"/home/alpha/Documents/projects/mantra-tm/client/modules/courses/containers/courses_list.js",
@@ -1040,35 +1113,11 @@
 		"/home/alpha/Documents/projects/mantra-tm/client/modules/courses/components/courses_list.jsx",
 		"/home/alpha/Documents/projects/mantra-tm/client/modules/courses/components/courses_list_item.jsx",
 		"/home/alpha/Documents/projects/mantra-tm/server/publications/courses.js",
-		"/home/alpha/Documents/projects/mantra-tm/client/modules/clients/containers/clients_list_item.js",
-		"/home/alpha/Documents/projects/mantra-tm/client/modules/clients/actions/clients.js",
-		"/home/alpha/Documents/projects/mantra-sample-blog-app/client/modules/core/containers/post.js",
-		"/home/alpha/Documents/projects/mantra-tm/server/publications/clients.js",
-		"/home/alpha/Documents/projects/mantra-tm/client/modules/clients/components/tests/clients_list_item.js",
-		"/home/alpha/Documents/projects/mantra-tm/client/modules/clients/containers/clients_list.js",
-		"/home/alpha/Documents/projects/mantra-tm/client/modules/clients/components/clients_list_item.jsx",
-		"/home/alpha/Documents/projects/mantra-tm/client/modules/clients/components/clients_list.jsx",
-		"/home/alpha/Documents/projects/mantra-tm/client/modules/clients/containers/tests/clients_list_item.js",
-		"/home/alpha/Documents/projects/mantra-tm/client/modules/clients/components/loading_row.jsx",
-		"/home/alpha/Documents/projects/mantra-tm/client/modules/bookings/containers/calendar.js",
-		"/home/alpha/Documents/projects/mantra-tm/client/modules/bookings/components/calendar.jsx",
-		"/home/alpha/Documents/projects/mantra-tm/client/modules/classes/configs/method_stubs/classes.js",
-		"/home/alpha/Documents/projects/mantra-tm/client/modules/core/components/navigation.jsx",
-		"/home/alpha/Documents/projects/mantra-tm/client/modules/core/configs/method_stubs/core.js",
-		"/home/alpha/Documents/projects/mantra-tm/client/modules/classes/configs/method_stubs/index.js",
-		"/home/alpha/Documents/projects/mantra-tm/client/modules/clients/configs/method_stubs/clients.js",
-		"/home/alpha/Documents/projects/mantra-tm/client/modules/core/configs/method_stubs/index.js",
-		"/home/alpha/Documents/projects/mantra-tm/client/modules/courses/configs/method_stubs/courses.js",
-		"/home/alpha/Documents/projects/mantra-tm/client/modules/students/configs/method_stubs/index.js",
-		"/home/alpha/Documents/projects/mantra-tm/client/modules/facilitators/configs/method_stubs/facilitators.js",
-		"/home/alpha/Documents/projects/mantra-tm/client/modules/sessions/configs/method_stubs/index.js",
-		"/home/alpha/Documents/projects/mantra-tm/client/modules/sessions/configs/method_stubs/sessions.js",
-		"/home/alpha/Documents/projects/mantra-tm/client/modules/students/configs/method_stubs/students.js",
-		"/home/alpha/Documents/projects/mantra-tm/client/modules/users/configs/method_stubs/index.js"
+		"/home/alpha/Documents/projects/mantra-tm/client/modules/clients/containers/clients_list_item.js"
 	],
 	"find":
 	{
-		"height": 31.0
+		"height": 41.0
 	},
 	"find_in_files":
 	{
@@ -1082,6 +1131,16 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"null",
+			":",
+			"StudentsList",
+			":",
+			"student.",
+			"ex",
+			":",
+			"spy",
+			"email",
+			" =",
 			":",
 			"version",
 			"class",
@@ -1199,17 +1258,7 @@
 			"\\((\\w+)\\)\\s+\\{(\\1)",
 			"(\\w+): \\1(,?)",
 			": function",
-			"(\\w+)(\\s+from .+/)(\\w+)",
-			"import (\\w+)\\s+from .+/(\\w+)",
-			"global",
-			"courses",
-			"Courses",
-			"courses",
-			"Courses",
-			"App.Collections.",
-			": function",
-			"(\\w+): \\1,",
-			"true"
+			"(\\w+)(\\s+from .+/)(\\w+)"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1284,14 +1333,147 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "client/modules/courses/actions/tests/courses.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2179,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								935,
+								935
+							]
+						],
+						"settings":
+						{
+							"apply_syntax_touched": true,
+							"at_wb_tests_view": false,
+							"editorconfig": true,
+							"ensure_newline_at_eof_on_save": true,
+							"open_with_edit": true,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true,
+							"trim_trailing_white_space_on_save": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 415.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "client/modules/core/components/main_layout.jsx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 355,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"apply_syntax_touched": true,
+							"at_wb_tests_view": false,
+							"editorconfig": true,
+							"ensure_newline_at_eof_on_save": true,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true,
+							"trim_trailing_white_space_on_save": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "client/modules/courses/actions/courses.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1257,
+						"regions":
+						{
+							"active0":
+							{
+								"flags": 48,
+								"icon": "Packages/gitp/icons/1.png",
+								"regions":
+								[
+									[
+										28,
+										28
+									]
+								],
+								"scope": "gitp"
+							},
+							"active1":
+							{
+								"flags": 48,
+								"icon": "Packages/gitp/icons/2.png",
+								"regions":
+								[
+									[
+										611,
+										611
+									]
+								],
+								"scope": "gitp"
+							}
+						},
+						"selection":
+						[
+							[
+								279,
+								279
+							]
+						],
+						"settings":
+						{
+							"apply_syntax_touched": true,
+							"at_wb_tests_view": false,
+							"editorconfig": true,
+							"ensure_newline_at_eof_on_save": true,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true,
+							"trim_trailing_white_space_on_save": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 31.0
+		"height": 29.0
 	},
 	"input":
 	{
@@ -1352,7 +1534,7 @@
 	"project": "mantra-tm.sublime-project",
 	"replace":
 	{
-		"height": 58.0
+		"height": 54.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1685,7 +1867,7 @@
 	"show_minimap": true,
 	"show_open_files": false,
 	"show_tabs": true,
-	"side_bar_visible": true,
+	"side_bar_visible": false,
 	"side_bar_width": 268.0,
 	"status_bar_visible": true,
 	"template_settings":
