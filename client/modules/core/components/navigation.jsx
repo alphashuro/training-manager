@@ -6,10 +6,12 @@ const Navigation = ({onLogout, user, path}) => {
     if (path === '/') {
       return 0;
     }
+
     const paths = [ 'client', 'course', 'facilitator', 'booking' ];
-    for (let i = 0; i < paths.length; i++) {
-      if (path.includes(paths[i])) {
-        return i + 1;
+
+    for (let p of paths) {
+      if ( path.includes(p) ) {
+        return paths.indexOf(p) + 1;
       }
     }
   }
