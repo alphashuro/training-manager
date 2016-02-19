@@ -11,14 +11,22 @@ class NewBooking extends React.Component {
   getCoursesOptions() {
     const {courses} = this.props;
     return courses.map(course => (
-      <option key={course._id} value={course._id}> {course.title} </option>
+      <option
+      key={course._id}
+      value={course._id}>
+        {course.title}
+      </option>
     ) );
   }
 
   getFacilitatorsOptions() {
     const {facilitators} = this.props;
     return facilitators.map(facilitator => (
-      <option key={facilitator._id} value={facilitator._id}> {facilitator.name} </option>
+      <option
+      key={facilitator._id}
+      value={facilitator._id}>
+        {facilitator.name}
+      </option>
     ));
   }
 
@@ -37,25 +45,29 @@ class NewBooking extends React.Component {
             {error ? <Alert bsStyle="danger" >{error}</Alert> : null}
 
             <Input
-              name="courseSelect"
-              ref="courseSelectRef"
               type="select"
+              ref="courseSelectRef"
+              name="courseSelect"
               label="Select Course"
               placeholder="Course"
               >
               { this.getCoursesOptions() }
               </Input>
             <Input
-              name="facilitatorSelect"
-              ref="facilitatorSelectRef"
               type="select"
+              ref="facilitatorSelectRef"
+              name="facilitatorSelect"
               label="Select Facilitator"
               placeholder="Facilitator"
               >
               { this.getFacilitatorsOptions() }
             </Input>
-            <Button onClick={ this._createBooking.bind(this) } bsStyle="default" >
-              <span >Save</span>
+            <Button
+            ref='saveRef'
+            onClick={ this._createBooking.bind(this) }
+            bsStyle="default"
+            >
+              <span>Save</span>
             </Button>
           </Col>
         </Row>

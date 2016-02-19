@@ -9,7 +9,7 @@ const { Header, Title, Body, Footer } = Modal;
 const AddStudentsModal = ({bookingId, show, close}) => (
   <Modal show={show}>
     <Header>
-      <Title>Add Students to {bookingId}</Title>
+      <Title>Add Students</Title>
     </Header>
     <Body>
       <Grid fluid>
@@ -26,7 +26,7 @@ const AddStudentsModal = ({bookingId, show, close}) => (
       </Grid>
     </Body>
     <Footer>
-      <Button onClick={close}>Close</Button>
+      <Button className='close' onClick={close}>Close</Button>
     </Footer>
   </Modal>
 );

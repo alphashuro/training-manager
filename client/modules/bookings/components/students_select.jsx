@@ -2,8 +2,13 @@ import React from 'react';
 
 import { Alert, ListGroup, ListGroupItem, Button } from 'react-bootstrap';
 
-const StudentsSelect = ({students, add, remove,bookingId, bookingStudents, error}) => (
-    <div>
+const StudentsSelect = ({
+  students,
+  add, remove,
+  bookingId, bookingStudents,
+  error
+}) => (
+  <div>
     <div>Select students</div>
     { error ? <Alert>{ error }</Alert> : null }
 
@@ -30,7 +35,7 @@ const StudentsSelect = ({students, add, remove,bookingId, bookingStudents, error
         )) : null
       }
     </ListGroup>
-    </div>
+  </div>
 );
 
 export default StudentsSelect;

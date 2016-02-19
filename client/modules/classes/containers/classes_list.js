@@ -15,13 +15,17 @@ export const composer = ({context, courseId, clearErrors}, onData) => {
   return clearErrors;
 };
 
-export const depsMapper = (context, actions) => ({
-  context: () => context,
-  removeClass: actions.classes.remove,
-  addClass: actions.classes.create,
-  saveClass: actions.classes.update,
-  clearErrors: actions.classes.clearErrors
-});
+export const depsMapper = (context, actions) => {
+  const props = {};
+
+  props.context = () => context;
+  props.removeClass = actions.classes.remove;
+  props.addClass = actions.classes.create;
+  props.saveClass = actions.classes.update;
+  props.clearErrors = actions.classes.clearErrors;
+
+  return props;
+};
 
 export default composeAll(
   composeWithTracker(composer),

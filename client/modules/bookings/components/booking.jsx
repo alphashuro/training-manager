@@ -9,57 +9,43 @@ import { PageHeader, FormControls } from 'react-bootstrap';
 import StudentsList from '../containers/students_list';
 import SessionsList from '../../sessions/containers/sessions_list';
 
-class Booking extends Component {
-  render() {
-    const {error, booking} = this.props;
-    return (
-      <div>
-        <PageHeader>
-          <span>Booking</span>
-        </PageHeader>
+const Booking = ({error, booking, course, facilitator}) => (
+  <div>
+    <PageHeader>
+      <span>Booking</span>
+    </PageHeader>
 
-        <Row>
-          <Col md={ 6 }>
-            <Panel>
-                <PageHeader>
-                    <span>Booking Info</span>
-                </PageHeader>
-                { error ? <Alert bsStyle='danger'>{error}</Alert> : null }
+    <Row>
+      <Col md={ 6 }>
+        <Panel>
+            <PageHeader>
+                <span>Booking Info</span>
+            </PageHeader>
+            { error ? <Alert bsStyle='danger'>{error}</Alert> : null }
 
-                <FormControls.Static
-                  label="Course"
-                  labelClassName="col-xs-2"
-                  wrapperClassName="col-xs-10"
-                  value={booking.courseId} />
-                <FormControls.Static
-                  label="Facilitator"
-                  labelClassName="col-xs-2"
-                  wrapperClassName="col-xs-10"
-                  value={booking.facilitatorId} />
+            <FormControls.Static
+              className='course'
+              label="Course"
+              labelClassName="col-xs-2"
+              wrapperClassName="col-xs-10"
+              value={course.title} />
+            <FormControls.Static
+              className='facilitator'
+              label="Facilitator"
+              labelClassName="col-xs-2"
+              wrapperClassName="col-xs-10"
+              value={facilitator.name} />
 
-            </Panel>
-          </Col>
-          <Col md={ 6 }>
-            <StudentsList bookingId={booking._id} />
-          </Col>
-          <Col md={ 6 }>
-            <SessionsList bookingId={booking._id} />
-          </Col>
-        </Row>
-    </div>
-    );
-  }
-
-  saveBooking() {
-    const {update, bookingId} = this.props;
-    const {nameRef, emailRef, phoneRef} = this.refs;
-
-    const name = nameRef.getValue();
-    const email = emailRef.getValue();
-    const phone = phoneRef.getValue();
-
-    update(bookingId, { name, email, phone });
-  }
-}
+        </Panel>
+      </Col>
+      <Col md={ 6 }>
+        <StudentsList bookingId={booking._id} />
+      </Col>
+      <Col md={ 6 }>
+        <SessionsList bookingId={booking._id} />
+      </Col>
+    </Row>
+</div>
+);
 
 export default Booking;

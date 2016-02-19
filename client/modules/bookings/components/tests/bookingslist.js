@@ -2,7 +2,6 @@ const {describe, it} = global;
 import {expect} from 'chai';
 import {shallow} from 'enzyme';
 import BookingsList from '../bookings_list.jsx';
-import BookingsListItem from '../../containers/bookings_list_item';
 import React from 'react';
 
 describe('bookings.components.bookings_list', () => {
@@ -24,6 +23,6 @@ describe('bookings.components.bookings_list', () => {
     };
 
     const el = shallow(<BookingsList {...props} />);
-    expect(el.find( BookingsListItem ).length).to.be.equal(bookingIds.length);
+    expect(el.find( 'BookingsListItem' ).length).to.be.equal(bookingIds.length);
   });
 });
