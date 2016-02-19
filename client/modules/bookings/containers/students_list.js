@@ -5,32 +5,37 @@ import {useDeps, composeWithTracker, composeAll} from 'mantra-core';
 export const composer = ({context, clearErrors, bookingId}, onData) => {
   const {Meteor, Collections, LocalState} = context();
 
-  const bookingSub = Meteor.subscribe('bookings.single', bookingId);
+  const sub = Meteor.subscribe('bookings.students.ids', bookingId);
 
-  if (bookingSub.ready()) {
+  if (sub.ready()) {
     const booking = Collections.Bookings.findOne(bookingId);
-    const sub = Meteor.subscribe('bookings.students', booking.studentIds);
-
-    if (sub.ready()) {
-      const selector = { _id: { $in: booking.studentIds } };
-      const students = Collections.Students.find(selector).fetch();
-      const error = LocalState.get('BOOKING_STUDENTS_ERROR');
-      onData(null, {students, error});
-    }
+    const selector = { _id: { $in: booking.studentIds } };
+    const studentIds = Collections.Students.find(selector)
+      .fetch()
+      .map(s => s._id);
+    const error = LocalState.get('BOOKING_STUDENTS_ERROR');
+    onData(null, {studentIds, error});
   }
 
   return clearErrors;
 };
 
-export const depsMapper = (context, actions) => ({
-  context: () => context,
-  remove: actions.bookingStudents.remove,
-  add: actions.bookingStudents.add,
-  clearErrors: actions.bookingStudents.clearErrors,
-  showStudentsModal: actions.bookingStudents.showModal
-});
+export const depsMapper = (context, actions) => {
+  const props = {};
 
-export default composeAll(
+  props.context = () => context;
+  props.add = actions.bookingStudents.add;
+  props.clearErrors = actions.bookingStudents.clearErrors;
+  props.showStudentsModal = actions.bookingStudents.showModal;
+
+  return props;
+};
+
+const Container = composeAll(
   composeWithTracker(composer),
   useDeps(depsMapper)
 )(StudentsList);
+
+Container.displayName = 'StudentsList';
+
+export default Container;
