@@ -35,7 +35,12 @@ const Navigation = ({onLogout, user, path}) => {
 
         <Nav pullRight>
           <NavDropdown eventKey={1} title={ user.emails[0].address } id='nav-dropdown'>
-            <MenuItem eventKey={1.1} onClick={onLogout}>Logout</MenuItem>
+            <MenuItem
+            className='logout'
+            eventKey={1.1}
+            onClick={onLogout.bind(this)}>
+              Logout
+            </MenuItem>
           </NavDropdown>
         </Nav>
       </Navbar.Collapse>
