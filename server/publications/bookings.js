@@ -73,8 +73,13 @@ export default function () {
     const courseCursor = Courses.find(booking.courseId);
     const facilitatorCursor = Facilitators.find(booking.facilitatorId);
     const sessionsCursor = Sessions.find({bookingId: booking._id});
+    const studentsCursor = Students.find({
+      _id: {
+        $in: booking.studentIds
+      }
+    });
 
-    return [ bookingCursor, courseCursor, facilitatorCursor, sessionsCursor ];
+    return [ bookingCursor, courseCursor, facilitatorCursor, sessionsCursor, studentsCursor ];
   });
 
   // Meteor.publishComposite('bookings.single', {
