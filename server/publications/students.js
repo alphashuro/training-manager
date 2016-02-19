@@ -1,4 +1,4 @@
-import {Students} from '/lib/collections';
+import {Students, Bookings} from '/lib/collections';
 
 import {Meteor} from 'meteor/meteor';
 import {check} from 'meteor/check';
@@ -38,6 +38,23 @@ export default function () {
 
     const selector = {_id: { $in: studentIds } };
     const options = {};
+
+    return Students.find(selector, options);
+  });
+
+  Meteor.publish('bookings.students.ids', function (bookingId) {
+    check(bookingId, String);
+
+    const userId = this.userId;
+    if (!userId) { return null; }
+    const booking = Bookings.findOne(bookingId);
+
+    const selector = {_id: { $in: booking.studentIds } };
+    const options = {
+      fields: {
+        _id: 1
+      }
+    };
 
     return Students.find(selector, options);
   });
