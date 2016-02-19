@@ -1,7 +1,10 @@
 export default {
   create({ Meteor, LocalState, FlowRouter }, courseId, facilitatorId ) {
-    if (!courseId || !facilitatorId ) {
-      return LocalState.set('BOOKING_ERROR', 'All fields are required!');
+    if (!courseId) {
+      return LocalState.set('BOOKING_ERROR', 'Course selection is required!');
+    }
+    if (!facilitatorId) {
+      return LocalState.set('BOOKING_ERROR', 'Facilitator selection is required!');
     }
 
     LocalState.set('BOOKING_ERROR', null);
@@ -21,7 +24,7 @@ export default {
 
   remove({Meteor, LocalState}, id) {
     if (!id) {
-      return LocalState.set('BOOKING_ERROR', 'Id was not given.');
+      return LocalState.set('BOOKING_ERROR', 'Id is required.');
     }
 
     Meteor.call('bookings.remove', id, (error) => {
