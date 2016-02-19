@@ -10,8 +10,8 @@ const CoursesListItem = ({_id, title, description, onRemove}) => (
       {description}
     </td>
     <td>
-      <Button href={`/courses/${_id}`}>View</Button>
-      <Button onClick={ onRemove.bind(this, _id) }>Delete</Button>
+      <Button className='view' href={`/courses/${_id}`}>View</Button>
+      <Button className='remove' onClick={ onRemove.bind(this, _id) }>Delete</Button>
     </td>
   </tr>
 );

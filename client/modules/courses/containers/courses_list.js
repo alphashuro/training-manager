@@ -2,14 +2,17 @@ import CoursesList from '../components/courses_list.jsx';
 import {useDeps, composeWithTracker, composeAll} from 'mantra-core';
 
 export const composer = ({context}, onData) => {
-  const {Meteor, Collections} = context();
+  const {Meteor, Collections, LocalState} = context();
 
-  if (Meteor.subscribe('courses.ids').ready()) {
+  const sub = Meteor.subscribe('courses.ids');
+
+  if (sub.ready()) {
     const courseIds = Collections.Courses
       .find()
       .fetch()
       .map(c => c._id);
-    onData(null, {courseIds});
+    const error = LocalState.get('COURSE_ERROR');
+    onData(null, {courseIds, error});
   }
 };
 

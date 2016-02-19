@@ -6,9 +6,8 @@ import { Col } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import { Panel } from 'react-bootstrap';
 import { Input } from 'react-bootstrap';
-// import { ListGroup } from 'react-bootstrap';
-// import { ListGroupItem } from 'react-bootstrap';
 import { PageHeader } from 'react-bootstrap';
+import { Alert } from 'react-bootstrap';
 
 import ClassesList from '../../classes/containers/classes_list';
 
@@ -30,20 +29,23 @@ class Course extends Component {
               </PageHeader>
               { error ? <Alert bsStyle='danger'>{error}</Alert> : null }
               <Input type="text"
-                     hasFeedback={ false }
-                     placeholder="Course title"
-                     label="Title"
-                     ref="titleRef"
-                     defaultValue={title}
-                    ></Input>
+                 hasFeedback={ false }
+                 placeholder="Course title"
+                 label="Title"
+                 ref="titleRef"
+                 defaultValue={title}
+                ></Input>
               <Input type="text"
-                     hasFeedback={ false }
-                     placeholder="Course description"
-                     label="Description"
-                     ref="descriptionRef"
-                     defaultValue={description}
-                    ></Input>
-              <Button onClick={ this.saveCourse.bind(this) } bsStyle="default">
+                 hasFeedback={ false }
+                 placeholder="Course description"
+                 label="Description"
+                 ref="descriptionRef"
+                 defaultValue={description}
+                ></Input>
+              <Button
+              className='save'
+              onClick={ this.saveCourse.bind(this) }
+              bsStyle="default">
                   <span>Save</span>
               </Button>
           </Panel>
@@ -57,13 +59,13 @@ class Course extends Component {
   }
 
   saveCourse() {
-    const {update, courseId} = this.props;
-    const {titleRef, descriptionRef,} = this.refs;
+    const {update, course} = this.props;
+    const {titleRef, descriptionRef} = this.refs;
 
     const title = titleRef.getValue();
     const description = descriptionRef.getValue();
 
-    update(courseId, { title, description });
+    update(course._id, { title, description });
   }
 }
 

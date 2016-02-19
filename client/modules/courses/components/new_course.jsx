@@ -14,28 +14,31 @@ class NewCourse extends React.Component {
     return (
       <div>
         <PageHeader >
-          <span >New Course</span>
+          <span>New Course</span>
         </PageHeader>
-        <Row >
+        <Row>
           <Col md={ 6 }
-               mdOffset={ 3 }
-               >
-              {error ? <Alert bsStyle="danger" >{error}</Alert> : null}
-              <Input type="text"
-                hasFeedback={ false }
-                placeholder="Enter the course's title"
-                label="Title"
-                ref="titleRef"
-                ></Input>
-              <Input type="description"
-                hasFeedback={ false }
-                placeholder="Enter the course's description"
-                label="Description"
-                ref="descriptionRef"
-                ></Input>
-              <Button onClick={ this._createCourse.bind(this) } bsStyle="default" >
-                <span >Save</span>
-              </Button>
+           mdOffset={ 3 }
+           >
+            {error ? <Alert bsStyle="danger" >{error}</Alert> : null}
+            <Input type="text"
+              hasFeedback={ false }
+              placeholder="Enter the course's title"
+              label="Title"
+              ref="titleRef"
+              ></Input>
+            <Input type="description"
+              hasFeedback={ false }
+              placeholder="Enter the course's description"
+              label="Description"
+              ref="descriptionRef"
+              ></Input>
+            <Button
+            ref='saveRef'
+            onClick={ this._createCourse.bind(this) }
+            bsStyle="default" >
+              <span >Save</span>
+                </Button>
           </Col>
         </Row>
       </div>
@@ -46,6 +49,7 @@ class NewCourse extends React.Component {
     const {create} = this.props;
 
     const { titleRef, descriptionRef } = this.refs;
+
     const title = titleRef.getValue();
     const description = descriptionRef.getValue();
 

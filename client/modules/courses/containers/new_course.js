@@ -10,11 +10,15 @@ export const composer = ({context, clearErrors}, onData) => {
   return clearErrors;
 };
 
-export const depsMapper = (context, actions) => ({
-  create: actions.courses.create,
-  clearErrors: actions.courses.clearErrors,
-  context: () => context
-});
+export const depsMapper = (context, actions) => {
+  const props = {};
+
+  props.create = actions.courses.create;
+  props.clearErrors = actions.courses.clearErrors;
+  props.context = () => context;
+
+  return props;
+};
 
 export default composeAll(
   composeWithTracker(composer),

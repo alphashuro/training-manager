@@ -1,8 +1,15 @@
 export default {
 
-  create({ Meteor, LocalState, FlowRouter }, title, description) {
-    if (!title || !description ) {
-      return LocalState.set('COURSE_ERROR', 'Title description and  are required!');
+  create(
+    { Meteor, LocalState, FlowRouter },
+    title,
+    description
+    ) {
+    if (!title ) {
+      return LocalState.set('COURSE_ERROR', 'Title is required!');
+    }
+    if (!description ) {
+      return LocalState.set('COURSE_ERROR', 'Description is required!');
     }
 
     LocalState.set('COURSE_ERROR', null);
@@ -15,9 +22,8 @@ export default {
       if (error) {
         return LocalState.set('COURSE_ERROR', error.reason);
       }
+      FlowRouter.go(`/courses/${_id}`);
     });
-
-    FlowRouter.go(`/courses/${_id}`);
   },
 
   remove({Meteor, LocalState}, id) {
