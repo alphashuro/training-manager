@@ -1,11 +1,11 @@
 import React from 'react';
-import Navigation from './navigation.jsx';
+import Navigation from '../containers/navigation';
 
 import { Grid } from 'react-bootstrap';
 
-const Layout = ({content = () => null, user, logout, path}) => (
+const Layout = ({content = () => null}) => (
   <div>
-    <Navigation user={user} onLogout={logout} path={path} />
+    <Navigation />
     <Grid style={{ marginTop: '50px' }}>
       {content()}
     </Grid>
