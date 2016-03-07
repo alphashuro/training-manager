@@ -13,13 +13,21 @@ export const composer = ({context, courseId, clearErrors}, onData) => {
   return clearErrors;
 };
 
-export const depsMapper = (context, actions) => ({
-  context: () => context,
-  update: actions.courses.update,
-  clearErrors: actions.courses.clearErrors
-});
+export const depsMapper = (context, actions) => {
+  const props = {};
 
-export default composeAll(
+  props.context = () => context;
+  props.update = actions.courses.update;
+  props.clearErrors = actions.courses.clearErrors;
+
+  return props;
+};
+
+const Container = composeAll(
   composeWithTracker(composer),
   useDeps(depsMapper)
 )(Course);
+
+Container.displayName = 'Course';
+
+export default Container;

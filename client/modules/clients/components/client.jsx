@@ -6,6 +6,7 @@ import { Button } from 'react-bootstrap';
 import { Panel } from 'react-bootstrap';
 import { Input } from 'react-bootstrap';
 import { PageHeader } from 'react-bootstrap';
+import { Alert } from 'react-bootstrap';
 
 import StudentsList from '../../students/containers/students_list';
 

@@ -16,10 +16,11 @@ export default {
     Meteor.call( 'clients.create', { _id, name, phone, email, org }, (error) => {
       if (error) {
         return LocalState.set('CLIENT_ERROR', error.reason);
+      } else {
+        FlowRouter.go(`/clients/${_id}`);
       }
     });
 
-    FlowRouter.go(`/clients/${_id}`);
   },
 
   remove({Meteor, LocalState}, id) {
@@ -33,6 +34,14 @@ export default {
   },
 
   update({Meteor, LocalState}, id, { name, phone, email }) {
+    if (!id) {
+      return LocalState.set('CLIENT_ERROR', 'Id is required to update a client!');
+    }
+
+    if (!name && !phone && !email) {
+      return LocalState.set('CLIENT_ERROR', 'Name, phone or email required to update a client!');
+    }
+
     Meteor.call(
       'clients.update',
       id, { name, phone, email },

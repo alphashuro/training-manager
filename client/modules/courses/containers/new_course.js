@@ -20,7 +20,11 @@ export const depsMapper = (context, actions) => {
   return props;
 };
 
-export default composeAll(
+const Container = composeAll(
   composeWithTracker(composer),
   useDeps(depsMapper)
 )(NewCourse);
+
+Container.displayName = 'NewCourse';
+
+export default Container;

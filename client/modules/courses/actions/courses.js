@@ -37,6 +37,14 @@ export default {
   },
 
   update({Meteor, LocalState}, id, { title, description }) {
+    if(!id) {
+      return LocalState.set('COURSE_ERROR', 'Id is required to update a course!');
+    };
+
+    if(!title || !description) {
+      return LocalState.set('COURSE_ERROR', 'Title and/or description are required to update a course!');
+    };
+
     Meteor.call(
       'courses.update',
       id, { title, description },

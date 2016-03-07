@@ -13,12 +13,20 @@ export const composer = ({context, clientId}, onData) => {
   }
 };
 
-export const depsMapper = (context, actions) => ({
-  context: () => context,
-  onRemove: actions.clients.remove
-});
+export const depsMapper = (context, actions) => {
+  const props = {};
 
-export default composeAll(
+  props.context = () => context;
+  props.onRemove = actions.clients.remove;
+
+  return props;
+};
+
+const Container = composeAll(
   composeWithTracker(composer, LoadingRow),
   useDeps(depsMapper)
 )(ClientsListItem);
+
+Container.displayName = 'ClientsListItem';
+
+export default Container;

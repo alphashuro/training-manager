@@ -2,18 +2,25 @@ import ClientsList from '../components/clients_list.jsx';
 import {useDeps, composeWithTracker, composeAll} from 'mantra-core';
 
 export const composer = ({context}, onData) => {
-  const {Meteor, Collections} = context();
+  const {Meteor, Collections, LocalState} = context();
 
-  if (Meteor.subscribe('clients.ids').ready()) {
+  const sub = Meteor.subscribe('clients.ids');
+
+  if (sub.ready()) {
     const clientIds = Collections.Clients
       .find()
       .fetch()
       .map(c => c._id);
-    onData(null, {clientIds});
+    const error = LocalState.get('CLIENT_ERROR');
+    onData(null, {clientIds, error});
   }
 };
 
-export default composeAll(
+const Container = composeAll(
   composeWithTracker(composer),
   useDeps()
 )(ClientsList);
+
+Container.displayName = 'ClientsList';
+
+export default Container;

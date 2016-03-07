@@ -10,13 +10,21 @@ export const composer = ({context, clearErrors}, onData) => {
   return clearErrors;
 };
 
-export const depsMapper = (context, actions) => ({
-  create: actions.clients.create,
-  clearErrors: actions.clients.clearErrors,
-  context: () => context
-});
+export const depsMapper = (context, actions) => {
+  const props = {};
 
-export default composeAll(
+  props.create = actions.clients.create;
+  props.clearErrors = actions.clients.clearErrors;
+  props.context = () => context;
+
+  return props;
+};
+
+const Container = composeAll(
   composeWithTracker(composer),
   useDeps(depsMapper)
 )(NewClient);
+
+Container.displayName = 'NewClient';
+
+export default Container;

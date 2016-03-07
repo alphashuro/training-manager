@@ -13,57 +13,52 @@ class NewClient extends Component {
     const {error} = this.props;
     return (
       <div>
-        <PageHeader >
-          <span >New Client</span>
+        <PageHeader>
+          <span>New Client</span>
         </PageHeader>
-        <Row >
-          <Col md={ 6 }
-               mdOffset={ 3 }
-               >
-              {error ? <Alert bsStyle="danger" >{error}</Alert> : null}
-              <Input
-                name='clientName'
-                type="text"
-                hasFeedback={ false }
-                placeholder="Enter the client's name"
-                label="Name"
-                ref="nameRef"
-                ></Input>
-              <Input type="text"
-                name='clientPhone'
-                hasFeedback={ false }
-                placeholder="Enter the client's phone"
-                label="Phone"
-                ref="phoneRef"
-                ></Input>
-              <Input type="email"
-                name='clientEmail'
-                hasFeedback={ false }
-                placeholder="Enter the client's email"
-                label="Email"
-                ref="emailRef"
-                ></Input>
-              <Button
-                className='save'
-                onClick={ this._createClient.bind(this) }
-                bsStyle="default" >
-                <span >Save</span>
-              </Button>
+        <Row>
+          <Col md={6} mdOffset={3}>
+          {error ? <Alert bsStyle="danger">{error}</Alert> : null}
+          <Input
+            name='clientName'
+            type="text"
+            hasFeedback={false}
+            placeholder="Enter the client's name"
+            label="Name"
+            ref={input => this.name = input}
+            />
+          <Input
+            type="text"
+            name='clientPhone'
+            hasFeedback={false}
+            placeholder="Enter the client's phone"
+            label="Phone"
+            ref={input => this.phone = input}
+            />
+          <Input
+            type="email"
+            name='clientEmail'
+            hasFeedback={false}
+            placeholder="Enter the client's email"
+            label="Email"
+            ref={input => this.email = input}
+            />
+          <Button
+            className='save'
+            onClick={() => {
+              this.props.create(
+                this.name.getValue(),
+                this.phone.getValue(),
+                this.email.getValue()
+              )
+            }}
+            bsStyle="default" >
+            <span>Save</span>
+          </Button>
           </Col>
         </Row>
       </div>
     );
-  }
-
-  _createClient() {
-    const {create} = this.props;
-
-    const { nameRef, emailRef, phoneRef } = this.refs;
-    const name = nameRef.getValue();
-    const email = emailRef.getValue();
-    const phone = phoneRef.getValue();
-
-    create( name, phone, email );
   }
 }
 

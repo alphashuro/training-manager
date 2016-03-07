@@ -13,8 +13,16 @@ const ClientsListItem = ({_id, name, phone, email, onRemove}) => (
       {phone}
     </td>
     <td>
-      <Button href={`/clients/${_id}`}>View</Button>
-      <Button onClick={ onRemove.bind(this, _id) }>Delete</Button>
+      <Button
+        className='view'
+        href={`/clients/${_id}`}>
+        View
+      </Button>
+      <Button
+        className='remove'
+        onClick={() => onRemove(_id)}>
+        Delete
+      </Button>
     </td>
   </tr>
 );
