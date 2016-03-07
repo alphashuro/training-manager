@@ -1,12 +1,11 @@
 import React from 'react';
 
-import { Row } from 'react-bootstrap';
-import { Col } from 'react-bootstrap';
-import { Button } from 'react-bootstrap';
-import { Input } from 'react-bootstrap';
-import { Alert } from 'react-bootstrap';
-import { PageHeader } from 'react-bootstrap';
-
+import {Row} from 'react-bootstrap';
+import {Col} from 'react-bootstrap';
+import {Button} from 'react-bootstrap';
+import {Input} from 'react-bootstrap';
+import {Alert} from 'react-bootstrap';
+import {PageHeader} from 'react-bootstrap';
 
 class NewCourse extends React.Component {
   render() {
