@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 
 import { Row } from 'react-bootstrap';
 import { Col } from 'react-bootstrap';
@@ -8,7 +8,7 @@ import { Alert } from 'react-bootstrap';
 import { PageHeader } from 'react-bootstrap';
 
 
-class NewClient extends React.Component {
+class NewClient extends Component {
   render() {
     const {error} = this.props;
     return (
@@ -21,25 +21,32 @@ class NewClient extends React.Component {
                mdOffset={ 3 }
                >
               {error ? <Alert bsStyle="danger" >{error}</Alert> : null}
-              <Input type="text"
+              <Input
+                name='clientName'
+                type="text"
                 hasFeedback={ false }
                 placeholder="Enter the client's name"
                 label="Name"
                 ref="nameRef"
                 ></Input>
               <Input type="text"
+                name='clientPhone'
                 hasFeedback={ false }
                 placeholder="Enter the client's phone"
                 label="Phone"
                 ref="phoneRef"
                 ></Input>
               <Input type="email"
+                name='clientEmail'
                 hasFeedback={ false }
                 placeholder="Enter the client's email"
                 label="Email"
                 ref="emailRef"
                 ></Input>
-              <Button onClick={ this._createClient.bind(this) } bsStyle="default" >
+              <Button
+                className='save'
+                onClick={ this._createClient.bind(this) }
+                bsStyle="default" >
                 <span >Save</span>
               </Button>
           </Col>
@@ -56,7 +63,7 @@ class NewClient extends React.Component {
     const email = emailRef.getValue();
     const phone = phoneRef.getValue();
 
-    create( name, email, phone );
+    create( name, phone, email );
   }
 }
 
