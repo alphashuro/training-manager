@@ -19,7 +19,11 @@ export const depsMapper = (context, actions) => {
   return props;
 };
 
-export default composeAll(
+const Container = composeAll(
   composeWithTracker(composer),
   useDeps(depsMapper)
 )(Nav);
+
+Container.displayName = 'Navigation';
+
+export default Container;
