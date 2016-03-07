@@ -15,7 +15,7 @@ export const composer = ({context, bookingId}, onData) => {
 
     onData(null, {...booking, course, facilitator, students});
   }
-}
+};
 
 export const depsMapper = (context, actions) => {
   const props = {};

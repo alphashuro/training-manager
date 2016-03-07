@@ -18,7 +18,7 @@ const CoursesList = ({ courseIds }) => (
       </thead>
       <tbody>
       {
-        courseIds.map( id => (
+        courseIds.map(id => (
           <CoursesListItem
             key={id}
             courseId={id}
