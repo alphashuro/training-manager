@@ -5,6 +5,7 @@ export const composer = ({context}, onData) => {
   const {Meteor, Collections} = context();
 
   const sub = Meteor.subscribe('bookings.ids');
+
   if (sub.ready()) {
     const bookingIds = Collections.Bookings
       .find()

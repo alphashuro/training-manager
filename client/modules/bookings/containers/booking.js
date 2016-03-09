@@ -4,15 +4,20 @@ import {useDeps, composeWithTracker, composeAll} from 'mantra-core';
 export const composer = ({context, bookingId, clearErrors}, onData) => {
   const {Meteor, Collections, LocalState} = context();
 
-  Meteor.subscribe('bookings.single', bookingId, () => {
+  const sub = Meteor.subscribe('bookings.single', bookingId);
 
-    const booking = Collections.Bookings.findOne(bookingId);
-    const course = Collections.Courses.findOne(booking.courseId);
-    const facilitator = Collections.Facilitators.findOne(booking.facilitatorId);
+  if (sub.ready()) {
+    const {Bookings} = Collections;
+
+    const booking = Bookings.findOne(bookingId);
+    const course = booking.course();
+    const facilitator = booking.facilitator();
     const error = LocalState.get('BOOKING_ERROR');
 
-    onData(null, {booking, course, facilitator, error});
-  });
+    const data = {booking, course, facilitator, error};
+
+    onData(null, data);
+  };
 
   return clearErrors;
 };

@@ -5,6 +5,7 @@ export const composer = ({context}, onData) => {
   const {Meteor, Collections} = context();
 
   const sub = Meteor.subscribe('sessions.all');
+
   if (sub.ready()) {
     const sessions = Collections.Sessions.find().fetch();
 

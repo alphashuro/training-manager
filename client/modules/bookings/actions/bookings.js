@@ -16,10 +16,10 @@ export default {
     Meteor.call( 'bookings.create', { _id, courseId, facilitatorId, org }, (error) => {
       if (error) {
         return LocalState.set('BOOKING_ERROR', error.reason);
+      } else {
+        FlowRouter.go(`/bookings/${_id}`);
       }
     });
-
-    FlowRouter.go(`/bookings/${_id}`);
   },
 
   remove({Meteor, LocalState}, id) {

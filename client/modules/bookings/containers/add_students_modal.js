@@ -9,10 +9,14 @@ export const composer = ({context}, onData) => {
   onData(null, {show});
 };
 
-export const depsMapper = (context, actions) => ({
-  context: () => context,
-  close: actions.bookingStudents.closeModal
-});
+export const depsMapper = (context, actions) => {
+  const props = {};
+
+  props.context = () => context;
+  props.close = actions.bookingStudents.closeModal;
+
+  return props;
+};
 
 export default composeAll(
   composeWithTracker(composer),

@@ -14,10 +14,14 @@ export const composer = ({context}, onData) => {
   }
 };
 
-export const depsMapper = (context, actions) => ({
-  context: () => context,
-  select: actions.bookingClients.select
-});
+export const depsMapper = (context, actions) => {
+  const props = {};
+
+  props.context = () => context;
+  props.select = actions.bookingClients.select;
+
+  return props;
+};
 
 export default composeAll(
   composeWithTracker(composer),

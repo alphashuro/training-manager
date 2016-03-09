@@ -9,7 +9,7 @@ export default {
 
   add({Meteor, LocalState}, bookingId, studentId) {
     if (!bookingId || !studentId) {
-      return LocalState.set('BOOKING_STUDENTS_ERROR', 'Parameters missing!');
+      return LocalState.set('BOOKING_STUDENTS_ERROR', 'Booking and Student are required!');
     }
 
     LocalState.set('BOOKING_STUDENTS_ERROR', null);
@@ -19,7 +19,7 @@ export default {
       bookingId, studentId,
       (error) => {
         if (error) {
-          return LocalState.set('BOOKING_STUDENTS_ERROR', error.reason);
+          LocalState.set('BOOKING_STUDENTS_ERROR', error.reason);;
         }
       }
     );
@@ -27,7 +27,7 @@ export default {
 
   remove({Meteor, LocalState}, bookingId, studentId) {
     if (!bookingId || !studentId) {
-      return LocalState.set('BOOKING_STUDENTS_ERROR', 'Parameters missing!');
+      return LocalState.set('BOOKING_STUDENTS_ERROR', 'Booking and student required!');
     }
 
     Meteor.call(

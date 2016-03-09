@@ -17,11 +17,15 @@ export const composer = ({context, clearErrors}, onData) => {
   return clearErrors;
 };
 
-export const depsMapper = (context, actions) => ({
-  create: actions.bookings.create,
-  clearErrors: actions.bookings.clearErrors,
-  context: () => context
-});
+export const depsMapper = (context, actions) => {
+  const props = {};
+
+  props.create = actions.bookings.create;
+  props.clearErrors = actions.bookings.clearErrors;
+  props.context = () => context;
+
+  return props;
+};
 
 export default composeAll(
   composeWithTracker(composer),

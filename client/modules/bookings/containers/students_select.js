@@ -23,12 +23,16 @@ export const composer = ({context, bookingId, clearErrors}, onData) => {
   }
 };
 
-export const depsMapper = (context, actions) => ({
-  context: () => context,
-  add: actions.bookingStudents.add,
-  remove: actions.bookingStudents.remove,
-  clearErrors: actions.bookingStudents.clearErrors
-});
+export const depsMapper = (context, actions) => {
+  const props = {};
+
+  props.context = () => context;
+  props.add = actions.bookingStudents.add;
+  props.remove = actions.bookingStudents.remove;
+  props.clearErrors = actions.bookingStudents.clearErrors;
+
+  return props;
+};
 
 export default composeAll(
   composeWithTracker(composer),
