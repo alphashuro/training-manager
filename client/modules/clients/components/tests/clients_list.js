@@ -5,7 +5,7 @@ import {shallow} from 'enzyme';
 import ClientsList from '../clients_list.jsx';
 
 describe('clients.components.clients_list', () => {
-  it('should render CousesListItem for each id', () => {
+  it('should render ClientsListItem for each id', () => {
     const clientIds = [
       '1', '2', '3'
     ];

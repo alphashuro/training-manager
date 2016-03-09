@@ -1,8 +1,7 @@
 export default {
-
   create({ Meteor, LocalState }, courseId) {
     if ( !courseId ) {
-      return LocalState.set('CLASSES_ERROR', 'CourseId invalid!');
+      return LocalState.set('CLASSES_ERROR', 'CourseId required!');
     }
 
     LocalState.set('CLASSES_ERROR', null);
@@ -38,6 +37,12 @@ export default {
   },
 
   update({Meteor, LocalState}, id, { title, description, duration, price }) {
+    if (!id) {
+      return LocalState.set('CLASSES_ERROR', 'Id is required to update class.');
+    }
+    if (!title && !description && !duration && !price) {
+      return LocalState.set('CLASSES_ERROR', 'Title, description, duration or price required to update class.');
+    }
     Meteor.call( 'classes.update', id, { title, description, duration, price }, (err) => {
       if (err) {
         LocalState.set('CLASSES_ERROR', err.reason);
