@@ -6,7 +6,7 @@ export const composer = ({context, clientId, clearErrors}, onData) => {
 
   const sub = Meteor.subscribe('clients.single', clientId);
 
-  if(sub.ready()) {
+  if (sub.ready()) {
     const client = Collections.Clients.findOne(clientId);
     const error = LocalState.get('CLIENT_ERROR');
     onData(null, {client, error});

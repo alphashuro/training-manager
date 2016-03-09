@@ -9,14 +9,14 @@ describe('clients.containers.client', () => {
       const Meteor = {
         subscribe: stub().returns({
           ready: () => false
-        }) };
+        })};
       const clientId = '123';
 
       const context = () => ({Meteor});
 
       composer({context, clientId});
 
-      expect(Meteor.subscribe.args[0].slice(0,2)).to.deep.equal([
+      expect(Meteor.subscribe.args[0].slice(0, 2)).to.deep.equal([
         'clients.single', clientId
       ]);
     });
