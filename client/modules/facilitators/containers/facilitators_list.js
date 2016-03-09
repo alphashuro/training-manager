@@ -16,7 +16,11 @@ export const composer = ({context}, onData) => {
   }
 };
 
-export default composeAll(
+const Container = composeAll(
   composeWithTracker(composer),
   useDeps()
 )(FacilitatorsList);
+
+Container.displayName = 'FacilitatorsList';
+
+export default Container;
