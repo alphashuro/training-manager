@@ -7,7 +7,12 @@ export const composer = ({context}, onData) => {
   const user = Meteor.user();
   const path = FlowRouter.current().path;
 
-  onData(null, { user, path });
+  if (user) {
+    onData(null, { user, path });
+  }
+  else {
+    onData(null, {path});
+  }
 };
 
 export const depsMapper = (context, actions) => {
