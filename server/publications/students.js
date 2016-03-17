@@ -1,4 +1,4 @@
-import {Students, Bookings} from '/lib/collections';
+import {Students, Bookings, Clients} from '/lib/collections';
 
 import {Meteor} from 'meteor/meteor';
 import {check} from 'meteor/check';
@@ -79,7 +79,11 @@ export default function () {
 
     const selector = {_id: studentId };
     const options = {};
+    cursor = Students.find(selector, options);
 
-    return Students.find(selector, options);
+    student = Students.findOne(selector, options);
+    clientCursor = Clients.find({_id: student.clientId});
+
+    return [cursor, clientCursor];
   });
 }
