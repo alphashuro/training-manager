@@ -3,3 +3,6 @@
 # Training Company Manager
 
 An app for managing your training company.
+
+##version history
+- v1.0 - Wrote all the tests
