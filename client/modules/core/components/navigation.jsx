@@ -20,7 +20,7 @@ const Navigation = ({onLogout, user, path}) => {
     <Navbar fixedTop>
       <Navbar.Header>
         <Navbar.Brand>
-          <a href="/">{user.profile.org}</a>
+          <a href="/">{ user || user.profile.org}</a>
         </Navbar.Brand>
         <Navbar.Toggle />
       </Navbar.Header>
