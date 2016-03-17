@@ -27,7 +27,11 @@ export const depsMapper = (context, actions) => {
   return props;
 };
 
-export default composeAll(
+const Container = composeAll(
   composeWithTracker(composer),
   useDeps(depsMapper)
 )(SessionsList);
+
+Container.displayName = 'SessionsList';
+
+export default Container;
