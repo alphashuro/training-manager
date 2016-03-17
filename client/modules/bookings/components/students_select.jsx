@@ -1,6 +1,9 @@
 import React from 'react';
-
 import { Alert, ListGroup, ListGroupItem, Button } from 'react-bootstrap';
+import _ from 'lodash';
+Array.prototype.includes = function(value) {
+  return _(this).includes(value);
+};
 
 const StudentsSelect = ({
   students,
@@ -14,25 +17,27 @@ const StudentsSelect = ({
 
     <ListGroup>
       {
-        (students) ? students.map(student => (
+        students.map(student => (
           <ListGroupItem key={student._id}>
             <span>{ student.name } </span>
             {
               bookingStudents.includes(student._id) ? (
                 <Button
-                  onClick={ remove.bind(this,bookingId, student._id)}
+                  className='remove'
+                  onClick={ () => remove(bookingId, student._id)}
                   active>
                     Click to Remove
                 </Button>
               ) : (
                 <Button
-                  onClick={ add.bind(this,bookingId, student._id)}>
+                  className='add'
+                  onClick={ () => add(bookingId, student._id) }>
                   Click to Add
                 </Button>
               )
             }
           </ListGroupItem>
-        )) : null
+        ))
       }
     </ListGroup>
   </div>

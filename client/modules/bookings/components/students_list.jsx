@@ -2,9 +2,7 @@ import React from 'react';
 
 import { ListGroup } from 'react-bootstrap';
 import { Panel, PageHeader, Button, Alert } from 'react-bootstrap';
-
 import AddStudentsModal from '../containers/add_students_modal';
-
 import StudentsListItem from '../containers/students_list_item';
 
 const StudentsList = ({studentIds, bookingId, error, showStudentsModal}) => (
@@ -12,7 +10,7 @@ const StudentsList = ({studentIds, bookingId, error, showStudentsModal}) => (
     <PageHeader>
       <span>Students</span>
       <Button
-      className='pull-right show-add-students-modal'
+      className='pull-right show-add-students-modal add-students'
       onClick={showStudentsModal.bind(this)}>
         Add
       </Button>

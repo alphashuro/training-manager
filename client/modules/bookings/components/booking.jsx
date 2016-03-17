@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import { Alert } from 'react-bootstrap';
 import { Row } from 'react-bootstrap';
 import { Col } from 'react-bootstrap';
 import { Panel } from 'react-bootstrap';

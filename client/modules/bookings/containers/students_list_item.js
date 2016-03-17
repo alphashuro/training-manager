@@ -9,13 +9,8 @@ export const composer = ({context, studentId}, onData) => {
 
   if (sub.ready()) {
     const student = Collections.Students.findOne(studentId);
-    const clientSub = Meteor.subscribe('clients.single', student.clientId);
-    if (clientSub.ready()) {
-      const client = Collections.Clients.findOne(student.clientId);
-      onData(null, {...student, client});
-    } else {
-      onData(null, {...student});
-    }
+    const client = student.client();
+    onData(null, {...student, client});
   }
 };
 

@@ -9,10 +9,7 @@ export const composer = ({context, clearErrors, bookingId}, onData) => {
 
   if (sub.ready()) {
     const booking = Collections.Bookings.findOne(bookingId);
-    const selector = { _id: { $in: booking.studentIds } };
-    const studentIds = Collections.Students.find(selector)
-      .fetch()
-      .map(s => s._id);
+    const studentIds = booking.students().fetch().map(s => s._id);
     const error = LocalState.get('BOOKING_STUDENTS_ERROR');
     onData(null, {studentIds, error});
   }

@@ -36,7 +36,7 @@ class NewBooking extends React.Component {
     return (
       <div>
         <PageHeader >
-          <span >New Booking</span>
+          <span>New Booking</span>
         </PageHeader>
         <Row >
           <Col md={ 6 }
@@ -63,6 +63,7 @@ class NewBooking extends React.Component {
               { this.getFacilitatorsOptions() }
             </Input>
             <Button
+            className='save'
             ref='saveRef'
             onClick={ this._createBooking.bind(this) }
             bsStyle="default"
