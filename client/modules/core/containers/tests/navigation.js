@@ -1,66 +1,89 @@
 const {describe, it} = global;
 import {expect} from 'chai';
-import {stub, spy} from 'sinon';
+import {stub, spy, assert} from 'sinon';
 import {composer, depsMapper} from '../navigation';
 
 describe('core.containers.navitation', () => {
-  	describe('composer', () => {
-
-    	it('should get the current user pass to onData', () => {
-      	const Meteor = {
-        	user: stub().returns({_id: 'x'})
-      };
-      	const FlowRouter = {
-        	current: stub().returns({path: 'path'})
-      };
-      	const onData = spy();
-
-      	const context = () => ({Meteor, FlowRouter});
-
-      	composer({context}, onData);
-      	const args = onData.args[0];
-      	expect(args[1].user).to.deep.equal({
-        	_id: 'x'
-      });
+	describe('composer', () => {
+    const mockUser = {
+      email: () => '',
+      org: () => ''
+    };
+    const mockCurrent = {
+      path: ''
+    };
+    const getContext = ({user, current} = {
+      user: stub().returns(mockUser),
+      current: stub().returns({path:'/'})
+    }) => () => ({
+      Meteor: {user},
+      FlowRouter: {current}
     });
 
-    	it('should get the current path and pass to onData', () => {
-      	const FlowRouter = {
-        	current: stub().returns({path: '/x'})
-      };
-      	const Meteor = {
-        	user: stub().returns({_id: 'x'})
-      };
-      	const onData = spy();
-      	const context = () => ({Meteor, FlowRouter});
-      	composer({context}, onData);
-      	const args = onData.args[0];
-      	expect(args[1].path).to.be.equal('/x');
+  	it('should get the current user', () => {
+      const context = getContext();
+    	const onData = spy();
+
+    	composer({context}, onData);
+
+    	assert.calledOnce(context().Meteor.user);
+    });
+
+  	it('should get the current path', () => {
+      const context = getContext();
+    	const onData = spy();
+
+    	composer({context}, onData);
+
+      assert.calledOnce(context().FlowRouter.current);
+    });
+
+    it(`should pass the email and org on to onData`, () => {
+      const user = stub().returns({
+        email: () => 'name@email.com',
+        org: () => 'org'
+      });
+
+      const context = getContext({user, current: () => ({path: ''})});
+      const onData = spy();
+
+      composer({context}, onData);
+
+      assert.calledWithExactly(onData, null, {email: 'name@email.com', org: 'org', path: ''});
+    });
+
+    it(`should still pass the path on to onData if user has not loaded`, () => {
+      const current = stub().returns({
+        path: '/path'
+      });
+
+      const context = getContext({current, user: () => null});
+      const onData = spy();
+
+      composer({context}, onData);
+
+      assert.calledWithExactly(onData, null, {path: '/path'});
     });
   });
-  	describe('depsMapper', () => {
-    	it('should map context to a function', () => {
-      	const context = {Meteor: {}};
-      	const actions = {
-        	auth: {
-          	logout: spy()
+	describe('depsMapper', () => {
+  	it('should map context to a function', () => {
+    	const context = {Meteor: {}};
+    	const actions = {
+      	auth: {
+        	logout: spy()
         }
       };
 
-      	const props = depsMapper(context, actions);
-      	expect(props.context()).to.deep.equal(context);
+    	const props = depsMapper(context, actions);
+    	expect(props.context()).to.deep.equal(context);
     });
-    	it('should map actions.auth.logout to onLogout', () => {
-      	const context = {Meteor: {}};
-      	const actions = {
-        	auth: {
-          	logout: spy()
-        }
-      };
+  	it('should map actions.auth.logout to handleLogout', () => {
+    	const context = {};
+    	const actions = { auth: { logout: spy() } };
 
-      	const props = depsMapper(context, actions);
-      	props.onLogout();
-      	expect(actions.auth.logout.calledOnce).to.be.equal(true);
+    	const props = depsMapper(context, actions);
+    	props.handleLogout();
+    	expect(actions.auth.logout.calledOnce).to.be.equal(true);
     });
   });
 });

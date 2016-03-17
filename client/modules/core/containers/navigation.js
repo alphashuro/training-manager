@@ -5,13 +5,13 @@ export const composer = ({context}, onData) => {
   const {Meteor, FlowRouter} = context();
 
   const user = Meteor.user();
-  const path = FlowRouter.current().path;
+  const route = FlowRouter.current();
 
   if (user) {
-    onData(null, { user, path });
+    onData(null, { email: user.email(), org: user.org(), path: route.path });
   }
   else {
-    onData(null, {path});
+    onData(null, {path: route.path});
   }
 };
 
@@ -19,7 +19,7 @@ export const depsMapper = (context, actions) => {
   const props = {};
 
   props.context = () => context;
-  props.onLogout = actions.auth.logout;
+  props.handleLogout = actions.auth.logout;
 
   return props;
 };
