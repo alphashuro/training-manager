@@ -8,8 +8,9 @@ describe('core.containers.dashboard', () => {
     	it('should subscribe to bookings.list', () => {
       	const Meteor = {subscribe: stub()};
       	Meteor.subscribe.returns({ready: () => false});
+        const context = () => ({Meteor});
 
-      	composer({Meteor});
+      	composer({context});
 
       	expect(Meteor.subscribe.args[0]).to.deep.equal([
         	'bookings.list'
