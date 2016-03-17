@@ -12,7 +12,7 @@ describe('core.components.main_layout', () => {
   });
 
   	it('should render childrens', () => {
-    	const Comp = () => (<p>Hello</p>);
+    	const Comp = <p>Hello</p>;
     	const el = shallow(
       <MainLayout content={() => (<Comp/>)}/>
     );
