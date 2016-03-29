@@ -1,38 +1,46 @@
-import React from 'react';
+import React, {Component, PropTypes} from 'react';
 import { Grid, Row, Col, Well, Button, PageHeader, Input, Alert } from 'react-bootstrap';
 
-class Login extends React.Component {
+class Login extends Component {
   render() {
-    const {error} = this.props;
+    const {error, handleLogin} = this.props;
+
     return (
-      <Grid className="login">
+      <Grid className='login'>
         <Row>
           <Col md={6} mdOffset={3}>
             <Well>
               <PageHeader>Login</PageHeader>
-              {error ? <Alert bsStyle="danger">{error}</Alert> : null}
-
+              {
+                error ? <Alert bsStyle='danger'>{error}</Alert> : null
+              }
               <Input
+                name='email'
                 id='email'
-                type="email"
-                ref="emailRef"
-                placeholder="Your email address."/>
+                type='email'
+                ref={node => this.email = node}
+                placeholder='Your email address.'/>
               <Input
+                name='password'
                 id='password'
-                type="password"
-                ref="passwordRef"
-                placeholder="Your password."/>
+                type='password'
+                ref={node => this.password = node}
+                placeholder='Your password.'/>
               <Button
-                ref='login'
                 className='login'
-                bsStyle="default"
-                onClick={ this._login.bind(this) }>
+                bsStyle='default'
+                onClick={() => {
+                  handleLogin(
+                    this.email.getValue(),
+                    this.password.getValue()
+                  )
+                }}>
                   Login
                 </Button>
               <Button
                 className='signup'
-                bsStyle="default"
-                href="/signup">
+                bsStyle='default'
+                href='/signup'>
                   Sign up
               </Button>
             </Well>
@@ -41,14 +49,11 @@ class Login extends React.Component {
       </Grid>
     );
   }
-
-  _login() {
-    const {login} = this.props;
-    const {emailRef, passwordRef} = this.refs;
-    const email = emailRef.getValue();
-    const password = passwordRef.getValue();
-    login(email, password);
-  }
 }
+
+Login.propTypes = {
+  error: PropTypes.string,
+  handleLogin: PropTypes.func.isRequired
+};
 
 export default Login;
