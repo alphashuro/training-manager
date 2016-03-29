@@ -8,15 +8,12 @@ import {Courses, Facilitators, Students} from '/lib/collections';
 export default function () {
   Meteor.publishComposite('bookings.list', {
     find() {
-      const userId = this.userId;
-      if (!userId) { return null; }
+      if (!this.userId) { return this.ready(); }
+      if (!Users.findOne(this.userId)) { return this.ready(); }
 
-      const user = Users.findOne(userId);
+      const {profile: {org}} = Users.findOne(this.userId);
 
-      const selector = {org: user.profile.org};
-      const options = {};
-
-      return Bookings.find(selector, options);
+      return Bookings.find({org});
     },
     children: [
       {
@@ -41,75 +38,53 @@ export default function () {
     ]
   });
 
-  Meteor.publish('bookings.ids', function () {
-    const userId = this.userId;
-    if (!userId) { return null; }
+  Meteor.publishComposite('bookings.ids', function () {
+    if (!this.userId) { return this.ready(); }
+    if (!Users.findOne(this.userId)) { return this.ready(); }
 
-    const user = Users.findOne(userId);
+    const {profile: {org}} = Users.findOne(this.userId);
 
-    const selector = {org: user.profile.org};
-    const options = {fields: {_id: 1}};
-
-    return Bookings.find(selector, options);
+    return {
+      find() {
+        return Bookings.find({ org }, { fields: { _id: 1 } });
+      }
+    }
   });
 
-  Meteor.publish('bookings.single', function (bookingId) {
+  Meteor.publishComposite('bookings.single', function (bookingId) {
     check(bookingId, String);
 
-    const userId = this.userId;
-    if (!userId) { return null; }
+    if (!this.userId) { return this.ready(); }
+    if (!Users.findOne(this.userId)) { return this.ready(); }
 
-    const user = Users.findOne(userId);
+    const {profile: {org}} = Users.findOne(this.userId);
 
-    const selector = {
-      _id: bookingId,
-      org: user.profile.org
-    };
-    const options = {};
-
-    const bookingCursor = Bookings.find(selector, options);
-
-    const booking = Bookings.findOne(selector);
-    const courseCursor = Courses.find(booking.courseId);
-    const facilitatorCursor = Facilitators.find(booking.facilitatorId);
-    const sessionsCursor = Sessions.find({bookingId: booking._id});
-    const studentsCursor = Students.find({
-      _id: {
-        $in: booking.studentIds
-      }
-    });
-
-    return [ bookingCursor, courseCursor, facilitatorCursor, sessionsCursor, studentsCursor ];
+    return {
+      find() {
+        return Bookings.find({_id: bookingId, org})
+      },
+      children: [
+        {
+          find({courseId}) {
+            return Courses.find(courseId);
+          }
+        },
+        {
+          find({facilitatorId}) {
+            return Facilitators.find(facilitatorId);
+          }
+        },
+        {
+          find({_id: bookingId}) {
+            return Sessions.find({bookingId});
+          }
+        },
+        {
+          find({studentIds}) {
+            return Students.find({ _id: { $in: studentIds } });
+          }
+        }
+      ]
+    }
   });
-
-  // Meteor.publishComposite('bookings.single', {
-  //   find(bookingId) {
-  //     check(bookingId, String);
-
-  //     const userId = this.userId;
-  //     if (!userId) { return null; }
-
-  //     const user = Users.findOne(userId);
-
-  //     const selector = {
-  //       _id: bookingId,
-  //       org: user.profile.org
-  //     };
-  //     const options = {};
-
-  //     return Bookings.find(selector, options);
-  //   },
-  //   children: [
-  //     {
-  //       find(booking) {
-  //         return Courses.find( booking.courseId );
-  //       }
-  //     },
-  //     {
-  //       find(booking) {
-  //         return Facilitators.find( booking.facilitatorId );
-  //       }
-  //     }
-  //   ]
-  // });
 }

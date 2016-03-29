@@ -5,28 +5,25 @@ import {check} from 'meteor/check';
 
 export default function () {
   Meteor.publish('facilitators.list', function () {
-    const userId = this.userId;
-    if (!userId) { return null; }
+    if (!this.userId) { return this.ready(); }
+    if (!Users.findOne(this.userId)) { return this.ready(); }
 
-    const user = Users.findOne(userId);
+    const {profile: {org}} = Users.findOne(this.userId);
 
-    const selector = {
-      'profile.org': user.profile.org,
-      roles: 'facilitator'
-    };
-    const options = {};
-
-    return Users.find(selector, options);
+    return Users.find({
+      'profile.org': org,
+      roles: 'facilitator',
+    });
   });
 
   Meteor.publish('facilitators.ids', function () {
-    const userId = this.userId;
-    if (!userId) { return null; }
+    if (!this.userId) { return this.ready(); }
+    if (!Users.findOne(this.userId)) { return this.ready(); }
 
-    const user = Users.findOne(userId);
+    const {profile: {org}} = Users.findOne(this.userId);
 
     const sel = {
-      'profile.org': user.profile.org,
+      'profile.org': org,
       roles: 'facilitator'
     };
     const options = { fields: { _id: 1 }};
@@ -34,21 +31,18 @@ export default function () {
     return Users.find(sel, options);
   });
 
-  Meteor.publish('facilitators.single', function (facilitatorId) {
-    check(facilitatorId, String);
+  Meteor.publish('facilitators.single', function (_id) {
+    check(_id, String);
 
-    const userId = this.userId;
-    if (!userId) { return null; }
+    if (!this.userId) { return this.ready(); }
+    if (!Users.findOne(this.userId)) { return this.ready(); }
 
-    const user = Users.findOne(userId);
+    const {profile: {org}} = Users.findOne(this.userId);
 
-    const selector = {
-      _id: facilitatorId,
-      'profile.org': user.profile.org,
-      roles: 'facilitator'
-    };
-    const options = {};
-
-    return Users.find(selector, options);
+    return Users.find({
+      _id,
+      'profile.org': org,
+      roles: 'facilitator',
+    });
   });
 }
