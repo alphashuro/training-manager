@@ -1,50 +1,51 @@
 const {describe, it} = global;
 import {expect} from 'chai';
-import {spy, stub} from 'sinon';
-import {shallow, mount} from 'enzyme';
+import {spy, stub, assert} from 'sinon';
+import {shallow, mount, render} from 'enzyme';
 import Login from '../login.jsx';
 import React from 'react';
 
 describe('users.components.login', () => {
+  const getProps = () => ({
+    error: null,
+    handleLogin: spy()
+  });
   it('should show error if there is error', () => {
-    const props = {
-      error: 'oops'
-    };
+    const props = getProps();
+    props.error = 'oops';
+    const el = render(<Login {...props}/>);
 
-    const el = shallow(<Login {...props}/>);
-    const alert = el.find('Alert');
-    expect(alert.length).to.be.equal(1);
+    expect(el.text()).to.contain(props.error);
   });
 
   it('should have an email input', () => {
-    const el = mount(<Login/>);
-    const emailRef = el.ref('emailRef');
-    expect(emailRef.length).to.be.equal(1);
+    const props = getProps();
+    const el = render(<Login {...props}/>);
+
+    const emailInput = el.find(`input[id='email']`);
+
+    expect(emailInput).to.have.length(1);
   });
   it('should have a password input', () => {
-    const el = mount(<Login/>);
-    const passwordRef = el.ref('passwordRef');
-    expect(passwordRef.length).to.be.equal(1);
+    const props = getProps();
+    const el = render(<Login {...props}/>);
+
+    const passwordInput = el.find('input[id=password]');
+
+    expect(passwordInput).to.have.length(1);
   });
   it('should call login with email and password when .login is clicked', () => {
-    const props = {
-      login: spy()
-    };
+    const props = getProps();
 
     const el = mount(<Login {...props} />);
-    const loginBtn = el.ref('login');
-    expect(loginBtn.length).to.be.equal(1);
-    const emailRef = el.ref('emailRef').get(0);
-    const passwordRef = el.ref('passwordRef').get(0);
 
-    emailRef.getValue = stub();
-    emailRef.getValue.returns('email@address.com');
+    el.find('input[id=email]').get(0).value = `email`;
+    el.find('input[id=password]').get(0).value = `password`;
 
-    passwordRef.getValue = stub();
-    passwordRef.getValue.returns('password');
+    el.find('button.login').simulate('click');
 
-    loginBtn.simulate('click');
     expect(props.login.calledOnce).to.be.equal(true);
+
     const args = props.login.args[0];
 
     expect(emailRef.getValue.calledOnce).to.be.equal(true);

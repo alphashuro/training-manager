@@ -14,7 +14,7 @@ export const depsMapper = (context, actions) => {
   const props = {};
 
   props.context = () => context;
-  props.login = actions.auth.login;
+  props.handleLogin = actions.auth.login;
   props.clearErrors = actions.auth.clearLoginErrors;
 
   return props;
