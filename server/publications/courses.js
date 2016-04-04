@@ -15,7 +15,7 @@ export default function () {
     if (!this.userId) { return this.ready(); }
     if (!Users.findOne(this.userId)) { return this.ready(); }
 
-    return Courses.find({ fields: { _id: 1 }});
+    return Courses.find({}, { fields: { _id: 1 }});
   });
 
   Meteor.publish('courses.single', function (_id) {

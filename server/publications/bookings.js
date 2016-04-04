@@ -42,7 +42,7 @@ export default function () {
 
     return {
       find() {
-        return Bookings.find({ fields: { _id: 1 } });
+        return Bookings.find({}, { fields: { _id: 1 } });
       }
     }
   });
