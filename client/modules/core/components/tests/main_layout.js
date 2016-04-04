@@ -6,17 +6,20 @@ import Navigation from '../../containers/navigation';
 import React from 'react';
 
 describe('core.components.main_layout', () => {
-  	it('should contain navigation', () => {
-    	const el = shallow(<MainLayout/>);
-    	expect(el.contains(<Navigation/>)).to.be.equal(true);
+  const getProps = (Childrens = null) => ({
+    content: () => Childrens,
+  });
+	it('should contain navigation', () => {
+    const props = getProps();
+  	const el = shallow(<MainLayout {...props}/>);
+  	expect(el.contains(<Navigation/>)).to.be.equal(true);
   });
 
-  	it('should render childrens', () => {
-    	const Comp = <p>Hello</p>;
-    	const el = shallow(
-      <MainLayout content={() => (<Comp/>)}/>
-    );
+	it('should render childrens', () => {
+    const Child = () => <p>Hello</p>;
+    const props = getProps(<Child/>);
+  	const el = shallow(<MainLayout {...props}/>);
 
-    	expect(el.contains(<Comp/>)).to.be.equal(true);
+  	expect(el.contains(<Child/>)).to.be.equal(true);
   });
 });
