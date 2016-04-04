@@ -1,5 +1,5 @@
 const {describe, it} = global;
-import {spy, stub} from 'sinon';
+import {spy, stub, assert} from 'sinon';
 import {expect} from 'chai';
 import {composer, depsMapper} from '../login';
 
@@ -37,14 +37,26 @@ describe('users.containers.login', () => {
 
       expect(props.context()).to.deep.equal(context);
     });
-    it('correctly maps login', () => {
+    it(`handleLogin calls auth.login with event target's email and password`, () => {
       const context = {};
-      const actions = {auth: {login: spy(), clearLoginErrors: spy()}};
+      const actions = {
+        auth: {
+          login: spy(),
+          clearLoginErrors: spy(),
+        }
+      };
 
       const props = depsMapper(context, actions);
-      props.login();
+      const event = {
+        preventDefault: spy(),
+        target: {
+          email: {value: 'email'},
+          password: {value: 'password'},
+        },
+      };
+      props.handleLogin(event);
 
-      expect(actions.auth.login.calledOnce).to.be.equal(true);
+      assert.calledWithExactly(actions.auth.login, 'email', 'password');
     });
     it('correctly maps clearLoginErrors', () => {
       const context = {};
