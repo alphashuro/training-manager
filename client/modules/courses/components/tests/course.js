@@ -1,96 +1,57 @@
 import React from 'react';
 import {expect} from 'chai';
 const {describe, it} = global;
-import {spy, stub} from 'sinon';
-import {shallow, mount} from 'enzyme';
+import {spy} from 'sinon';
+import {shallow} from 'enzyme';
 import Course from '../course.jsx';
 
 describe('courses.components.course', () => {
+  const getProps = () => ({
+    error: null,
+    course: {
+      _id: 'id',
+      title: 'title',
+      description: 'description',
+    },
+    handleUpdate: spy(),
+  });
   describe('if there is error', () => {
     it('should render error', () => {
-      const props = {
-        error: 'oops',
-        course: {
-          _id: 'id',
-          title: 't-1',
-          description: 'desc'
-        },
-        update: spy()
-      };
+      const props = getProps();
+      props.error = 'oops';
 
       const el = shallow(<Course {...props}/>);
-      expect(el.find({children: props.error}).length).to.be.equal(1);
+      expect(el.contains('oops')).to.be.equal(true);
     });
-    it('should not have an alert when there is no error', () => {
-      const props = {
-        course: {
-          _id: 'id',
-          title: 't-1',
-          description: 'desc'
-        },
-        update: spy()
-      };
+  });
+  it('should have an input with title in the form', () => {
+    const props = getProps();
 
-      const el = shallow(<Course {...props}/>);
-      expect(el.find('Alert[bsStyle="danger"]').length).to.be.equal(0);
-    });
-    it('should render an input with title', () => {
-      const props = {
-        course: {
-          _id: 'id',
-          title: 't-1',
-          description: 'desc'
-        },
-        update: spy()
-      };
+    const el = shallow(<Course {...props}/>);
+    const form = el.find('form[name="edit-course"]');
 
-      const el = shallow(<Course {...props}/>);
-      const titleI = el.find('Input[label="Title"]');
-      expect(titleI.length).to.be.equal(1);
-      expect(titleI.prop('defaultValue')).to.be.equal('t-1');
-    });
-    it('should render an input with description', () => {
-      const props = {
-        course: {
-          _id: 'id',
-          title: 't-1',
-          description: 'desc'
-        },
-        update: spy()
-      };
+    const titleInput = form.find('Input[name="title"]');
+    expect(titleInput).to.have.length(1);
+    console.log(titleInput);
+    expect(titleInput.prop('defaultValue')).to.be.equal(props.course.title);
+  });
+  it('should render an input with description', () => {
+    const props = getProps();
 
-      const el = shallow(<Course {...props}/>);
-      const descriptionI = el.find('Input[label="Description"]');
-      expect(descriptionI.length).to.be.equal(1);
-      expect(descriptionI.prop('defaultValue')).to.be.equal('desc');
-    });
-    // TODO: Mount isn't working with ClassesList import
-    it('should call update when save is clicked', () => {
-      // const props = {
-      //   course: {
-      //     _id: 'id',
-      //     title: 't-1',
-      //     description: 'desc'
-      //   },
-      //   update: spy()
-      // };
+    const el = shallow(<Course {...props}/>);
+    const form = el.find('form[name="edit-course"]');
 
-      // const el = shallow(<Course {...props}/>);
-      // const saveBtn = el.find('.save');
-      // saveBtn.simulate('click');
-    });
-    // TODO: Mount isn't working with ClassesList import
-    it('should call update with values entered in inputs', () => {
-      // const props = {
-      //   course: {
-      //     _id: 'id',
-      //     title: 't-1',
-      //     description: 'desc'
-      //   },
-      //   update: spy()
-      // };
+    const descriptionInput = form.find('Input[name="description"]');
+    expect(descriptionInput).to.have.length(1);
+    expect(descriptionInput.prop('defaultValue')).to.be.equal(props.course.description);
+  });
+  it('should call handleUpdate when form is submitted', () => {
+    const props = getProps();
 
-      // const el = mount(<Course {...props}/>);
-    });
+    const el = shallow(<Course {...props}/>);
+    const form = el.find('form[name="edit-course"]');
+
+    form.simulate('submit');
+    expect(props.handleUpdate.calledOnce);
   });
 });
