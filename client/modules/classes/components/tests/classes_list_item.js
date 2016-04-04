@@ -1,8 +1,8 @@
 import React from 'react';
 import {expect} from 'chai';
 const {describe, it} = global;
-import {stub} from 'sinon';
-import {shallow, mount} from 'enzyme';
+import {spy, assert} from 'sinon';
+import {shallow} from 'enzyme';
 import ClassesListItem from '../classes_list_item.jsx';
 
 describe('class.components.class_list_item', () => {
@@ -12,72 +12,69 @@ describe('class.components.class_list_item', () => {
     description: 'description',
     duration: 1,
     price: 1,
-    update: stub(),
-    remove: stub()
+    handleUpdate: spy(),
+    handleRemove: spy(),
   });
 
-  it('should show a title', () => {
+  it('should show the title', () => {
     const props = getProps();
 
     const el = shallow(<ClassesListItem {...props}/>);
-    const title = el.find({defaultValue: props.title});
-    expect(title.length).to.be.equal(1);
+    const form = el.find('form[name="edit-class"]').render();
+
+    const title = form.find('input[name="title"]');
+    expect(title).to.have.length(1);
+    expect(title.get(0).attribs.value).to.be.equal(props.title)
   });
-  it('should show a description', () => {
+  it('should show the description', () => {
     const props = getProps();
 
     const el = shallow(<ClassesListItem {...props}/>);
-    const description = el.find({defaultValue: props.description});
-    expect(description.length).to.be.equal(1);
+    const form = el.find('form[name="edit-class"]').render();
+
+    const description = form.find('input[name="description"]');
+    expect(description).to.have.length(1);
+    expect(description.get(0).attribs.value).to.be.equal(props.description)
   });
-  it('should show a duration', () => {
+  it('should show the duration', () => {
     const props = getProps();
 
     const el = shallow(<ClassesListItem {...props}/>);
-    const description = el.find({defaultValue: props.description});
-    expect(description.length).to.be.equal(1);
+    const form = el.find('form[name="edit-class"]').render();
+
+    const duration = form.find('input[name="duration"]');
+    expect(duration).to.have.length(1);
+    expect(Number(duration.get(0).attribs.value)).to.be.equal(props.duration)
   });
-  it('should show a price', () => {
+  it('should show the price', () => {
     const props = getProps();
 
     const el = shallow(<ClassesListItem {...props}/>);
-    const description = el.find({defaultValue: props.description});
-    expect(description.length).to.be.equal(1);
+    const form = el.find('form[name="edit-class"]').render();
+
+    const price = form.find('input[name="price"]');
+    expect(price).to.have.length(1);
+    expect(Number(price.get(0).attribs.value)).to.be.equal(props.price)
   });
-  it('should call remove when .remove is clicked', () => {
+  it('should call handleRemove with given id when remove button is clicked', () => {
     const props = getProps();
 
     const el = shallow(<ClassesListItem {...props}/>);
-    const remove = el.find('.remove');
-    remove.simulate('click');
-    expect(props.remove.calledOnce).to.be.equal(true);
-    expect(props.remove.args[0][0]).to.be.equal(props._id);
+
+    const removeButton = el.find('Button[name="remove"]');
+    removeButton.simulate('click');
+
+    expect(props.handleRemove.calledOnce).to.be.equal(true);
+    assert.calledWithExactly(props.handleRemove, props._id);
   });
-  it('should call update when .update is clicked', () => {
+  it('should call handleUpdate when form is submitted', () => {
     const props = getProps();
 
-    const el = mount(<ClassesListItem {...props}/>);
-    const remove = el.find('.update');
+    const el = shallow(<ClassesListItem {...props}/>);
+    const form = el.find('form[name="edit-class"]');
 
-    const titleI = el.find('Input[name="classTitle"]').get(0);
-    const descriptionI = el.find('Input[name="classDescription"]').get(0);
-    const durationI = el.find('Input[name="classDuration"]').get(0);
-    const priceI = el.find('Input[name="classPrice"]').get(0);
-    titleI.value = 'new_title';
-    descriptionI.value = 'new_description';
-    durationI.value = 10;
-    priceI.value = 5000;
+    form.simulate('submit');
 
-    remove.simulate('click');
-    expect(props.update.calledOnce).to.be.equal(true);
-    expect(props.update.args[0]).to.deep.equal([
-      props._id,
-      {
-        title: 'new_title',
-        description: 'new_description',
-        duration: 10,
-        price: 5000
-      }
-    ]);
+    expect(props.handleUpdate.calledOnce).to.be.equal(true);
   });
 });

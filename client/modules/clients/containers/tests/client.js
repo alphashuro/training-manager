@@ -1,6 +1,6 @@
 const {describe, it} = global;
 import {expect} from 'chai';
-import {spy, stub} from 'sinon';
+import {spy, stub, assert} from 'sinon';
 import {composer, depsMapper} from '../client.js';
 
 describe('clients.containers.client', () => {
@@ -99,7 +99,7 @@ describe('clients.containers.client', () => {
 
       expect(props.context()).to.deep.equal(context);
     });
-    it('should map clients.update to update', () => {
+    it('should map handleUpdateClient to call clients.update with name, email and phone from event target', () => {
       const context = { Meteor: {} };
       const actions = {
         clients: {
@@ -109,10 +109,23 @@ describe('clients.containers.client', () => {
       };
 
       const props = depsMapper(context, actions);
+      const client = {
+        name: 'name',
+        email: 'email',
+        phone: 'phone',
+      };
+      const event = {
+        preventDefault: spy(),
+        target: {
+          name: {value: client.name},
+          email: {value: client.email},
+          phone: {value: client.phone},
+        },
+      };
+      props.handleUpdateClient('id', event);
 
-      props.update();
-
-      expect(actions.clients.update.calledOnce).to.be.equal(true);
+      assert.calledOnce(actions.clients.update);
+      assert.calledWithExactly(actions.clients.update, 'id', client);
     });
     it('should map clients.clearErrors to clearErrors', () => {
       const context = { Meteor: {} };

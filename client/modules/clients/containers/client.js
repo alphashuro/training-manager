@@ -19,7 +19,16 @@ export const depsMapper = (context, actions) => {
   const props = {};
 
   props.context = () => context;
-  props.update = actions.clients.update;
+  props.handleUpdateClient = (id, e) => {
+    e.preventDefault();
+    const form = e.target;
+
+    const name = form.name.value;
+    const email = form.email.value;
+    const phone = form.phone.value;
+
+    actions.clients.update(id, {name, email, phone});
+  };
   props.clearErrors = actions.clients.clearErrors;
 
   return props;

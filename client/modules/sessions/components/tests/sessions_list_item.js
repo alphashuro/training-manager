@@ -1,36 +1,34 @@
 const {describe, it} = global;
 import {expect} from 'chai';
-import {spy} from 'sinon';
-import {mount} from 'enzyme';
+import {spy, assert} from 'sinon';
+import {shallow} from 'enzyme';
 import React from 'react';
 import moment from 'moment';
 import SessionsListItem from '../sessions_list_item.jsx';
 
 describe('sessions.components.sessions_list_item', () => {
+  const getProps = () => ({
+    _id: 'id',
+    date: new Date(1993, 9, 13),
+    handleDateChange: spy(),
+  });
   it('renders a DateTime with the given date', () => {
-    const date = new Date();
+    const props = getProps();
 
-    const el = mount(<SessionsListItem date={date} />);
-    const picker = el.ref('dateRef');
-    expect(picker.length).to.be.equal(1);
-    expect(picker.prop('dateTime')).to.equal(moment(date).format('x'));
+    const el = shallow(<SessionsListItem {...props} />);
+    const datePicker = el.find('DateTimeField[name="session-date"]');
+    expect(datePicker.length).to.be.equal(1);
+    expect(datePicker.prop('dateTime')).to.equal(moment(props.date).format('x'));
   });
   it('calls update when a new date is selected', () => {
-    const props = {
-      _id: '123',
-      date: new Date(),
-      update: spy()
-    };
+    const props = getProps();
     const newDate = moment().add(1, 'days');
-    const newDateTS = newDate.format('x');
+    const newDateUnix = newDate.format('x');
 
-    const el = mount(<SessionsListItem {...props} />);
-    const picker = el.ref('dateRef');
-    picker.prop('onChange')(newDateTS);
-    expect(props.update.calledOnce).to.be.equal(true);
-    expect(props.update.args[0][0]).to.be.equal(props._id);
-    expect(props.update.args[0][1]).to.deep.equal({
-      date: newDate.toDate()
-    });
+    const el = shallow(<SessionsListItem {...props} />);
+    const datePicker = el.find('DateTimeField[name="session-date"]');
+    datePicker.simulate('change', newDateUnix);
+    expect(props.handleDateChange.calledOnce).to.be.equal(true);
+    assert.calledWithExactly(props.handleDateChange, props._id, newDateUnix);
   });
 });

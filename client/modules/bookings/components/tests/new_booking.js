@@ -1,13 +1,13 @@
 const {describe, it} = global;
 import React from 'react';
 import {spy, assert} from 'sinon';
-import {shallow, render, mount} from 'enzyme';
+import {shallow, render} from 'enzyme';
 import {expect} from 'chai';
 import NewBooking from '../new_booking.jsx';
 
 describe('bookings.components.new_booking', () => {
   const getProps = () => ({
-    create: spy(),
+    handleCreateBooking: spy(),
     error: null,
     facilitators: [
       {_id: '1', name: 'f1'},
@@ -29,34 +29,33 @@ describe('bookings.components.new_booking', () => {
     props.error = 'oops';
     const el = shallow(<NewBooking {...props}/>);
 
-    expect(el.find({children: props.error})).to.have.length(1);
+    expect(el.contains(props.error)).to.be.equal(true);
   });
   it('should show a select for given courses', () => {
     const props = getProps();
-    const el = shallow(<NewBooking {...props}/>);
+    const el = render(<NewBooking {...props}/>);
+    const form = el.find('form[name="new-booking"]')
 
-    const sel = el.find('[name="courseSelect"]');
+    const sel = form.find('select[name="course"]');
     expect(sel).to.have.length(1);
     expect(sel.children()).to.have.length(2);
   });
   it('should show a select for given facilitators', () => {
     const props = getProps();
-    const el = shallow(<NewBooking {...props}/>);
+    const el = render(<NewBooking {...props}/>);
+    const form = el.find('form[name="new-booking"]')
 
-    const sel = el.find('[name="facilitatorSelect"]');
+    const sel = el.find('select[name="facilitator"]');
     expect(sel).to.have.length(1);
     expect(sel.children()).to.have.length(2);
   });
-  it('should call create with courseId and facilitatorId when .save button is clicked', () => {
+  it('should call handleCreateBooking when form is submitted', () => {
     const props = getProps();
-    const el = mount(<NewBooking {...props}/>);
+    const el = shallow(<NewBooking {...props}/>);
+    const form = el.find('form[name="new-booking"]')
 
-    const csel = el.find('[name="courseSelect"]');
-    const ssel = el.find('[name="facilitatorSelect"]');
-    csel.get(0).value = '2';
-    ssel.get(0).value = '2';
-    el.find('.save').simulate('click');
+    form.simulate('submit');
 
-    assert.calledWith(props.create, '2', '2');
+    assert.calledOnce(props.handleCreateBooking);
   });
 });

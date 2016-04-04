@@ -21,7 +21,7 @@ export const depsMapper = (context, actions) => {
   const props = {};
 
   props.context = () => context;
-  props.addClass = actions.classes.create;
+  props.handleAddClass = actions.classes.create;
   props.clearErrors = actions.classes.clearErrors;
 
   return props;

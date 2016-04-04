@@ -1,6 +1,6 @@
 const {describe, it} = global;
 import {expect} from 'chai';
-import {spy, stub} from 'sinon';
+import {spy, stub, assert} from 'sinon';
 import {composer, depsMapper} from '../new_client';
 
 describe('clients.containers.new_client', () => {
@@ -34,7 +34,7 @@ describe('clients.containers.new_client', () => {
 
       expect(props.context()).to.deep.equal(context);
     });
-    it('should map clients.create to create', () => {
+    it('should map handleCreateClient to call clients.create', () => {
       const context = {Meteor: {}};
       const actions = {
         clients: {
@@ -44,8 +44,22 @@ describe('clients.containers.new_client', () => {
       };
 
       const props = depsMapper(context, actions);
-      props.create();
-      expect(actions.clients.create.calledOnce).to.be.equal(true);
+      const client = {
+        name: 'name',
+        email: 'email',
+        phone: 'phone',
+      };
+      const event = {
+        preventDefault: spy(),
+        target: {
+          name: {value: client.name},
+          email: {value: client.email},
+          phone: {value: client.phone},
+        }
+      };
+      props.handleCreateClient(event);
+      assert.calledOnce(actions.clients.create);
+      assert.calledWith(actions.clients.create, client);
     });
     it('should map clients.clearErrors to clearErrors', () => {
       const context = {Meteor: {}};

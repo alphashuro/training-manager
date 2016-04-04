@@ -13,7 +13,15 @@ export const composer = ({context, clearErrors}, onData) => {
 export const depsMapper = (context, actions) => {
   const props = {};
 
-  props.create = actions.courses.create;
+  props.handleCreateCourse = e => {
+    e.preventDefault();
+    const form = e.target;
+
+    const title = form.title.value;
+    const description = form.description.value;
+
+    actions.courses.create(title, description);
+  };
   props.clearErrors = actions.courses.clearErrors;
   props.context = () => context;
 

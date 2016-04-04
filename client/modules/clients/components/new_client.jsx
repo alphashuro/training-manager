@@ -1,65 +1,40 @@
-import React, {Component} from 'react';
+import React, {PropTypes} from 'react';
 
-import { Row } from 'react-bootstrap';
-import { Col } from 'react-bootstrap';
-import { Button } from 'react-bootstrap';
-import { Input } from 'react-bootstrap';
-import { Alert } from 'react-bootstrap';
-import { PageHeader } from 'react-bootstrap';
+import { Row, Col, Button, Input, Alert, PageHeader } from 'react-bootstrap';
 
+const NewClient = ({error, handleCreateClient}) => (
+  <div>
+    <PageHeader> New Client </PageHeader>
+    <Row>
+      <Col md={6} mdOffset={3}>
+      {error ? <Alert bsStyle="danger">{error}</Alert> : null}
 
-class NewClient extends Component {
-  render() {
-    const {error} = this.props;
-    return (
-      <div>
-        <PageHeader>
-          <span>New Client</span>
-        </PageHeader>
-        <Row>
-          <Col md={6} mdOffset={3}>
-          {error ? <Alert bsStyle="danger">{error}</Alert> : null}
-          <Input
-            name='clientName'
-            type="text"
-            hasFeedback={false}
-            placeholder="Enter the client's name"
-            label="Name"
-            ref={input => this.name = input}
-            />
-          <Input
-            type="text"
-            name='clientPhone'
-            hasFeedback={false}
-            placeholder="Enter the client's phone"
-            label="Phone"
-            ref={input => this.phone = input}
-            />
-          <Input
-            type="email"
-            name='clientEmail'
-            hasFeedback={false}
-            placeholder="Enter the client's email"
-            label="Email"
-            ref={input => this.email = input}
-            />
-          <Button
-            className='save'
-            onClick={() => {
-              this.props.create(
-                this.name.getValue(),
-                this.phone.getValue(),
-                this.email.getValue()
-              )
-            }}
-            bsStyle="default" >
-            <span>Save</span>
-          </Button>
-          </Col>
-        </Row>
-      </div>
-    );
-  }
-}
+      <form name="new-client" onSubmit={handleCreateClient}>
+        <Input
+          type="text" name="name"
+          placeholder="Client 1..."
+          label="Name"
+          />
+        <Input
+          type="text" name="phone"
+          placeholder="(016) 123 4567"
+          label="Phone"
+          />
+        <Input
+          type="email" name="email"
+          placeholder="email@address.com"
+          label="Email"
+          />
+        <Button type='submit' bsStyle="default"> Save </Button>
+      </form>
+      </Col>
+    </Row>
+  </div>
+);
+
+NewClient.propTypes = {
+  error: PropTypes.string,
+  handleCreateClient: PropTypes.func.isRequired,
+};
 
 export default NewClient;

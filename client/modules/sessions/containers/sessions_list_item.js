@@ -1,5 +1,6 @@
 import SessionsListItem from '../components/sessions_list_item.jsx';
 import {useDeps, composeWithTracker, composeAll} from 'mantra-core';
+import moment from 'moment';
 
 export const composer = ({context, sessionId}, onData) => {
   const {Meteor, Collections} = context();
@@ -18,7 +19,10 @@ export const depsMapper = (context, actions) => {
   const props = {};
 
   props.context = () => context;
-  props.update = actions.sessions.update;
+  props.handleDateChange = (_id, unixTime) => {
+    const date = new Date(unixTime);
+    actions.sessions.update(_id, {date});
+  };
 
   return props;
 };

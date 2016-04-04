@@ -1,4 +1,4 @@
-import React, {Component, PropTypes} from 'react';
+import React, { PropTypes } from 'react';
 import { Grid, Row, Col, Well, Button, PageHeader, Input, Alert } from 'react-bootstrap';
 
 const Login = ({error, handleLogin}) => (
