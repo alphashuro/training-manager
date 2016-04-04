@@ -5,19 +5,18 @@ import {check} from 'meteor/check';
 
 export default function () {
   Meteor.methods({
-    'courses.create'({ _id, title, description, org } ) {
+    'courses.create'({ _id, title, description } ) {
       check(_id, String);
 
       check(title, String);
       check(description, String);
-      check(org, String);
 
-      if (!_id || !title || !description || !org) {
+      if (!_id || !title || !description ) {
         throw new Meteor.Error('args-missing', 'All fields are required');
       }
 
       // XXX: Do user authorization
-      const course = {_id, title, description, org};
+      const course = {_id, title, description};
       Courses.insert(course);
     },
     'courses.update'( _id, { title, description, }) {

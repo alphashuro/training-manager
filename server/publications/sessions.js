@@ -9,7 +9,7 @@ export default function () {
 
     if (!this.userId) { return this.ready(); }
 
-    return Sessions.find({bookingId});
+    return Sessions.find({ bookingId });
   });
 
   Meteor.publishComposite('sessions.all', {
@@ -27,12 +27,12 @@ export default function () {
     ]
   });
 
-  Meteor.publishComposite('sessions.single', function (sessionId) {
+  Meteor.publishComposite('sessions.single', function (_id) {
     if (!this.userId) { return this.ready(); }
 
     return {
       find() {
-        return Sessions.find({_id: sessionId}, options);
+        return Sessions.find(_id);
       },
       children: [
         {

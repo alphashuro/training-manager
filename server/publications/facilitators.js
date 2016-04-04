@@ -8,24 +8,14 @@ export default function () {
     if (!this.userId) { return this.ready(); }
     if (!Users.findOne(this.userId)) { return this.ready(); }
 
-    const {profile: {org}} = Users.findOne(this.userId);
-
-    return Users.find({
-      'profile.org': org,
-      roles: 'facilitator',
-    });
+    return Users.find({ roles: 'facilitator' });
   });
 
   Meteor.publish('facilitators.ids', function () {
     if (!this.userId) { return this.ready(); }
     if (!Users.findOne(this.userId)) { return this.ready(); }
 
-    const {profile: {org}} = Users.findOne(this.userId);
-
-    const sel = {
-      'profile.org': org,
-      roles: 'facilitator'
-    };
+    const sel = { roles: 'facilitator' };
     const options = { fields: { _id: 1 }};
 
     return Users.find(sel, options);
@@ -37,12 +27,6 @@ export default function () {
     if (!this.userId) { return this.ready(); }
     if (!Users.findOne(this.userId)) { return this.ready(); }
 
-    const {profile: {org}} = Users.findOne(this.userId);
-
-    return Users.find({
-      _id,
-      'profile.org': org,
-      roles: 'facilitator',
-    });
+    return Users.find({ _id, roles: 'facilitator' });
   });
 }

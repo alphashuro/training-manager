@@ -11,26 +11,24 @@ export default function () {
       if (!this.userId) { return this.ready(); }
       if (!Users.findOne(this.userId)) { return this.ready(); }
 
-      const {profile: {org}} = Users.findOne(this.userId);
-
-      return Bookings.find({org});
+      return Bookings.find();
     },
     children: [
       {
-        find(booking) {
-          return Courses.find( booking.courseId );
+        find({courseId}) {
+          return Courses.find( courseId );
         }
       },
       {
-        find(booking) {
-          return Facilitators.find( booking.facilitatorId );
+        find({facilitatorId}) {
+          return Facilitators.find( facilitatorId );
         }
       },
       {
-        find(booking) {
+        find({studentIds}) {
           return Students.find({
             _id: {
-              $in: booking.studentIds
+              $in: studentIds
             }
           });
         }
@@ -42,26 +40,22 @@ export default function () {
     if (!this.userId) { return this.ready(); }
     if (!Users.findOne(this.userId)) { return this.ready(); }
 
-    const {profile: {org}} = Users.findOne(this.userId);
-
     return {
       find() {
-        return Bookings.find({ org }, { fields: { _id: 1 } });
+        return Bookings.find({ fields: { _id: 1 } });
       }
     }
   });
 
-  Meteor.publishComposite('bookings.single', function (bookingId) {
-    check(bookingId, String);
+  Meteor.publishComposite('bookings.single', function (_id) {
+    check(_id, String);
 
     if (!this.userId) { return this.ready(); }
     if (!Users.findOne(this.userId)) { return this.ready(); }
 
-    const {profile: {org}} = Users.findOne(this.userId);
-
     return {
       find() {
-        return Bookings.find({_id: bookingId, org})
+        return Bookings.find(_id);
       },
       children: [
         {

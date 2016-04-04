@@ -8,18 +8,14 @@ export default function () {
     if (!this.userId) { return this.ready(); }
     if (!Users.findOne(this.userId)) { return this.ready(); }
 
-    const {profile: {org}} = Users.findOne(this.userId);
-
-    return Courses.find({org});
+    return Courses.find();
   });
 
   Meteor.publish('courses.ids', function () {
     if (!this.userId) { return this.ready(); }
     if (!Users.findOne(this.userId)) { return this.ready(); }
 
-    const {profile: {org}} = Users.findOne(this.userId);
-
-    return Courses.find({org}, { fields: { _id: 1 }});
+    return Courses.find({ fields: { _id: 1 }});
   });
 
   Meteor.publish('courses.single', function (_id) {
@@ -28,11 +24,6 @@ export default function () {
     if (!this.userId) { return this.ready(); }
     if (!Users.findOne(this.userId)) { return this.ready(); }
 
-    const {profile: {org}} = Users.findOne(this.userId);
-
-    return Courses.find({
-      _id,
-      org,
-    });
+    return Courses.find(_id);
   });
 }
