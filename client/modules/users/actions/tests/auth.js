@@ -93,16 +93,16 @@ describe('users.actions.auth', () => {
       actions.signup({Meteor}, 'email', 'password');
 
       expect(Meteor.call.calledOnce).to.be.equal(true);
-      expect(Meteor.call.args[0].slice(0,4)).to.deep.equal([
+      expect(Meteor.call.args[0].slice(0,3)).to.deep.equal([
         'users.signup', 'email', 'password'
       ]);
-      expect(Meteor.call.args[0][4]).to.be.a('function');
+      expect(Meteor.call.args[0][3]).to.be.a('function');
     });
     describe('after Meteor.call', () => {
       it('should redirect user to /login', () => {
         const Meteor = {call: stub()};
         const FlowRouter = {go: spy()};
-        Meteor.call.callsArg(4);
+        Meteor.call.callsArg(3);
 
         actions.signup({Meteor, FlowRouter}, 'email', 'password');
 
@@ -115,7 +115,7 @@ describe('users.actions.auth', () => {
           const LocalState = {set: spy()};
           const FlowRouter = {go: spy()};
           const err = {reason: 'oops'};
-          Meteor.call.callsArgWith(4, err);
+          Meteor.call.callsArgWith(3, err);
 
           actions.signup({Meteor, FlowRouter, LocalState}, 'email', 'password');
 
