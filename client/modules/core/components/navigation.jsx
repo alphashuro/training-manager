@@ -34,7 +34,7 @@ const Navigation = ({handleLogout, email, path}) => {
         </Nav>
 
         <Nav pullRight>
-          <NavDropdown eventKey={1} title={ email } id='nav-dropdown'>
+          <NavDropdown eventKey={1} title={ email || '-' } id='nav-dropdown'>
             <MenuItem className='logout' eventKey={1.1} onClick={handleLogout}>
               Logout
             </MenuItem>
