@@ -1,5 +1,5 @@
 export default {
-  create({ Meteor, LocalState, FlowRouter }, name, phone, email) {
+  create({ Meteor, LocalState, FlowRouter }, {name, phone, email}) {
     if (!name || !phone || !email) {
       return LocalState.set(
         'CLIENT_ERROR',
