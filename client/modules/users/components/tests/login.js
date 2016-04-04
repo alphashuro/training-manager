@@ -21,7 +21,7 @@ describe('users.components.login', () => {
   it('form should have an email input', () => {
     const props = getProps();
     const el = render(<Login {...props}/>);
-    const form = el.find('form.login');
+    const form = el.find('form[name="login"]');
 
     const emailInput = form.find(`input[name=email]`);
 
@@ -30,7 +30,7 @@ describe('users.components.login', () => {
   it('form should have a password input', () => {
     const props = getProps();
     const el = render(<Login {...props}/>);
-    const form = el.find('form.login');
+    const form = el.find('form[name="login"]');
 
     const passwordInput = form.find('input[name=password]');
 
@@ -41,7 +41,7 @@ describe('users.components.login', () => {
 
     const el = shallow(<Login {...props} />);
 
-    el.find('form.login').simulate('submit');
+    el.find('form[name="login"]').simulate('submit');
 
     expect(props.handleLogin.calledOnce).to.be.equal(true);
   });

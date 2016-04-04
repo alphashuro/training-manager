@@ -8,7 +8,7 @@ const Login = ({error, handleLogin}) => (
         <Well>
           <PageHeader>Login</PageHeader>
           { error ? <Alert bsStyle='danger'>{error}</Alert> : null }
-          <form className='login' onSubmit={handleLogin}>
+          <form name='login' onSubmit={handleLogin}>
             <Input name='email' type='email' placeholder='Your email address.'/>
             <Input name='password' type='password' placeholder='Your password.'/>
             <Button bsStyle='default' type='submit'>
