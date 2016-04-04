@@ -8,7 +8,7 @@ export const composer = ({context}, onData) => {
   const route = FlowRouter.current();
 
   if (user) {
-    onData(null, { email: user.email(), org: user.org(), path: route.path });
+    onData(null, { email: user.email(), path: route.path });
   }
   else {
     onData(null, {path: route.path});

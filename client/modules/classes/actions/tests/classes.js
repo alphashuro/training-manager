@@ -24,7 +24,7 @@ describe('classes.actions', () => {
       expect(args).to.deep.equal([ 'CLASSES_ERROR', null ]);
     });
     it(`should call Meteor.call
-      with options { _id, name, phone, email, org }
+      with options { _id, name, phone, email }
       and a cb function`, () => {
       const Meteor = {call: spy(), uuid: stub()};
       const LocalState = {set: spy()};

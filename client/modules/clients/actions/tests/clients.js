@@ -35,19 +35,17 @@ describe('clients.actions', () => {
     it('should set CLIENT_ERROR to null', () => {
       const LocalState = {set: spy()};
       const Meteor = {call: spy(), uuid: spy(), user: stub()};
-      Meteor.user.returns({profile: {org: 'an org'}});
 
       actions.create({LocalState, Meteor}, 'name', 'phone', 'email');
       const args = LocalState.set.args[0];
       expect(args).to.deep.equal([ 'CLIENT_ERROR', null ]);
     });
     it(`should call Meteor.call
-      with options { _id, name, phone, email, org }
+      with options { _id, name, phone, email }
       and a cb function`, () => {
       const LocalState = {set: spy()};
       const Meteor = {call: spy(), uuid: stub(), user: stub()};
       Meteor.uuid.returns('id');
-      Meteor.user.returns({profile: {org: 'org'}});
 
       actions.create({LocalState, Meteor}, 'name', 'phone', 'email');
       const args = Meteor.call.args[0];
@@ -57,7 +55,6 @@ describe('clients.actions', () => {
         name: 'name',
         phone: 'phone',
         email: 'email',
-        org: 'org'
       });
       expect(args[2]).to.be.a('function');
     });
@@ -68,7 +65,6 @@ describe('clients.actions', () => {
           const LocalState = {set: spy()};
           const Meteor = {call: stub(), uuid: stub(), user: stub()};
           Meteor.uuid.returns('id');
-          Meteor.user.returns({profile: {org: 'org'}});
           const err = { reason: 'oops' };
           Meteor.call.callsArgWith(2, err);
 
@@ -83,7 +79,6 @@ describe('clients.actions', () => {
         const FlowRouter = {go: spy()};
         const Meteor = {call: stub(), uuid: stub(), user: stub()};
         Meteor.uuid.returns('id');
-        Meteor.user.returns({profile: {org: 'org'}});
         Meteor.call.callsArg(2);
 
         actions.create({LocalState, Meteor, FlowRouter}, 'name', 'phone', 'email');

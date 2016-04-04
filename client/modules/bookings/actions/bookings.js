@@ -11,9 +11,8 @@ export default {
 
     const _id = Meteor.uuid();
     const user = Meteor.user();
-    const org = user.profile.org;
 
-    Meteor.call( 'bookings.create', { _id, courseId, facilitatorId, org }, (error) => {
+    Meteor.call( 'bookings.create', { _id, courseId, facilitatorId }, (error) => {
       if (error) {
         return LocalState.set('BOOKING_ERROR', error.reason);
       } else {

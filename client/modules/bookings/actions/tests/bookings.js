@@ -28,7 +28,6 @@ describe('bookings.actions', () => {
     it('should set BOOKING_ERROR to null', () => {
       const LocalState = {set: spy()};
       const Meteor = {call: spy(), uuid: spy(), user: stub()};
-      Meteor.user.returns({profile: {org: 'an org'}});
 
       actions.create({LocalState, Meteor}, 'title', 'description');
       const args = LocalState.set.args[0];
@@ -36,12 +35,11 @@ describe('bookings.actions', () => {
     });
 
     it(`should call Meteor.call
-        with options { _id, courseId, facilitatorId, org }
+        with options { _id, courseId, facilitatorId }
         and a cb function`, () => {
       const LocalState = {set: spy()};
       const Meteor = {call: spy(), uuid: stub(), user: stub()};
       Meteor.uuid.returns('id');
-      Meteor.user.returns({profile: {org: 'org'}});
 
       actions.create({LocalState, Meteor}, 'courseId', 'facilitatorId');
       const args = Meteor.call.args[0];
@@ -50,7 +48,6 @@ describe('bookings.actions', () => {
         _id: 'id',
         courseId: 'courseId',
         facilitatorId: 'facilitatorId',
-        org: 'org'
       });
       expect(args[2]).to.be.a('function');
     });
@@ -61,7 +58,6 @@ describe('bookings.actions', () => {
           const LocalState = {set: spy()};
           const Meteor = {call: stub(), uuid: stub(), user: stub()};
           Meteor.uuid.returns('id');
-          Meteor.user.returns({profile: {org: 'org'}});
           const err = { reason: 'oops' };
           Meteor.call.callsArgWith(2, err);
 
@@ -76,7 +72,6 @@ describe('bookings.actions', () => {
         const FlowRouter = {go: spy()};
         const Meteor = {call: stub(), uuid: stub(), user: stub()};
         Meteor.uuid.returns('id');
-        Meteor.user.returns({profile: {org: 'org'}});
         Meteor.call.callsArg(2);
 
         actions.create({LocalState, Meteor, FlowRouter}, 'title', 'description');

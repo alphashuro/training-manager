@@ -15,7 +15,7 @@ export default {
       }
     });
   },
-  signup({Meteor, LocalState, FlowRouter, Accounts}, email, password, org) {
+  signup({Meteor, LocalState, FlowRouter, Accounts}, email, password) {
     if (!email) {
       return LocalState.set('SIGNUP_ERROR', 'Email is required!');
     }
@@ -24,11 +24,7 @@ export default {
       return LocalState.set('SIGNUP_ERROR', 'Password is required!');
     }
 
-    if (!org) {
-      return LocalState.set('SIGNUP_ERROR', 'Org is required!');
-    }
-
-    Meteor.call('users.signup', email, password, org, (error) => {
+    Meteor.call('users.signup', email, password, (error) => {
       if (error) {
         LocalState.set('SIGNUP_ERROR', error.reason);
       } else {

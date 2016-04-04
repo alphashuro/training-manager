@@ -11,9 +11,8 @@ export default {
 
     const _id = Meteor.uuid();
     const user = Meteor.user();
-    const org = user.profile.org;
 
-    Meteor.call( 'clients.create', { _id, name, phone, email, org }, (error) => {
+    Meteor.call( 'clients.create', { _id, name, phone, email }, (error) => {
       if (error) {
         return LocalState.set('CLIENT_ERROR', error.reason);
       } else {

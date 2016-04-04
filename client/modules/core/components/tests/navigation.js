@@ -9,7 +9,6 @@ describe('core.components.navigation', () => {
   const getProps = () => ({
     handleLogout: spy(),
     email: 'name@email.com',
-    org: 'org',
     path: '/'
   });
   it(`should contain a link to
@@ -23,13 +22,6 @@ describe('core.components.navigation', () => {
     expect(el.contains({href: '/courses'})).to.be.equal(true);
     expect(el.contains({href: '/facilitators'})).to.be.equal(true);
     expect(el.contains({href: '/bookings'})).to.be.equal(true);
-  });
-
-    it('should render org', () => {
-      const props = getProps();
-
-      const el = shallow(<Nav {...props}/>);
-      expect(el.contains({children: props.org})).to.be.equal(true);
   });
     it('should render a nav with activekey that matches current path', () => {
       const props = getProps();
