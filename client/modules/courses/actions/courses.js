@@ -15,10 +15,8 @@ export default {
     LocalState.set('COURSE_ERROR', null);
 
     const _id = Meteor.uuid();
-    const user = Meteor.user();
-    const org = user.profile.org;
 
-    Meteor.call( 'courses.create', { _id, title, description, org }, (error) => {
+    Meteor.call( 'courses.create', { _id, title, description }, (error) => {
       if (error) {
         return LocalState.set('COURSE_ERROR', error.reason);
       }
@@ -42,7 +40,7 @@ export default {
     };
 
     if(!title || !description) {
-      return LocalState.set('COURSE_ERROR', 'Title and/or description are required to update a course!');
+      return LocalState.set('COURSE_ERROR', 'Title and/or description is required to update a course!');
     };
 
     Meteor.call(
