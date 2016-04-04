@@ -13,8 +13,8 @@ const Navigation = ({handleLogout, email, path}) => {
     if (path === '/') {
       return 0;
     }
-    const paths = ['client', 'course', 'facilitator', 'booking'];
-    return _(paths).findIndex(p => path.includes(p)) + 1;
+    const paths = [/\/client/, /\/course/, /\/facilitator/, /\/booking/];
+    return _(paths).findIndex(p => p.test(path)) + 1;
   }
   return (
     <Navbar fixedTop>
