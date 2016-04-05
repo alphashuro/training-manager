@@ -66,14 +66,19 @@ describe('sessions.containers.sessions_list_item', () => {
 
       expect(props.context()).to.deep.equal(context);
     });
-    it('should map sessions.update to update', () => {
+    it('should map handleDateChange to call sessions.update with _id and unix timestamp', () => {
       const context = {};
       const actions = {sessions: {update: spy()}};
 
       const props = depsMapper(context, actions);
-      props.update();
 
-      expect(actions.sessions.update.calledOnce).to.be.equal(true);
+      const date = new Date(1993, 9, 13);
+      const id = 'id';
+      props.handleDateChange(id, date.getTime());
+
+      const args = actions.sessions.update.args[0];
+      expect(args[0]).to.be.equal(id);
+      expect(args[1]).to.deep.equal({date});
     });
   });
 });

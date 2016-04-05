@@ -1,77 +1,49 @@
-import React, { Component } from 'react';
-
-import { Row } from 'react-bootstrap';
-import { Col } from 'react-bootstrap';
-import { Button } from 'react-bootstrap';
-import { Panel } from 'react-bootstrap';
-import { Input } from 'react-bootstrap';
-import { PageHeader } from 'react-bootstrap';
-import { Alert } from 'react-bootstrap';
-
+import React, { PropTypes } from 'react';
+import { Alert, PageHeader, Input, Panel, Button, Row, Col } from 'react-bootstrap';
 import StudentsList from '../../students/containers/students_list';
 
-class Client extends Component {
-  render() {
-    const {error, client} = this.props;
-    const { _id, name, email, phone } = client;
-    return (
-      <div>
-        <PageHeader>
-          <span>{ name }</span>
-        </PageHeader>
+const Client = ({ error, client: { _id, name, email, phone }, handleUpdateClient }) => (
+  <div>
+    <PageHeader> { name } </PageHeader>
+    <Row>
+      <Col md={ 6 }>
+        <Panel>
+          <PageHeader> Client Info </PageHeader>
+          { error ? <Alert bsStyle='danger'>{error}</Alert> : null }
 
-        <Row>
-          <Col md={ 6 }>
-            <Panel>
-                <PageHeader>
-                    <span>Client Info</span>
-                </PageHeader>
-                { error ? <Alert bsStyle='danger'>{error}</Alert> : null }
-                <Input type="text"
-                       hasFeedback={ false }
-                       placeholder="Client name"
-                       label="Name"
-                       ref="nameRef"
-                       defaultValue={name}
-                      ></Input>
-                <Input type="text"
-                       hasFeedback={ false }
-                       placeholder="Client phone"
-                       label="Phone"
-                       ref="phoneRef"
-                       defaultValue={phone}
-                      ></Input>
-                <Input type="text"
-                       hasFeedback={ false }
-                       placeholder="Client email"
-                       label="Email"
-                       ref="emailRef"
-                       defaultValue={email}
-                      ></Input>
-                <Button onClick={ this.saveClient.bind(this) } bsStyle="default">
-                    <span>Save</span>
-                </Button>
-            </Panel>
-          </Col>
-          <Col md={ 6 }>
-            <StudentsList clientId={_id}/>
-          </Col>
-        </Row>
-    </div>
-    );
-  }
+          <form name="edit-client" onSubmit={handleUpdateClient.bind(_id)}>
+            <Input type="text" name='name'
+               placeholder="Client 1" label="Name"
+               defaultValue={name}
+              ></Input>
+            <Input type="text" name='phone'
+               placeholder="(016) 123 4567" label="Phone"
+               defaultValue={phone}
+              ></Input>
+            <Input type="text" name='email'
+               placeholder="email@address.com" label="Email"
+               defaultValue={email}
+              ></Input>
+            <Button type='submit' bsStyle="default"> Save </Button>
+          </form>
+        </Panel>
+      </Col>
+      <Col md={ 6 }>
+        <StudentsList clientId={_id}/>
+      </Col>
+    </Row>
+  </div>
+);
 
-  saveClient() {
-    const {update, clientId} = this.props;
-    const {nameRef, emailRef, phoneRef} = this.refs;
-
-    const name = nameRef.getValue();
-    const email = emailRef.getValue();
-    const phone = phoneRef.getValue();
-
-    update(clientId, { name, email, phone });
-  }
-}
+Client.propTypes = {
+  error: PropTypes.string,
+  client: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    phone: PropTypes.string.isRequired,
+  }),
+  handleUpdateClient: PropTypes.func.isRequired,
+};
 
 export default Client;
-

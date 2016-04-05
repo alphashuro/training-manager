@@ -9,68 +9,40 @@ import {Alert} from 'react-bootstrap';
 
 import ClassesList from '../../classes/containers/classes_list';
 
-const Course = React.createClass({
-  propTypes: {
-    error: PropTypes.string,
-    course: PropTypes.shape({
-      _id: PropTypes.string,
-      title: PropTypes.string,
-      description: PropTypes.string
-    })
-  },
+const Course = ({ error, handleUpdate, course: { _id, title, description } }) => (
+  <div>
+    <PageHeader>
+      <span>{title}</span>
+    </PageHeader>
+    <Row>
+      <Col md={6}>
+        <Panel>
+          <PageHeader>
+            <span>Course Info</span>
+          </PageHeader>
+          {error ? <Alert bsStyle='danger'>{error}</Alert> : null}
+          <form name='edit-course' onSubmit={handleUpdate.bind(_id)}>
+            <Input name='title' type="text" placeholder="Course A.." label="Title" defaultValue={title}/>
+            <Input name='description' type="text" placeholder="In this course you will learn..." label="Description" defaultValue={description}/>
+            <Button type='submit' bsStyle="default">Save</Button>
+          </form>
+        </Panel>
+      </Col>
+      <Col md={6}>
+        <ClassesList courseId={_id}/>
+      </Col>
+    </Row>
+  </div>
+);
 
-  render() {
-    const {error, course} = this.props;
-    const {_id, title, description} = course;
-    return (
-      <div>
-        <PageHeader>
-          <span>{title}</span>
-        </PageHeader>
-
-        <Row>
-          <Col md={6}>
-            <Panel>
-              <PageHeader>
-                <span>Course Info</span>
-              </PageHeader>
-              {error ? <Alert bsStyle='danger'>{error}</Alert> : null}
-              <Input
-              type="text"
-              hasFeedback={false}
-              placeholder="Course title"
-              label="Title"
-              ref={node => this.title = node}
-              defaultValue={title}></Input>
-              <Input
-              type="text"
-              hasFeedback={false}
-              placeholder="Course description"
-              label="Description"
-              ref={node => this.description = node}
-              defaultValue={description}></Input>
-              <Button
-              className='save'
-              onClick={() => {
-                const {update, course} = this.props;
-                console.log(this.title);
-                update(course._id, {
-                  title: this.title.getValue(),
-                  description: this.description.getValue()
-                });
-              }}
-              bsStyle="default">
-                <span>Save</span>
-              </Button>
-            </Panel>
-          </Col>
-          <Col md={6}>
-            <ClassesList courseId={_id}/>
-          </Col>
-        </Row>
-      </div>
-    );
-  }
-});
+Course.propTypes = {
+  error: PropTypes.string,
+  course: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+  }),
+  handleUpdate: PropTypes.func.isRequired,
+};
 
 export default Course;

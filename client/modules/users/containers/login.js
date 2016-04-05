@@ -14,7 +14,13 @@ export const depsMapper = (context, actions) => {
   const props = {};
 
   props.context = () => context;
-  props.login = actions.auth.login;
+  props.handleLogin = function (e) {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    actions.auth.login(email, password);
+  };
   props.clearErrors = actions.auth.clearLoginErrors;
 
   return props;

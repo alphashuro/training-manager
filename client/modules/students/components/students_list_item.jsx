@@ -1,77 +1,33 @@
-import React, { Component } from 'react';
-
+import React, { PropTypes } from 'react';
 import {Input, ListGroupItem, Glyphicon, Button} from 'react-bootstrap';
 
-class StudentsListItem extends Component {
-  render() {
-    const {_id, name, phone, ID, email, remove} = this.props;
-    return (
-      <ListGroupItem>
-          <div className="form-inline">
-            <Input
-              type='text'
-              id='name'
-              ref='nameRef'
-              placeholder='Name'
-              addonBefore='Name'
-              defaultValue={name}
-              />
-            <Input
-              type='text'
-              id='ID'
-              ref='IDRef'
-              placeholder='ID'
-              addonBefore='ID'
-              defaultValue={ID}
-              />
-          </div>
-        <div className="form-inline">
-          <Input
-            type='text'
-            id='phone'
-            ref='phoneRef'
-            placeholder='Phone'
-            addonBefore={<Glyphicon glyph='earphone'/>}
-            defaultValue={phone}
-            />
-          <Input
-            type='email'
-            id='email'
-            ref='emailRef'
-            placeholder='Email'
-            addonBefore='@'
-            defaultValue={email}
-            />
-        </div>
-        <div className="inline-form">
-          <Button
-            ref='saveRef'
-            className='save'
-            onClick={this._save.bind(this)}>
-              Save
-          </Button>
-          <Button
-            ref='removeRef'
-            className='remove'
-            onClick={remove.bind(this, _id)}>
-              Delete
-          </Button>
-        </div>
-      </ListGroupItem>
-    );
-  }
+const StudentsListItem = ({_id, name, phone, ID, email, handleRemove, handleUpdate}) => (
+  <ListGroupItem>
+    <form name='edit-student' onSubmit={handleUpdate.bind(null, _id)}>
+      <div className="form-inline">
+        <Input type='text' name='name' placeholder='Student x...' addonBefore='Name' defaultValue={name}/>
+        <Input type='text' name='ID' placeholder='1234...' addonBefore='ID' defaultValue={ID}/>
+      </div>
+      <div className="form-inline">
+        <Input type='text' name='phone' placeholder='(012) 345 6789' addonBefore={<Glyphicon glyph='earphone'/>} defaultValue={phone}/>
+        <Input type='email' name='email' placeholder='student@address.com' addonBefore='@' defaultValue={email} />
+      </div>
+      <div className="inline-form">
+        <Button type='submit'> Save </Button>
+        <Button type='button' name='remove' onClick={handleRemove.bind(null, _id)}> Delete </Button>
+      </div>
+    </form>
+  </ListGroupItem>
+);
 
-  _save() {
-    const {_id, update} = this.props;
-    const {nameRef, phoneRef, emailRef, IDRef} = this.refs;
-
-    const name = nameRef.getValue();
-    const phone = phoneRef.getValue();
-    const email = emailRef.getValue();
-    const ID = IDRef.getValue();
-
-    update(_id, { name, phone, email, ID });
-  }
-}
+StudentsListItem.propTypes = {
+  _id: PropTypes.string,
+  name: PropTypes.string,
+  phone: PropTypes.string,
+  ID: PropTypes.string,
+  email: PropTypes.string,
+  handleRemove: PropTypes.func.isRequired,
+  handleUpdate: PropTypes.func.isRequired,
+};
 
 export default StudentsListItem;

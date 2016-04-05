@@ -1,67 +1,52 @@
-import React,{Component} from 'react';
+import React, { PropTypes } from 'react';
 
 import {ListGroupItem, Input, Button} from 'react-bootstrap';
 
-class ClassesListItem extends Component {
-  render() {
-    const {title, description, duration, price} = this.props;
-
-    return (
-      <ListGroupItem>
+const ClassesListItem = ({ _id, title, description, duration, price, handleUpdate, handleRemove}) => (
+  <ListGroupItem>
+    <form name='edit-class' onSubmit={handleUpdate}>
+      <Input
+        type='text'
+        name='title'
+        placeholder='Class X...'
+        label='Title'
+        defaultValue={title}/>
+      <Input
+        type='text'
+        name='description'
+        placeholder='In this class you learn...'
+        label='Description'
+        defaultValue={description}/>
+      <div className="form-inline">
         <Input
-          type='text'
-          name='classTitle'
-          placeholder='Title'
-          label='Title'
-          defaultValue={title}
-          ref={input => this.title = input} />
+          type='number'
+          name='duration'
+          placeholder='10hrs'
+          addonAfter='hrs'
+          defaultValue={duration}/>
         <Input
-          type='text'
-          name='classDescription'
-          placeholder='Description'
-          label='Description'
-          ref={input => this.description = input}
-          defaultValue={description} />
-        <div className="form-inline">
-          <Input
-            type='number'
-            name='classDuration'
-            placeholder='Duration'
-            addonAfter='hrs'
-            ref={input => this.duration = input}
-            defaultValue={duration} />
-          <Input
-            type='number'
-            name='classPrice'
-            placeholder='Price'
-            addonBefore='R'
-            ref={input => this.price = input}
-            defaultValue={price} />
-        </div>
-        <div className="inline-form">
-          <Button
-          className='update'
-          onClick={() => {
-            const {update, _id} = this.props;
+          type='number'
+          name='price'
+          placeholder='2000'
+          addonBefore='R'
+          defaultValue={price}/>
+      </div>
+      <div className="inline-form">
+        <Button type='submit'>Save</Button>
+        <Button name='remove' type='button' onClick={handleRemove.bind(null, _id)}>Delete</Button>
+      </div>
+    </form>
+  </ListGroupItem>
+);
 
-            const title = this.title.getValue();
-            const description = this.description.getValue();
-            const duration = Number(this.duration.getValue());
-            const price = Number(this.price.getValue());
-
-            update(_id, { title, description, duration, price });
-          }}>Save</Button>
-          <Button
-          className='remove'
-          onClick={()=> {
-            const {remove, _id} = this.props;
-            remove(_id);
-          }}
-          >Delete</Button>
-        </div>
-      </ListGroupItem>
-    );
-  }
-}
+ClassesListItem.propTypes = {
+  _id: PropTypes.string.isRequired,
+  title: PropTypes.string,
+  description: PropTypes.string,
+  duration: PropTypes.number,
+  price: PropTypes.number,
+  handleUpdate: PropTypes.func.isRequired,
+  handleRemove: PropTypes.func.isRequired,
+};
 
 export default ClassesListItem;

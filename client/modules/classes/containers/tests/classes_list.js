@@ -79,14 +79,14 @@ describe('classes.containers.classes_list', () => {
       expect(props.context).to.be.a('function');
       expect(props.context()).to.deep.equal(context);
     });
-    it('should correctly map addClass', () => {
+    it('should correctly map handleAddClass', () => {
       const context = {};
       const actions = getActions();
 
       const props = depsMapper(context, actions);
 
-      expect(props.addClass).to.be.a('function');
-      props.addClass();
+      expect(props.handleAddClass).to.be.a('function');
+      props.handleAddClass();
       expect(actions.classes.create.calledOnce).to.be.equal(true);
     });
     it('should correctly map clearErrors', () => {

@@ -1,66 +1,57 @@
 import React from 'react';
 const {describe, it} = global;
 import {expect} from 'chai';
-import {spy, stub} from 'sinon';
-import {shallow, mount} from 'enzyme';
+import {spy, assert} from 'sinon';
+import {shallow} from 'enzyme';
 import NewClient from '../new_client.jsx';
 
 describe('clients.components.new_client', () => {
+  const getProps = () => ({
+    error: null,
+    handleCreateClient: spy(),
+  });
   describe('if there is error', () => {
-    it('should render an alert with error', () => {
-      const props = {
-        error: 'oops'
-      };
+    it('should show the error', () => {
+      const props = getProps();
+      props.error = 'oops';
 
       const el = shallow(<NewClient {...props}/>);
-      const alert = el.find('Alert[bsStyle="danger"]');
-      expect(alert.length).to.be.equal(1);
-      expect(alert.prop('children')).to.be.equal(props.error);
+
+      expect(el.contains(props.error)).to.be.equal(true);
     });
   });
-  describe('if there is no error', () => {
-    it('should not render an alert', () => {
-      const props = {
-      };
+  it(`should have an input for name`, () => {
+    const props = getProps();
 
-      const el = shallow(<NewClient {...props}/>);
-      const alert = el.find('Alert[bsStyle="danger"]');
-      expect(alert.length).to.be.equal(0);
-    });
+    const el = shallow(<NewClient {...props}/>);
+    const form = el.find('form[name="new-client"]');
+
+    expect(form.render().find('input[name="name"]')).to.have.length(1);
   });
-  it('should call create when save is clicked', () => {
-    const props = {
-      create: spy()
-    };
+  it(`should have an input for phone`, () => {
+    const props = getProps();
 
-    const el = mount(<NewClient {...props}/>);
-    const saveBtn = el.find('.save');
-    saveBtn.simulate('click');
+    const el = shallow(<NewClient {...props}/>);
+    const form = el.find('form[name="new-client"]');
 
-    expect(props.create.calledOnce).to.be.equal(true);
+    expect(form.render().find('input[name="phone"]')).to.have.length(1);
   });
-  it('should pass new name, phone and email on to create', () => {
-    const props = {
-      create: spy()
-    };
+  it(`should have an input for email`, () => {
+    const props = getProps();
 
-    const el = mount(<NewClient {...props}/>);
+    const el = shallow(<NewClient {...props}/>);
+    const form = el.find('form[name="new-client"]');
 
-    const nameI = el.find('Input[name="clientName"]').get(0);
-    const phoneI = el.find('Input[name="clientPhone"]').get(0);
-    const emailI = el.find('Input[name="clientEmail"]').get(0);
+    expect(form.render().find('input[name="email"]')).to.have.length(1);
+  });
+  it('should call handleCreateClient when form is submitted', () => {
+    const props = getProps();
 
-    nameI.value = 'new_name';
-    phoneI.value = 'new_phone';
-    emailI.value = 'new_email';
+    const el = shallow(<NewClient {...props}/>);
+    const form = el.find('form[name="new-client"]');
 
-    const saveBtn = el.find('.save');
-    saveBtn.simulate('click');
+    form.simulate('submit');
 
-    expect(props.create.args[0]).to.deep.equal([
-      'new_name',
-      'new_phone',
-      'new_email'
-    ]);
+    assert.calledOnce(props.handleCreateClient);
   });
 });

@@ -70,7 +70,7 @@ describe('users.actions.auth', () => {
     it('should reject if email is not given', () => {
       const LocalState = {set: spy()};
 
-      actions.signup({LocalState}, null, 'password', 'org');
+      actions.signup({LocalState}, null, 'password');
 
       expect(LocalState.set.calledOnce).to.be.equal(true);
       expect(LocalState.set.args[0][0]).to.be.equal('SIGNUP_ERROR');
@@ -80,41 +80,31 @@ describe('users.actions.auth', () => {
     it('should reject if password is not given', () => {
       const LocalState = {set: spy()};
 
-      actions.signup({LocalState}, 'email', null, 'org');
+      actions.signup({LocalState}, 'email', null);
 
       expect(LocalState.set.calledOnce).to.be.equal(true);
       expect(LocalState.set.args[0][0]).to.be.equal('SIGNUP_ERROR');
       expect(LocalState.set.args[0][1]).to.match(/[Pp]assword/);
       expect(LocalState.set.args[0][1]).to.match(/required/);
     });
-    it('should reject if org is not given', () => {
-      const LocalState = {set: spy()};
-
-      actions.signup({LocalState}, 'email', 'password', null);
-
-      expect(LocalState.set.calledOnce).to.be.equal(true);
-      expect(LocalState.set.args[0][0]).to.be.equal('SIGNUP_ERROR');
-      expect(LocalState.set.args[0][1]).to.match(/[Oo]rg/);
-      expect(LocalState.set.args[0][1]).to.match(/required/);
-    });
-    it('should call Meteor.call with email, password and org', () => {
+    it('should call Meteor.call with email, password', () => {
       const Meteor = { call: spy() };
 
-      actions.signup({Meteor}, 'email', 'password', 'org');
+      actions.signup({Meteor}, 'email', 'password');
 
       expect(Meteor.call.calledOnce).to.be.equal(true);
-      expect(Meteor.call.args[0].slice(0,4)).to.deep.equal([
-        'users.signup', 'email', 'password', 'org'
+      expect(Meteor.call.args[0].slice(0,3)).to.deep.equal([
+        'users.signup', 'email', 'password'
       ]);
-      expect(Meteor.call.args[0][4]).to.be.a('function');
+      expect(Meteor.call.args[0][3]).to.be.a('function');
     });
     describe('after Meteor.call', () => {
       it('should redirect user to /login', () => {
         const Meteor = {call: stub()};
         const FlowRouter = {go: spy()};
-        Meteor.call.callsArg(4);
+        Meteor.call.callsArg(3);
 
-        actions.signup({Meteor, FlowRouter}, 'email', 'password', 'org');
+        actions.signup({Meteor, FlowRouter}, 'email', 'password');
 
         expect(FlowRouter.go.calledOnce).to.be.equal(true);
         expect(FlowRouter.go.args[0][0]).to.be.equal('/login');
@@ -125,9 +115,9 @@ describe('users.actions.auth', () => {
           const LocalState = {set: spy()};
           const FlowRouter = {go: spy()};
           const err = {reason: 'oops'};
-          Meteor.call.callsArgWith(4, err);
+          Meteor.call.callsArgWith(3, err);
 
-          actions.signup({Meteor, FlowRouter, LocalState}, 'email', 'password', 'org');
+          actions.signup({Meteor, FlowRouter, LocalState}, 'email', 'password');
 
           expect(LocalState.set.calledOnce).to.be.equal(true);
           expect(LocalState.set.args[0]).to.deep.equal([

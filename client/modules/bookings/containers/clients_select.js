@@ -18,7 +18,7 @@ export const depsMapper = (context, actions) => {
   const props = {};
 
   props.context = () => context;
-  props.select = actions.bookingClients.select;
+  props.handleClientSelected = e => actions.bookingClients.select(e.target.value);
 
   return props;
 };

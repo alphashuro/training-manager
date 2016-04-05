@@ -1,6 +1,6 @@
 const {describe, it} = global;
 import {expect} from 'chai';
-import {spy, stub} from 'sinon';
+import {spy, stub, assert} from 'sinon';
 import {composer, depsMapper} from '../new_course';
 
 describe('courses.containers.new_course', () => {
@@ -34,7 +34,7 @@ describe('courses.containers.new_course', () => {
 
       expect(props.context()).to.deep.equal(context);
     });
-    it('should map courses.create to create', () => {
+    it('should map handleCreateCourse to call courses.create with title and description from event target', () => {
       const context = {Meteor: {}};
       const actions = {
         courses: {
@@ -44,8 +44,16 @@ describe('courses.containers.new_course', () => {
       };
 
       const props = depsMapper(context, actions);
-      props.create();
-      expect(actions.courses.create.calledOnce).to.be.equal(true);
+      const event = {
+        preventDefault: spy(),
+        target: {
+          title: {value: 'title'},
+          description: {value: 'description'},
+        },
+      };
+      props.handleCreateCourse(event);
+      assert.calledOnce(actions.courses.create);
+      assert.calledWithExactly(actions.courses.create, 'title', 'description');
     });
     it('should map courses.clearErrors to clearErrors', () => {
       const context = {Meteor: {}};

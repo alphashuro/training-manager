@@ -7,12 +7,8 @@ export default function () {
   Meteor.publish('courses.classes', function (courseId) {
     check(courseId, String);
 
-    const userId = this.userId;
-    if (!userId) { return null; }
+    if (!this.userId) { return this.ready(); }
 
-    const selector = {courseId};
-    const options = {};
-
-    return Classes.find(selector, options);
+    return Classes.find({courseId});
   });
 }

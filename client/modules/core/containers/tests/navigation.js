@@ -7,7 +7,6 @@ describe('core.containers.navitation', () => {
 	describe('composer', () => {
     const mockUser = {
       email: () => '',
-      org: () => ''
     };
     const mockCurrent = {
       path: ''
@@ -38,10 +37,9 @@ describe('core.containers.navitation', () => {
       assert.calledOnce(context().FlowRouter.current);
     });
 
-    it(`should pass the email and org on to onData`, () => {
+    it(`should pass the email on to onData`, () => {
       const user = stub().returns({
-        email: () => 'name@email.com',
-        org: () => 'org'
+        email: () => 'name@email.com'
       });
 
       const context = getContext({user, current: () => ({path: ''})});
@@ -49,7 +47,7 @@ describe('core.containers.navitation', () => {
 
       composer({context}, onData);
 
-      assert.calledWithExactly(onData, null, {email: 'name@email.com', org: 'org', path: ''});
+      assert.calledWithExactly(onData, null, {email: 'name@email.com', path: ''});
     });
 
     it(`should still pass the path on to onData if user has not loaded`, () => {

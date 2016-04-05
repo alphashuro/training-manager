@@ -7,14 +7,13 @@ import {Accounts} from 'meteor/accounts-base';
 
 export default function () {
   Meteor.methods({
-    'facilitators.create'({ name, phone, email, org } ) {
+    'facilitators.create'({ name, phone, email } ) {
 
       check(name, String);
       check(phone, String);
       check(email, String);
-      check(org, String);
 
-      if ( !name || !phone || !email || !org) {
+      if ( !name || !phone || !email ) {
         throw new Meteor.Error('args-missing', 'All fields are required');
       }
 
@@ -22,8 +21,7 @@ export default function () {
         email,
         profile: {
           name,
-          phone,
-          org
+          phone
         }
       };
 

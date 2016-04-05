@@ -1,6 +1,6 @@
 const {describe, it} = global;
 import {expect} from 'chai';
-import {spy, stub} from 'sinon';
+import {spy, stub, assert} from 'sinon';
 import {composer, depsMapper} from '../new_facilitator';
 
 describe('facilitators.containers.new_facilitator', () => {
@@ -34,7 +34,7 @@ describe('facilitators.containers.new_facilitator', () => {
 
       expect(props.context()).to.deep.equal(context);
     });
-    it('should map facilitators.create to create', () => {
+    it('should map handleCreateFacilitator to call facilitators.create', () => {
       const context = {Meteor: {}};
       const actions = {
         facilitators: {
@@ -44,8 +44,22 @@ describe('facilitators.containers.new_facilitator', () => {
       };
 
       const props = depsMapper(context, actions);
-      props.create();
-      expect(actions.facilitators.create.calledOnce).to.be.equal(true);
+      const facilitator = {
+        name: 'name',
+        email: 'email',
+        phone: 'phone',
+      };
+      const event = {
+        preventDefault: spy(),
+        target: {
+          name: {value: facilitator.name},
+          email: {value: facilitator.email},
+          phone: {value: facilitator.phone},
+        }
+      };
+      props.handleCreateFacilitator(event);
+      assert.calledOnce(actions.facilitators.create);
+      assert.calledWithExactly(actions.facilitators.create, facilitator);
     });
     it('should map facilitators.clearErrors to clearErrors', () => {
       const context = {Meteor: {}};

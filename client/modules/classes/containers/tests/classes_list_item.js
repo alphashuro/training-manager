@@ -1,7 +1,7 @@
 
 const {describe, it} = global;
 import {expect} from 'chai';
-import {stub, spy} from 'sinon';
+import {stub, spy, assert} from 'sinon';
 import {composer, depsMapper} from '../classes_list_item';
 
 describe('classes.containers.class_list_item', () => {
@@ -13,7 +13,7 @@ describe('classes.containers.class_list_item', () => {
 
       const context = () => ({Meteor});
       const _id = '1';
-
+ 
       composer({context, _id});
 
       expect(Meteor.subscribe.calledOnce).to.be.equal(true);
@@ -53,29 +53,44 @@ describe('classes.containers.class_list_item', () => {
       const context = {Meteor: {}, Collections: {}};
       const actions = {classes: {remove: spy(), update: spy()}};
 
-      const map = depsMapper(context, actions);
-      expect(map.context).to.be.a('function');
-      expect(map.context()).to.deep.equal(context);
+      const props = depsMapper(context, actions);
+      expect(props.context).to.be.a('function');
+      expect(props.context()).to.deep.equal(context);
     });
 
-    it('correctly maps remove', () => {
+    it('should map handleRemove to remove the given id', () => {
       const context = {Meteor: {}, Collections: {}};
       const actions = {classes: {remove: spy(), update: spy()}};
 
-      const map = depsMapper(context, actions);
-      expect(map.remove).to.be.a('function');
-      map.remove();
-      expect(actions.classes.remove.calledOnce).to.be.equal(true);
+      const props = depsMapper(context, actions);
+      expect(props.handleRemove).to.be.a('function');
+      props.handleRemove('id');
     });
 
-    it('correctly maps update', () => {
+    it('should map handleUpdate to update given id with passed values from event target', () => {
       const context = {Meteor: {}, Collections: {}};
       const actions = {classes: {remove: spy(), update: spy()}};
 
-      const map = depsMapper(context, actions);
-      expect(map.update).to.be.a('function');
-      map.update();
+      const props = depsMapper(context, actions);
+      expect(props.handleUpdate).to.be.a('function');
+      const event = {
+        preventDefault: spy(),
+        target: {
+          dummyProp: 'xyz',
+          title: {value: 'title'},
+          description: {value: 'description'},
+          duration: {value: 2},
+          price: {value :2},
+        },
+      };
+      props.handleUpdate('id', event);
       expect(actions.classes.update.calledOnce).to.be.equal(true);
+      assert.calledWithExactly(actions.classes.update, 'id', {
+        title: 'title',
+        description: 'description',
+        duration: 2,
+        price: 2
+      });
     });
   });
 });

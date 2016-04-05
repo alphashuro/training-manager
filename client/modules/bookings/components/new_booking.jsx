@@ -1,90 +1,55 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
-import { Row } from 'react-bootstrap';
-import { Col } from 'react-bootstrap';
-import { Button } from 'react-bootstrap';
-import { Alert } from 'react-bootstrap';
-import { PageHeader } from 'react-bootstrap';
-import { Input } from 'react-bootstrap';
+import { Row, Col, Button, Alert, PageHeader, Input } from 'react-bootstrap';
 
-class NewBooking extends React.Component {
-  getCoursesOptions() {
-    const {courses} = this.props;
-    return courses.map(course => (
-      <option
-      key={course._id}
-      value={course._id}>
-        {course.title}
-      </option>
-    ) );
-  }
+const NewBooking = ({error, courses, facilitators, handleCreateBooking}) => (
+  <div>
+    <PageHeader> New Booking </PageHeader>
+    <Row>
+      <Col md={ 6 } mdOffset={ 3 }>
+        {error ? <Alert bsStyle="danger">{error}</Alert> : null}
 
-  getFacilitatorsOptions() {
-    const {facilitators} = this.props;
-    return facilitators.map(facilitator => (
-      <option
-      key={facilitator._id}
-      value={facilitator._id}>
-        {facilitator.name}
-      </option>
-    ));
-  }
-
-  render() {
-    const {error} = this.props;
-
-    return (
-      <div>
-        <PageHeader >
-          <span>New Booking</span>
-        </PageHeader>
-        <Row >
-          <Col md={ 6 }
-               mdOffset={ 3 }
-               >
-            {error ? <Alert bsStyle="danger" >{error}</Alert> : null}
-
-            <Input
-              type="select"
-              ref="courseSelectRef"
-              name="courseSelect"
-              label="Select Course"
-              placeholder="Course"
-              >
-              { this.getCoursesOptions() }
-              </Input>
-            <Input
-              type="select"
-              ref="facilitatorSelectRef"
-              name="facilitatorSelect"
-              label="Select Facilitator"
-              placeholder="Facilitator"
-              >
-              { this.getFacilitatorsOptions() }
-            </Input>
-            <Button
-            className='save'
-            ref='saveRef'
-            onClick={ this._createBooking.bind(this) }
-            bsStyle="default"
+        <form name='new-booking' onSubmit={handleCreateBooking}>
+          <Input
+            type="select"
+            name="course"
+            label="Select Course"
+            placeholder="Course X..."
             >
-              <span>Save</span>
-            </Button>
-          </Col>
-        </Row>
-      </div>
-    );
-  }
+            {
+              courses.map(course => (
+                <option key={course._id} value={course._id}>
+                  {course.title}
+                </option>
+              ))
+            }
+            </Input>
+          <Input
+            type="select"
+            name="facilitator"
+            label="Select Facilitator"
+            placeholder="Facilitator Y..."
+            >
+            {
+              facilitators.map(facilitator => (
+                <option key={facilitator._id} value={facilitator._id}>
+                  {facilitator.name}
+                </option>
+              ))
+            }
+          </Input>
+          <Button type='submit' bsStyle="default"> Save </Button>
+        </form>
+      </Col>
+    </Row>
+  </div>
+);
 
-  _createBooking() {
-    const {create} = this.props;
-
-    const { courseSelectRef, facilitatorSelectRef } = this.refs;
-    const courseId = courseSelectRef.getValue();
-    const facilitatorId = facilitatorSelectRef.getValue();
-
-    create( courseId, facilitatorId );
-  }
-}
+NewBooking.propTypes = {
+  courses: PropTypes.array,
+  facilitators: PropTypes.array,
+  error: PropTypes.string,
+  handleCreateBooking: PropTypes.func.isRequired,
+};
 
 export default NewBooking;

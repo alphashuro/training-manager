@@ -1,6 +1,6 @@
 const {describe, it} = global;
 import {expect} from 'chai';
-import {stub, spy} from 'sinon';
+import {stub, spy, assert} from 'sinon';
 import {composer, depsMapper} from '../students_list_item';
 
 describe('students.containers.student_list_item', () => {
@@ -48,33 +48,50 @@ describe('students.containers.student_list_item', () => {
     });
   });
   describe('depsMapper', () => {
+    const getContext = () => ({Meteor: {}, Collections: {}});
+    const getActions = () => ({students: {remove: spy(), update: spy()}});
     it('correctly maps context', () => {
-      const context = {Meteor: {}, Collections: {}};
-      const actions = {students: {remove: spy(), update: spy()}};
+      const context = getContext();
+      const actions = getActions();
 
-      const map = depsMapper(context, actions);
-      expect(map.context).to.be.a('function');
-      expect(map.context()).to.deep.equal(context);
+      const props = depsMapper(context, actions);
+      expect(props.context).to.be.a('function');
+      expect(props.context()).to.deep.equal(context);
     });
 
-    it('correctly maps remove', () => {
-      const context = {Meteor: {}, Collections: {}};
-      const actions = {students: {remove: spy(), update: spy()}};
+    it(`should map handleRemove to call students.remove with given _id`, () => {
+      const context = getContext();
+      const actions = getActions();
 
-      const map = depsMapper(context, actions);
-      expect(map.remove).to.be.a('function');
-      map.remove();
-      expect(actions.students.remove.calledOnce).to.be.equal(true);
+      const props = depsMapper(context, actions);
+      expect(props.handleRemove).to.be.a('function');
+      props.handleRemove('id');
+      assert.calledWithExactly(actions.students.remove, 'id');
     });
 
-    it('correctly maps update', () => {
-      const context = {Meteor: {}, Collections: {}};
-      const actions = {students: {remove: spy(), update: spy()}};
+    it('should map handleUpdate to call students.update with values from event target', () => {
+      const context = getContext();
+      const actions = getActions();
 
-      const map = depsMapper(context, actions);
-      expect(map.update).to.be.a('function');
-      map.update();
-      expect(actions.students.update.calledOnce).to.be.equal(true);
+      const props = depsMapper(context, actions);
+      expect(props.handleUpdate).to.be.a('function');
+      const student = {
+        name: 'name',
+        phone: 'phone',
+        email: 'email',
+        ID: 'ID',
+      };
+      const event = {
+        preventDefault: spy(),
+        target: {
+          name: {value: student.name},
+          phone: {value: student.phone},
+          email: {value: student.email},
+          ID: {value: student.ID},
+        }
+      };
+      props.handleUpdate('id', event);
+      assert.calledWithExactly(actions.students.update, 'id', student);
     });
   });
 });

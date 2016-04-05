@@ -7,24 +7,16 @@ export default function () {
   Meteor.publish('bookings.sessions', function (bookingId) {
     check(bookingId, String);
 
-    const userId = this.userId;
-    if (!userId) { return null; }
+    if (!this.userId) { return this.ready(); }
 
-    const selector = {bookingId};
-    const options = {};
-
-    return Sessions.find(selector, options);
+    return Sessions.find({ bookingId });
   });
 
   Meteor.publishComposite('sessions.all', {
     find() {
-      const userId = this.userId;
-      if (!userId) { return null; }
+      if (!this.userId) { return this.ready(); }
 
-      const selector = {};
-      const options = {};
-
-      return Sessions.find(selector, options);
+      return Sessions.find();
     },
     children: [
       {
@@ -35,17 +27,20 @@ export default function () {
     ]
   });
 
-  Meteor.publish('sessions.single', function (sessionId) {
-    const userId = this.userId;
-    if (!userId) { return null; }
+  Meteor.publishComposite('sessions.single', function (_id) {
+    if (!this.userId) { return this.ready(); }
 
-    const selector = {_id: sessionId};
-    const options = {};
-
-    const sessionCursor = Sessions.find(selector, options);
-    const session = Sessions.findOne(selector);
-    const _classCursor = Classes.find(session.classId);
-
-    return [ sessionCursor, _classCursor ];
+    return {
+      find() {
+        return Sessions.find(_id);
+      },
+      children: [
+        {
+          find({classId}) {
+            return Classes.find(classId);
+          }
+        }
+      ]
+    }
   });
 }

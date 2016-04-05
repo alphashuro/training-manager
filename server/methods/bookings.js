@@ -5,23 +5,17 @@ import {check} from 'meteor/check';
 
 export default function () {
   Meteor.methods({
-    'bookings.create'({ _id, courseId, facilitatorId, org } ) {
+    'bookings.create'({ _id, courseId, facilitatorId } ) {
       check(_id, String);
 
       check(courseId, String);
       check(facilitatorId, String);
 
-      check(org, String);
-
-      if (!_id || !courseId || !facilitatorId || !org) {
+      if (!_id || !courseId || !facilitatorId ) {
         throw new Meteor.Error('args-missing', 'All fields are required');
       }
 
-      const studentIds = [];
-
-      // XXX: Do user authorization
-      const booking = {_id, courseId, facilitatorId, studentIds, org };
-      Bookings.insert(booking);
+      Bookings.insert({_id, courseId, facilitatorId, studentIds: [] });
 
       // Create sessions for the created booking;
       const classes = Classes.find({ courseId });
@@ -29,7 +23,7 @@ export default function () {
         let session = {
           classId: c._id,
           date: null,
-          bookingId: _id
+          bookingId: _id,
         };
 
         Sessions.insert(session);

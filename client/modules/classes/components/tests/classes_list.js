@@ -6,35 +6,31 @@ import {spy} from 'sinon';
 import ClassesList from '../classes_list.jsx';
 
 describe('classes.components.classes_list', () => {
+  const getProps = () => ({
+    error: null,
+    classesIds: ['1', '2'],
+    courseId: 'id',
+    handleAddClass: spy(),
+  });
   it('should render ClassesListItem for each id', () => {
-    const classesIds = [
-      '1', '2', '3'
-    ];
+    const props = getProps();
 
-    const el = shallow(<ClassesList classesIds={classesIds} />);
+    const el = shallow(<ClassesList {...props}/>);
     const items = el.find('ClassesListItem');
-    expect(items.length).to.be.equal(classesIds.length);
+    expect(items.length).to.be.equal(props.classesIds.length);
   });
   it('should render error when there is error', () => {
-    const err = 'oops';
+    const props = getProps();
+    props.error = 'oops';
 
-    const el = shallow(
-      <ClassesList error={err} classesIds={[]} />
-    );
-    const alert = el.find({children: err});
-    expect(alert.length).to.equal(1);
+    const el = shallow(<ClassesList {...props}/>);
+    expect(el.contains(props.error)).to.be.equal(true);
   });
-  it('should call addClass when .add is clicked', () => {
-    const props = {
-      addClass: spy(),
-      courseId: 'id',
-      classesIds: []
-    }
-    const el = shallow(
-      <ClassesList {...props} />
-    );
+  it('should call handleAddClass when .add is clicked', () => {
+    const props = getProps();
+    const el = shallow(<ClassesList {...props}/>);
     const add = el.find('.add');
     add.simulate('click');
-    expect(props.addClass.calledOnce).to.equal(true);
+    expect(props.handleAddClass.calledOnce).to.equal(true);
   });
 });

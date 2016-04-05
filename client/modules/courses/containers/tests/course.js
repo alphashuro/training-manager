@@ -1,27 +1,27 @@
 const {describe, it} = global;
 import {expect} from 'chai';
-import {spy, stub} from 'sinon';
+import {spy, stub, assert} from 'sinon';
 import {composer, depsMapper} from '../course.js';
 
 describe('courses.containers.course', () => {
   describe('composer', () => {
     it('should subscribe to courses.single with given courseId', () => {
-      const Meteor = { subscribe: spy() };
-      const courseId = '123';
+      const Meteor = { subscribe: stub().returns({
+        ready: () => false,
+      }) };
+      const courseId = 'id';
 
       const context = () => ({Meteor});
 
       composer({context, courseId});
 
-      expect(Meteor.subscribe.args[0].slice(0,2)).to.deep.equal([
-        'courses.single', courseId
-      ]);
-      expect(Meteor.subscribe.args[0][2]).to.be.a('function');
+      assert.calledWithExactly(Meteor.subscribe, 'courses.single', courseId);
     });
     describe('when subscription is ready', () => {
       it('should find and pass a course on to onData', () => {
-        const Meteor = { subscribe: stub() };
-        Meteor.subscribe.callsArg(2);
+        const Meteor = { subscribe: stub().returns({
+          ready: () => true,
+        }) };
         const courseId = '123';
         const course = {
           _id: '123',
@@ -48,8 +48,9 @@ describe('courses.containers.course', () => {
       });
       describe('if there is COURSE_ERROR', () => {
         it('should pass the error on to onData', () => {
-          const Meteor = { subscribe: stub() };
-          Meteor.subscribe.callsArg(2);
+          const Meteor = { subscribe: stub().returns({
+            ready: () => true,
+          }) };
           const courseId = '123';
           const course = {
             _id: '123',
@@ -90,7 +91,7 @@ describe('courses.containers.course', () => {
 
       expect(props.context()).to.deep.equal(context);
     });
-    it('should map courses.update to update', () => {
+    it('handleUpdate should call courses.update with id, title and description from event target', () => {
       const context = { Meteor: {} };
       const actions = {
         courses: {
@@ -100,10 +101,16 @@ describe('courses.containers.course', () => {
       };
 
       const props = depsMapper(context, actions);
+      const event = {
+        preventDefault: spy(),
+        target: {
+          title: {value: 'title'},
+          description: {value: 'description'},
+        },
+      };
+      props.handleUpdate('id', event);
 
-      props.update();
-
-      expect(actions.courses.update.calledOnce).to.be.equal(true);
+      assert.calledWithExactly(actions.courses.update, 'id', {title: 'title', description: 'description'});
     });
     it('should map courses.clearErrors to clearErrors', () => {
       const context = { Meteor: {} };

@@ -5,43 +5,25 @@ import {check} from 'meteor/check';
 
 export default function () {
   Meteor.publish('clients.list', function () {
-    const userId = this.userId;
-    if (!userId) { return null; }
+    if (!this.userId) { return this.ready(); }
+    if (!Users.findOne(this.userId)) { return this.ready(); }
 
-    const user = Users.findOne(userId);
-
-    const selector = {org: user.profile.org};
-    const options = {};
-
-    return Clients.find(selector, options);
+    return Clients.find();
   });
 
   Meteor.publish('clients.ids', function () {
-    const userId = this.userId;
-    if (!userId) { return null; }
+    if (!this.userId) { return this.ready(); }
+    if (!Users.findOne(this.userId)) { return this.ready(); }
 
-    const user = Users.findOne(userId);
-
-    const selector = {org: user.profile.org};
-    const options = { fields: { _id: 1 }};
-
-    return Clients.find(selector, options);
+    return Clients.find({}, { fields: { _id: 1 }});
   });
 
-  Meteor.publish('clients.single', function (clientId) {
-    check(clientId, String);
+  Meteor.publish('clients.single', function (_id) {
+    check(_id, String);
 
-    const userId = this.userId;
-    if (!userId) { return null; }
+    if (!this.userId) { return this.ready(); }
+    if (!Users.findOne(this.userId)) { return this.ready(); }
 
-    const user = Users.findOne(userId);
-
-    const selector = {
-      _id: clientId,
-      org: user.profile.org
-    };
-    const options = {};
-
-    return Clients.find(selector, options);
+    return Clients.find(_id);
   });
 }

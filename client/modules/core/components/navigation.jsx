@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import _ from 'underscore';
 
-const Navigation = ({handleLogout, email, org, path}) => {
+const Navigation = ({handleLogout, email, path}) => {
   /**
    * Returns the active key for the left nav buttons
    * '/' is in all paths so it will break the algorithm, so we test for it first and return quickly if it is the current path
@@ -13,14 +13,14 @@ const Navigation = ({handleLogout, email, org, path}) => {
     if (path === '/') {
       return 0;
     }
-    const paths = ['client', 'course', 'facilitator', 'booking'];
-    return _(paths).findIndex(p => path.includes(p)) + 1;
+    const paths = [/\/client/, /\/course/, /\/facilitator/, /\/booking/];
+    return _(paths).findIndex(p => p.test(path)) + 1;
   }
   return (
     <Navbar fixedTop>
       <Navbar.Header>
         <Navbar.Brand>
-          <a href="/">{org ? org : 'loading...'}</a>
+          <a href="/">Training</a>
         </Navbar.Brand>
         <Navbar.Toggle />
       </Navbar.Header>
@@ -34,7 +34,7 @@ const Navigation = ({handleLogout, email, org, path}) => {
         </Nav>
 
         <Nav pullRight>
-          <NavDropdown eventKey={1} title={ email } id='nav-dropdown'>
+          <NavDropdown eventKey={1} title={ email || '-' } id='nav-dropdown'>
             <MenuItem className='logout' eventKey={1.1} onClick={handleLogout}>
               Logout
             </MenuItem>
@@ -48,8 +48,7 @@ const Navigation = ({handleLogout, email, org, path}) => {
 Navigation.propTypes = {
   handleLogout: PropTypes.func.isRequired,
   path: PropTypes.string.isRequired,
-  email: PropTypes.string,
-  org: PropTypes.string
+  email: PropTypes.string
 };
 
 export default Navigation;

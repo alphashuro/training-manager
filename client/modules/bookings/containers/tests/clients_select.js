@@ -1,6 +1,6 @@
 const {describe, it} = global;
 import {expect} from 'chai';
-import {stub, spy} from 'sinon';
+import {stub, spy, assert} from 'sinon';
 import {composer, depsMapper} from '../clients_select';
 
 describe('bookings.containers.clients_select', () => {
@@ -59,15 +59,18 @@ describe('bookings.containers.clients_select', () => {
 
       expect(props.context()).to.deep.equal(context);
     });
-    it('should map bookingClients.select to props.select', () => {
+    it('should map handleClientSelected to call bookingClients.select with value from event target', () => {
       const context = { Meteor: {} };
       const actions = getActions();
 
       const props = depsMapper(context, actions);
-      props.select();
+      const event = {
+        target: {value: 'clientId'}
+      };
+      props.handleClientSelected(event);
 
-      expect(actions.bookingClients.select.calledOnce)
-      .to.be.equal(true);
+      assert.calledOnce(actions.bookingClients.select);
+      assert.calledWithExactly(actions.bookingClients.select, 'clientId');
     });
   });
 });

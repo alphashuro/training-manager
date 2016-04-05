@@ -5,20 +5,19 @@ import {check} from 'meteor/check';
 
 export default function () {
   Meteor.methods({
-    'clients.create'({ _id, name, phone, email, org } ) {
+    'clients.create'({ _id, name, phone, email } ) {
       check(_id, String);
 
       check(name, String);
       check(phone, String);
       check(email, String);
-      check(org, String);
 
-      if (!_id || !name || !phone || !email || !org) {
+      if (!_id || !name || !phone || !email ) {
         throw new Meteor.Error('args-missing', 'All fields are required');
       }
 
       // XXX: Do user authorization
-      const client = {_id, name, phone, email, org};
+      const client = {_id, name, phone, email};
       Clients.insert(client);
     },
     'clients.update'( _id, { name, phone, email}) {

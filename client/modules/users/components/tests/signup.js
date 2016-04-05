@@ -1,66 +1,42 @@
 const {describe, it} = global;
 import {expect} from 'chai';
-import {shallow, mount} from 'enzyme';
-import {spy, stub} from 'sinon';
+import {shallow, render} from 'enzyme';
+import {spy, stub, assert} from 'sinon';
 import Signup from '../signup.jsx';
 import React from 'react';
 
 describe('users.components.signup', () => {
+  const getProps = () => ({
+    error: null,
+    handleSignup: spy(),
+  });
   it('should show an error if there is error', () => {
-    const props = {
-      error: 'oops'
-    };
+    const props = getProps();
+    props.error = 'oops';
+    const el = render(<Signup {...props}/>);
 
+    expect(el.text()).to.contain(props.error);
+  });
+  it('form should have an email input', () => {
+    const props = getProps();
+    const el = render(<Signup {...props}/>);
+    const form = el.find('form[name="signup"]');
+
+    expect(form.find('input[name="email"]')).to.have.length(1);
+  });
+  it('form should have a password input', () => {
+    const props = getProps();
+    const el = render(<Signup {...props}/>);
+    const form = el.find('form[name="signup"]');
+
+    expect(form.find('input[name="password"]')).to.have.length(1);
+  });
+  it('should call handleSignup when form is submitted', () => {
+    const props = getProps();
     const el = shallow(<Signup {...props}/>);
-    expect(el.find('Alert').length).to.be.equal(1);
-  });
-  it('should have an email input', () => {
-    const el = mount(<Signup/>);
-    const emailRef = el.ref('emailRef');
-    expect(emailRef.length).to.be.equal(1);
-  });
-  it('should have a password input', () => {
-    const el = mount(<Signup/>);
-    const passwordRef = el.ref('passwordRef');
-    expect(passwordRef.length).to.be.equal(1);
-  });
-  it('should have an organization input', () => {
-    const el = mount(<Signup/>);
-    const orgRef = el.ref('orgRef');
-    expect(orgRef.length).to.be.equal(1);
-  });
-  it('should call signup with email, password and org when signupRef is clicked', () => {
-    const props = {
-      signup: spy()
-    };
+    const form = el.find('form[name="signup"]');
 
-    const el = mount(<Signup {...props} />);
-    const signupBtn = el.ref('signup');
-    expect(signupBtn.length).to.be.equal(1);
-
-    const emailRef = el.ref('emailRef').get(0);
-    const passwordRef = el.ref('passwordRef').get(0);
-    const orgRef = el.ref('orgRef').get(0);
-
-    emailRef.getValue = stub();
-    emailRef.getValue.returns('email@address.com');
-
-    passwordRef.getValue = stub();
-    passwordRef.getValue.returns('password');
-
-    orgRef.getValue = stub();
-    orgRef.getValue.returns('org');
-
-    signupBtn.simulate('click');
-    expect(props.signup.calledOnce).to.be.equal(true);
-    const args = props.signup.args[0];
-
-    expect(emailRef.getValue.calledOnce).to.be.equal(true);
-    expect(passwordRef.getValue.calledOnce).to.be.equal(true);
-    expect(orgRef.getValue.calledOnce).to.be.equal(true);
-
-    expect(args[0]).to.be.equal('email@address.com');
-    expect(args[1]).to.be.equal('password');
-    expect(args[2]).to.be.equal('org');
+    form.simulate('submit');
+    assert.calledOnce(props.handleSignup);
   });
 });

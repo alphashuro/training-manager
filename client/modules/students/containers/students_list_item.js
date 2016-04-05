@@ -15,8 +15,21 @@ export const composer = ({context, studentId}, onData) => {
 export const depsMapper = function (context, actions) {
   const props = {};
   props.context = () => context;
-  props.remove = actions.students.remove;
-  props.update = actions.students.update;
+
+  props.handleRemove = (_id) => actions.students.remove(_id);
+
+  props.handleUpdate = (_id, e) => {
+    e.preventDefault();
+    const form = e.target;
+
+    const name = form.name.value;
+    const phone = form.phone.value;
+    const email = form.email.value;
+    const ID = form.ID.value;
+
+    actions.students.update(_id, {name, phone, email, ID});
+  };
+
   return props;
 };
 

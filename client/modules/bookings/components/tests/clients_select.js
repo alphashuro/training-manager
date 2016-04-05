@@ -12,27 +12,23 @@ describe('bookings.components.clients_select', () => {
       {_id: 'id2', name: 'name2'},
       {_id: 'id3', name: 'name3'}
     ],
-    select: spy()
+    handleClientSelected: spy()
   });
   it('should render a select with options of the clients given', () => {
     const props = getProps();
     const el = shallow(<ClientsSelect {...props}/>);
 
-    const sel = el.find('[name="clientSelect"]');
+    const sel = el.render().find('select[name="client"]');
 
     expect(sel).to.have.length(1);
     expect(sel.find('option')).to.have.length(3);
   });
   describe('the options', () => {
-    it(`should render the client's name,
-      and have _id as value`, () => {
+    it(`should render the client's name, and have _id as value`, () => {
       const props = getProps();
       const el = shallow(<ClientsSelect {...props}/>);
-      const client1 = props.clients[0];
-      const option = <option
-        value={client1._id}>
-          {client1.name}
-        </option>;
+      const {_id, name} = props.clients[0];
+      const option = <option value={_id}> {name} </option>;
 
       expect(el.contains(option)).to.be.equal(true);
     });
@@ -42,13 +38,8 @@ describe('bookings.components.clients_select', () => {
     const props = getProps();
     const el = shallow(<ClientsSelect {...props}/>);
 
-    el.find('[name="clientSelect"]').simulate('change', {
-      target: {
-        value: props.clients[1]._id
-      }
-    });
+    el.find('[name="client"]').simulate('change');
 
-    expect(props.select.calledOnce).to.be.equal(true);
-    expect(props.select.args[0][0]).to.deep.equal(props.clients[1]._id)
+    expect(props.handleClientSelected.calledOnce).to.be.equal(true);
   });
 });

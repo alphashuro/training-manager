@@ -8,9 +8,8 @@ export default {
     LocalState.set('FACILITATOR_ERROR', null);
 
     const user = Meteor.user();
-    const org = user.profile.org;
 
-    Meteor.call( 'facilitators.create', { name, phone, email, org }, (error, id) => {
+    Meteor.call( 'facilitators.create', { name, phone, email }, (error, id) => {
       if (error) {
         LocalState.set('FACILITATOR_ERROR', error.reason);
       } else {

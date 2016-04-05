@@ -1,6 +1,6 @@
 const {describe, it} = global;
 import {expect} from 'chai';
-import {stub, spy} from 'sinon';
+import {stub, spy, assert} from 'sinon';
 import {composer, depsMapper} from '../new_booking';
 
 describe('bookings.containers.new_booking', () => {
@@ -71,15 +71,21 @@ describe('bookings.containers.new_booking', () => {
 
       expect(props.context()).to.deep.equal(context);
     });
-    it('should map bookings.create to props.create', () => {
+    it('should map handleCreateBooking to call actions.bookings.create with course and facilitator from event target', () => {
       const context = { Meteor: {} };
       const actions = getActions();
 
       const props = depsMapper(context, actions);
-      props.create();
-
-      expect(actions.bookings.create.calledOnce)
-      .to.be.equal(true);
+      const event = {
+        preventDefault: spy(),
+        target: {
+          course: {value:'courseId'},
+          facilitator: {value:'facilitatorId'},
+        },
+      };
+      props.handleCreateBooking(event);
+      assert.calledOnce(actions.bookings.create);
+      assert.calledWithExactly(actions.bookings.create, 'courseId', 'facilitatorId');
     });
     it('should map bookings.clearErrors to props.clearErrors', () => {
       const context = { Meteor: {} };

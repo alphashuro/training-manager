@@ -1,5 +1,5 @@
 const {describe, it} = global;
-import {spy, stub} from 'sinon';
+import {spy, stub, assert} from 'sinon';
 import {expect} from 'chai';
 import {composer, depsMapper} from '../signup';
 
@@ -29,26 +29,39 @@ describe('users.containers.signup', () => {
     });
   });
   describe('depsMapper', () => {
+    const getActions = () => ({
+      auth: {
+        signup: spy(),
+        clearSignupErrors: spy(),
+      }
+    });
     it('correctly maps context', () => {
       const context = {Meteor: {}};
-      const actions = {auth: {signup: spy(), clearSignupErrors: spy()}};
+      const actions = getActions();
 
       const props = depsMapper(context, actions);
 
       expect(props.context()).to.deep.equal(context);
     });
-    it('correctly maps signup', () => {
+    it(`handleSignup calls auth.signup with event target's email and password`, () => {
       const context = {};
-      const actions = {auth: {signup: spy(), clearSignupErrors: spy()}};
+      const actions = getActions();
 
       const props = depsMapper(context, actions);
-      props.signup();
+      const event = {
+        preventDefault: spy(),
+        target: {
+          email: {value: 'email'},
+          password: {value: 'password'},
+        }
+      };
+      props.handleSignup(event);
 
-      expect(actions.auth.signup.calledOnce).to.be.equal(true);
+      assert.calledWithExactly(actions.auth.signup, 'email', 'password');
     });
     it('correctly maps clearSignupErrors', () => {
       const context = {};
-      const actions = {auth: {signup: spy(), clearSignupErrors: spy()}};
+      const actions = getActions();
 
       const props = depsMapper(context, actions);
       props.clearErrors();

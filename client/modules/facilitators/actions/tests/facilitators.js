@@ -49,7 +49,10 @@ describe('facilitators.actions.facilitators', () => {
     });
 
     it('should clear older LocalState for FACILITATOR_ERROR', () => {
-      const Meteor = {uuid: spy(), call: spy(), user: stub().returns({profile: {org: 'org'}})};
+      const Meteor = {
+        uuid: spy(),
+        call: spy(),
+        user: spy()};
       const LocalState = {set: spy()};
       const FlowRouter = {go: spy()};
       const facilitator = {
@@ -65,11 +68,7 @@ describe('facilitators.actions.facilitators', () => {
     it('should call Meteor.call to save the facilitator', () => {
       const Meteor = {
         call: spy(),
-        user: () => ({
-          profile: {
-            org: 'org'
-          }
-        })
+        user: spy(),
       };
       const LocalState = {set: spy()};
       const FlowRouter = {go: spy()};
@@ -87,7 +86,6 @@ describe('facilitators.actions.facilitators', () => {
         name: 'name',
         phone: 'phone',
         email: 'email',
-        org: 'org'
       });
       expect(methodArgs[2]).to.be.a('function');
     });
@@ -96,11 +94,7 @@ describe('facilitators.actions.facilitators', () => {
       const id = '1';
       const Meteor = {
         call: stub(),
-        user: () => ({
-          profile: {
-            org: 'org'
-          }
-        })
+        user: spy(),
       };
       const LocalState = {set: spy()};
       const FlowRouter = {go: spy()};
@@ -122,11 +116,7 @@ describe('facilitators.actions.facilitators', () => {
         it('should set FACILITATOR_ERROR with the error message', () => {
           const Meteor = {
             call: stub(),
-            user: () => ({
-              profile: {
-                org: 'org'
-              }
-            })
+            user: spy(),
           };
           const LocalState = {set: spy()};
           const FlowRouter = {go: spy()};
@@ -241,7 +231,6 @@ describe('facilitators.actions.facilitators', () => {
     it('should call Meteor.call with the email to invite', () => {
       const LocalState = {set: spy()};
       const Meteor = {call: spy(), user: stub()};
-      Meteor.user.returns({ profile: { org: 'an-org' }});
 
       actions.invite({LocalState, Meteor}, 'id');
       const args = Meteor.call.args[0];
@@ -255,7 +244,6 @@ describe('facilitators.actions.facilitators', () => {
       describe('if there is error', () => {
         it('should set FACILITATOR_ERROR with the error', () => {
           const Meteor = {call: stub(), user: stub()};
-          Meteor.user.returns({profile: { org: 'an-org' }});
           const err = {reason: 'oops'};
           Meteor.call.callsArgWith(2, err);
           const LocalState = {set: spy()};

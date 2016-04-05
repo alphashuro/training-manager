@@ -1,56 +1,48 @@
 const {describe, it} = global;
 import {expect} from 'chai';
-import {spy, stub} from 'sinon';
-import {shallow, mount} from 'enzyme';
+import {spy, stub, assert} from 'sinon';
+import {shallow, render} from 'enzyme';
 import Login from '../login.jsx';
 import React from 'react';
 
 describe('users.components.login', () => {
+  const getProps = () => ({
+    error: null,
+    handleLogin: spy(),
+  });
   it('should show error if there is error', () => {
-    const props = {
-      error: 'oops'
-    };
+    const props = getProps();
+    props.error = 'oops';
+    const el = render(<Login {...props}/>);
 
-    const el = shallow(<Login {...props}/>);
-    const alert = el.find('Alert');
-    expect(alert.length).to.be.equal(1);
+    expect(el.text()).to.contain(props.error);
   });
 
-  it('should have an email input', () => {
-    const el = mount(<Login/>);
-    const emailRef = el.ref('emailRef');
-    expect(emailRef.length).to.be.equal(1);
+  it('form should have an email input', () => {
+    const props = getProps();
+    const el = render(<Login {...props}/>);
+    const form = el.find('form[name="login"]');
+
+    const emailInput = form.find(`input[name=email]`);
+
+    expect(emailInput).to.have.length(1);
   });
-  it('should have a password input', () => {
-    const el = mount(<Login/>);
-    const passwordRef = el.ref('passwordRef');
-    expect(passwordRef.length).to.be.equal(1);
+  it('form should have a password input', () => {
+    const props = getProps();
+    const el = render(<Login {...props}/>);
+    const form = el.find('form[name="login"]');
+
+    const passwordInput = form.find('input[name=password]');
+
+    expect(passwordInput).to.have.length(1);
   });
-  it('should call login with email and password when .login is clicked', () => {
-    const props = {
-      login: spy()
-    };
+  it('should call handleLogin when form is submitted', () => {
+    const props = getProps();
 
-    const el = mount(<Login {...props} />);
-    const loginBtn = el.ref('login');
-    expect(loginBtn.length).to.be.equal(1);
-    const emailRef = el.ref('emailRef').get(0);
-    const passwordRef = el.ref('passwordRef').get(0);
+    const el = shallow(<Login {...props} />);
 
-    emailRef.getValue = stub();
-    emailRef.getValue.returns('email@address.com');
+    el.find('form[name="login"]').simulate('submit');
 
-    passwordRef.getValue = stub();
-    passwordRef.getValue.returns('password');
-
-    loginBtn.simulate('click');
-    expect(props.login.calledOnce).to.be.equal(true);
-    const args = props.login.args[0];
-
-    expect(emailRef.getValue.calledOnce).to.be.equal(true);
-    expect(passwordRef.getValue.calledOnce).to.be.equal(true);
-
-    expect(args[0]).to.be.equal('email@address.com');
-    expect(args[1]).to.be.equal('password');
+    expect(props.handleLogin.calledOnce).to.be.equal(true);
   });
 });

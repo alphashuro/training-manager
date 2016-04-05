@@ -5,7 +5,6 @@ import { Roles } from 'meteor/alanning:roles';
 const users = [
   {
     profile: {
-      org: 'aepit',
       role: 'admin'
     },
     email: 'alpha@aepit.co.za',
@@ -19,14 +18,12 @@ const clients = [
     name: 'Client 1',
     email: 'admin@client1.com',
     phone: '016 924 9083',
-    org: 'aepit'
   },
   {
     _id: '2',
     name: 'Client 2',
     email: 'admin@client2.com',
     phone: '016 924 3423',
-    org: 'aepit'
   }
 ];
 const students = [
@@ -62,13 +59,11 @@ const courses = [
     _id: '1',
     title: 'Course 1',
     description: 'A course course like',
-    org: 'aepit'
   },
   {
     _id: '2',
     title: 'Course 2',
     description: 'A course yet course like',
-    org: 'aepit'
   }
 ];
 const classes = [
@@ -113,7 +108,7 @@ const facilitators = [
     profile: {
       name: 'Alpha Shuro',
       phone: '073 790 7955',
-      org: 'aepit'
+
     }
   },
   {
@@ -122,7 +117,7 @@ const facilitators = [
     profile: {
       name: 'Anoruda Surisipala',
       phone: '012 243 3425',
-      org: 'aepit'
+
     }
   }
 ];
@@ -135,7 +130,6 @@ const bookings = [
     studentIds: [
       '1', '2'
     ],
-    org: 'aepit'
   },
   {
     _id: '2',
@@ -144,7 +138,6 @@ const bookings = [
     studentIds: [
       '3', '4'
     ],
-    org: 'aepit'
   },
   {
     _id: '3',
@@ -153,7 +146,6 @@ const bookings = [
     studentIds: [
       '1', '2', '3', '4'
     ],
-    org: 'aepit'
   }
 ];
 const sessions = [
