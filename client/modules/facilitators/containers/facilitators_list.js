@@ -8,7 +8,7 @@ export const composer = ({context}, onData) => {
 
   if (sub.ready()) {
     const facilitatorIds = Collections.Users
-      .find()
+      .find({ roles: 'facilitator' })
       .fetch()
       .map(f => f._id);
     const error = LocalState.get('FACILITATOR_ERROR');
