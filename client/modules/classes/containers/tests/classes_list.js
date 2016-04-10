@@ -5,7 +5,7 @@ import {composer, depsMapper} from '../classes_list';
 
 describe('classes.containers.classes_list', () => {
   describe('composer', () => {
-    it('subscribes to classes.ids', () => {
+    it('subscribes to course.classes.ids', () => {
       const Meteor = {subscribe: stub()};
       Meteor.subscribe.returns({ready: () => false});
       const courseId = 'id';
@@ -14,7 +14,7 @@ describe('classes.containers.classes_list', () => {
       composer({context, courseId});
       const args = Meteor.subscribe.args[0];
 
-      expect(args[0]).to.be.equal('classes.ids');
+      expect(args[0]).to.be.equal('course.classes.ids');
       expect(args[1]).to.be.equal('id');
     });
     describe('after subscribing', () => {

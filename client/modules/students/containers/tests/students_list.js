@@ -6,7 +6,7 @@ import {depsMapper} from '../students_list';
 
 describe('students.containers.students_list', () => {
   describe('composer', () => {
-    it('should subscribe to clients.students.ids', () => {
+    it('should subscribe to client.students.ids', () => {
       const Meteor = {subscribe: stub()};
       Meteor.subscribe.returns({ready: () => false});
       const clientId = 'id';
@@ -14,7 +14,7 @@ describe('students.containers.students_list', () => {
 
       composer({context, clientId});
       expect(Meteor.subscribe.args[0]).to.deep.equal([
-        'clients.students.ids', clientId
+        'client.students.ids', clientId
       ]);
     });
 

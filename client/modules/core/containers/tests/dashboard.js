@@ -5,7 +5,7 @@ import {composer} from '../dashboard';
 
 describe('core.containers.dashboard', () => {
   	describe('composer', () => {
-    	it('should subscribe to bookings.list', () => {
+    	it('should subscribe to bookings.coming_up', () => {
       	const Meteor = {subscribe: stub()};
       	Meteor.subscribe.returns({ready: () => false});
         const context = () => ({Meteor});
@@ -13,7 +13,7 @@ describe('core.containers.dashboard', () => {
       	composer({context});
 
       	expect(Meteor.subscribe.args[0]).to.deep.equal([
-        	'bookings.list'
+        	'bookings.coming_up'
       ]);
     });
   });
