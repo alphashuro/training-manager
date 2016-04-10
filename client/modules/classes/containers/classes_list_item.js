@@ -39,4 +39,6 @@ const Container = composeAll(
   useDeps(depsMapper)
 )(ClassesListItem);
 
+Container.displayName = 'ClassesListItem';
+
 export default Container;
