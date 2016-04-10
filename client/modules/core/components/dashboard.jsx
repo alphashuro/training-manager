@@ -9,10 +9,10 @@ const Dashboard = ({}) => (
     </PageHeader>
     <Row>
       <Col md={6}>
-
+        <PageHeader>Coming up</PageHeader>
       </Col>
       <Col md={6}>
-
+        <PageHeader>Stats this month</PageHeader>
       </Col>
     </Row>
   </Panel>
