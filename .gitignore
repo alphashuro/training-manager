@@ -2,3 +2,4 @@ node_modules
 *.log
 deployment_token.json
 build
+.env
