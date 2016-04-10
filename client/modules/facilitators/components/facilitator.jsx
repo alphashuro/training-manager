@@ -30,7 +30,7 @@ const Facilitator = ({ error, facilitator: { _id, name, phone, email }, handleUp
               <Input type="text" name="email"
                 placeholder="email@address.com"
                 label="Email"
-                value={email} />
+                value={email} readOnly/>
               <Button type="submit" bsStyle="default"> Save </Button>
             </form>
           </Panel>
