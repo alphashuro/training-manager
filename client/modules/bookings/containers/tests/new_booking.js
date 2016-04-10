@@ -5,15 +5,10 @@ import {composer, depsMapper} from '../new_booking';
 
 describe('bookings.containers.new_booking', () => {
   describe('composer', () => {
-    const getCollections = (courses, facilitators) => ({
+    const getCollections = (courses) => ({
       Courses: {
         find: () => ({
           fetch: () => courses
-        })
-      },
-      Facilitators: {
-        find: () => ({
-          fetch: () => facilitators
         })
       }
     });
@@ -28,7 +23,7 @@ describe('bookings.containers.new_booking', () => {
         'courses.list'
       ]);
     });
-    it('should call onData with courses and facilitators', () => {
+    it('should call onData with courses', () => {
       const LocalState = {get: () => null};
       const Meteor = {
         subscribe: () => ({ready: () => true})
@@ -37,11 +32,7 @@ describe('bookings.containers.new_booking', () => {
         {_id:'c1'},
         {_id:'c2'}
       ];
-      const facilitators = [
-        {_id:'f1'},
-        {_id:'c2'}
-      ];
-      const Collections = getCollections(courses, facilitators);
+      const Collections = getCollections(courses);
       const clearErrors = spy();
 
       const context = () => ({Meteor, Collections, LocalState});
@@ -52,7 +43,6 @@ describe('bookings.containers.new_booking', () => {
       expect(onData.args[0][1]).to.deep.equal({
         error: null,
         courses,
-        facilitators
       });
     });
   });
@@ -71,7 +61,7 @@ describe('bookings.containers.new_booking', () => {
 
       expect(props.context()).to.deep.equal(context);
     });
-    it('should map handleCreateBooking to call actions.bookings.create with course and facilitator from event target', () => {
+    it('should map handleCreateBooking to call actions.bookings.create with course from event target', () => {
       const context = { Meteor: {} };
       const actions = getActions();
 
@@ -80,12 +70,11 @@ describe('bookings.containers.new_booking', () => {
         preventDefault: spy(),
         target: {
           course: {value:'courseId'},
-          facilitator: {value:'facilitatorId'},
         },
       };
       props.handleCreateBooking(event);
       assert.calledOnce(actions.bookings.create);
-      assert.calledWithExactly(actions.bookings.create, 'courseId', 'facilitatorId');
+      assert.calledWithExactly(actions.bookings.create, 'courseId');
     });
     it('should map bookings.clearErrors to props.clearErrors', () => {
       const context = { Meteor: {} };

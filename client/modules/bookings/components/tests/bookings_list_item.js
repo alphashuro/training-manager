@@ -12,9 +12,6 @@ describe('bookings.components.bookings_list_item', () => {
       course: {
         title: 'c-1'
       },
-      facilitator: {
-        name: 'f-1'
-      },
       students: [
         {},
         {}
@@ -30,9 +27,6 @@ describe('bookings.components.bookings_list_item', () => {
       _id: '1',
       course: {
         title: 'c-1'
-      },
-      facilitator: {
-        name: 'f-1'
       },
       students: [
         {},

@@ -1,13 +1,10 @@
 import React from 'react';
 import {Button} from 'react-bootstrap';
 
-export const BookingsListItem = ({_id, course, facilitator, students, onRemove}) => (
+export const BookingsListItem = ({_id, course, students, onRemove}) => (
   <tr>
     <td>
       {course.title}
-    </td>
-    <td>
-      {facilitator.name}
     </td>
     <td>
       {students.length}

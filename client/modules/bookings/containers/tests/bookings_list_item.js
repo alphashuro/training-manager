@@ -13,7 +13,6 @@ describe('bookings.containers.bookings_list_item', () => {
     const getBooking = () => ({
       _id: 'id',
       course: () => ({}),
-      facilitator: () => ({}),
       students: () => []
     });
     it('should subscribe to bookings.single', () => {
@@ -27,7 +26,7 @@ describe('bookings.containers.bookings_list_item', () => {
         'bookings.single', 'id'
       ]);
     });
-    it('should call onData with booking, course and facilitator', () => {
+    it('should call onData with booking, course', () => {
       const Meteor = {
         subscribe: stub().returns({ready: () => true})
       };
@@ -43,7 +42,6 @@ describe('bookings.containers.bookings_list_item', () => {
       expect(onData.args[0][1]).to.deep.equal({
         ...booking,
         course: booking.course(),
-        facilitator: booking.facilitator(),
         students: booking.students()
       });
     });

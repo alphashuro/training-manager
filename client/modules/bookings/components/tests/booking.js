@@ -13,9 +13,6 @@ describe('bookings.components.booking', () => {
     },
     course: {
       title: 'title'
-    },
-    facilitator: {
-      name: 'name'
     }
   });
 
@@ -33,13 +30,6 @@ describe('bookings.components.booking', () => {
     const el = shallow(<Booking {...props}/>);
 
     expect(el.find({value: props.course.title}).length).to.be.equal(1);
-  });
-  it('should show the facilitator name', () => {
-    const props = getProps();
-
-    const el = shallow(<Booking {...props}/>);
-
-    expect(el.find({value: props.facilitator.name}).length).to.be.equal(1);
   });
   it('should show a StudentsList component', () => {
     const props = getProps();

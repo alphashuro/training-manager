@@ -10,10 +10,9 @@ export const composer = ({context, bookingId}, onData) => {
   if (sub.ready()) {
     const booking = Collections.Bookings.findOne(bookingId);
     const course = booking.course();
-    const facilitator = booking.facilitator();
     const students = booking.students();
 
-    onData(null, {...booking, course, facilitator, students});
+    onData(null, {...booking, course, students});
   }
 };
 

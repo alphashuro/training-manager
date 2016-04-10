@@ -21,7 +21,7 @@ describe('bookings.containers.booking', () => {
         'bookings.single', 'id'
       ]);
     });
-    it('should call onData with booking, course and facilitator', () => {
+    it('should call onData with booking, course', () => {
       const LocalState = {get: stub().returns(null)};
       const Meteor = {
         subscribe: stub().returns({ready: () => true})
@@ -29,7 +29,6 @@ describe('bookings.containers.booking', () => {
       const booking = {
         _id: 'id',
         course: () => ({}),
-        facilitator: () => ({})
       };
       const Collections = getCollections(booking);
       const clearErrors = spy();
@@ -42,7 +41,6 @@ describe('bookings.containers.booking', () => {
       expect(onData.args[0][1]).to.deep.equal({
         booking,
         course: booking.course(),
-        facilitator: booking.facilitator(),
         error: null
       });
     });
@@ -54,7 +52,6 @@ describe('bookings.containers.booking', () => {
       const booking = {
         _id: 'id',
         course: () => ({}),
-        facilitator: () => ({})
       };
       const Collections = getCollections(booking);
       const clearErrors = spy();

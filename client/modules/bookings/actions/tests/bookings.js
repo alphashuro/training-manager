@@ -15,16 +15,6 @@ describe('bookings.actions', () => {
       expect(args[1]).to.match(/required/);
     });
 
-    it('should reject if facilitatorId is not given', () => {
-      const LocalState = {set: spy()};
-
-      actions.create({LocalState}, 'title', null);
-      const args = LocalState.set.args[0];
-      expect(args[0]).to.be.equal('BOOKING_ERROR');
-      expect(args[1]).to.match(/facilitator/i);
-      expect(args[1]).to.match(/required/);
-    });
-
     it('should set BOOKING_ERROR to null', () => {
       const LocalState = {set: spy()};
       const Meteor = {call: spy(), uuid: spy(), user: stub()};
@@ -35,19 +25,18 @@ describe('bookings.actions', () => {
     });
 
     it(`should call Meteor.call
-        with options { _id, courseId, facilitatorId }
+        with options { _id, courseId }
         and a cb function`, () => {
       const LocalState = {set: spy()};
       const Meteor = {call: spy(), uuid: stub(), user: stub()};
       Meteor.uuid.returns('id');
 
-      actions.create({LocalState, Meteor}, 'courseId', 'facilitatorId');
+      actions.create({LocalState, Meteor}, 'courseId');
       const args = Meteor.call.args[0];
       expect(args[0]).to.be.equal('bookings.create');
       expect(args[1]).to.deep.equal({
         _id: 'id',
         courseId: 'courseId',
-        facilitatorId: 'facilitatorId',
       });
       expect(args[2]).to.be.a('function');
     });
@@ -61,7 +50,7 @@ describe('bookings.actions', () => {
           const err = { reason: 'oops' };
           Meteor.call.callsArgWith(2, err);
 
-          actions.create({LocalState, Meteor}, 'courseId', 'facilitatorId');
+          actions.create({LocalState, Meteor}, 'courseId');
           const args = LocalState.set.args[1];
 
           expect(args).to.deep.equal(['BOOKING_ERROR', err.reason]);

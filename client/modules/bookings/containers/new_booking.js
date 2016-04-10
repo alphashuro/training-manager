@@ -5,13 +5,11 @@ export const composer = ({context, clearErrors}, onData) => {
   const {Meteor, Collections, LocalState} = context();
 
   const coursesSub = Meteor.subscribe('courses.list');
-  const facilitatorsSub = Meteor.subscribe('facilitators.list');
 
-  if (coursesSub.ready() && facilitatorsSub.ready()) {
+  if (coursesSub.ready()) {
     const courses = Collections.Courses.find().fetch();
-    const facilitators = Collections.Facilitators.find().fetch();
     const error = LocalState.get('BOOKING_ERROR');
-    onData(null, {error, courses, facilitators});
+    onData(null, {error, courses});
   }
   // clearErrors when mounting
   return clearErrors;
@@ -24,8 +22,7 @@ export const depsMapper = (context, actions) => {
     e.preventDefault();
     const form = e.target;
     const courseId = form.course.value;
-    const facilitatorId = form.facilitator.value;
-    actions.bookings.create(courseId, facilitatorId);
+    actions.bookings.create(courseId);
   };
   props.clearErrors = actions.bookings.clearErrors;
   props.context = () => context;

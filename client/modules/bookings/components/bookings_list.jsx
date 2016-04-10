@@ -14,7 +14,6 @@ export const BookingsList = ({bookingIds}) => (
       <thead>
         <tr>
           <th>Course</th>
-          <th>Facilitator</th>
           <th>Students</th>
           <th>Actions</th>
         </tr>

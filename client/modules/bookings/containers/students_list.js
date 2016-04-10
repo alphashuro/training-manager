@@ -9,7 +9,7 @@ export const composer = ({context, clearErrors, bookingId}, onData) => {
 
   if (sub.ready()) {
     const booking = Collections.Bookings.findOne(bookingId);
-    const studentIds = booking.students().fetch().map(s => s._id);
+    const studentIds = booking.students().map(s => s._id);
     const error = LocalState.get('BOOKING_STUDENTS_ERROR');
     onData(null, {studentIds, error});
   }

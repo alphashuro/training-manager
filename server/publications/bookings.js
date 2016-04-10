@@ -3,7 +3,7 @@ import moment from 'moment';
 import {Meteor} from 'meteor/meteor';
 import {check} from 'meteor/check';
 
-import {Courses, Facilitators, Students} from '/lib/collections';
+import {Courses, Students} from '/lib/collections';
 
 export default function () {
   Meteor.publishComposite('bookings.list', {
@@ -17,11 +17,6 @@ export default function () {
       {
         find({courseId}) {
           return Courses.find( courseId );
-        }
-      },
-      {
-        find({facilitatorId}) {
-          return Facilitators.find( facilitatorId );
         }
       },
       {
@@ -80,11 +75,6 @@ export default function () {
         {
           find({courseId}) {
             return Courses.find(courseId);
-          }
-        },
-        {
-          find({facilitatorId}) {
-            return Facilitators.find(facilitatorId);
           }
         },
         {

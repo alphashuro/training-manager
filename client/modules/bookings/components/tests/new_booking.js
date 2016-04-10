@@ -9,10 +9,6 @@ describe('bookings.components.new_booking', () => {
   const getProps = () => ({
     handleCreateBooking: spy(),
     error: null,
-    facilitators: [
-      {_id: '1', name: 'f1'},
-      {_id: '2', name: 'f2'}
-    ],
     courses: [
       {_id: '1', name: 'c1'},
       {_id: '2', name: 'c2'}
@@ -37,15 +33,6 @@ describe('bookings.components.new_booking', () => {
     const form = el.find('form[name="new-booking"]')
 
     const sel = form.find('select[name="course"]');
-    expect(sel).to.have.length(1);
-    expect(sel.children()).to.have.length(2);
-  });
-  it('should show a select for given facilitators', () => {
-    const props = getProps();
-    const el = render(<NewBooking {...props}/>);
-    const form = el.find('form[name="new-booking"]')
-
-    const sel = el.find('select[name="facilitator"]');
     expect(sel).to.have.length(1);
     expect(sel.children()).to.have.length(2);
   });

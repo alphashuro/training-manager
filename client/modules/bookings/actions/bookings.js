@@ -1,18 +1,14 @@
 export default {
-  create({ Meteor, LocalState, FlowRouter }, courseId, facilitatorId ) {
+  create({ Meteor, LocalState, FlowRouter }, courseId ) {
     if (!courseId) {
       return LocalState.set('BOOKING_ERROR', 'Course selection is required!');
     }
-    if (!facilitatorId) {
-      return LocalState.set('BOOKING_ERROR', 'Facilitator selection is required!');
-    }
-
     LocalState.set('BOOKING_ERROR', null);
 
     const _id = Meteor.uuid();
     const user = Meteor.user();
 
-    Meteor.call( 'bookings.create', { _id, courseId, facilitatorId }, (error) => {
+    Meteor.call( 'bookings.create', { _id, courseId }, (error) => {
       if (error) {
         return LocalState.set('BOOKING_ERROR', error.reason);
       } else {

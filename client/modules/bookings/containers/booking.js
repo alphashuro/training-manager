@@ -11,10 +11,9 @@ export const composer = ({context, bookingId, clearErrors}, onData) => {
 
     const booking = Bookings.findOne(bookingId);
     const course = booking.course();
-    const facilitator = booking.facilitator();
     const error = LocalState.get('BOOKING_ERROR');
 
-    const data = {booking, course, facilitator, error};
+    const data = {booking, course, error};
 
     onData(null, data);
   };

@@ -5,17 +5,16 @@ import {check} from 'meteor/check';
 
 export default function () {
   Meteor.methods({
-    'bookings.create'({ _id, courseId, facilitatorId } ) {
+    'bookings.create'({ _id, courseId } ) {
       check(_id, String);
 
       check(courseId, String);
-      check(facilitatorId, String);
 
-      if (!_id || !courseId || !facilitatorId ) {
+      if (!_id || !courseId ) {
         throw new Meteor.Error('args-missing', 'All fields are required');
       }
 
-      Bookings.insert({_id, courseId, facilitatorId, studentIds: [] });
+      Bookings.insert({_id, courseId, studentIds: [] });
 
       // Create sessions for the created booking;
       const classes = Classes.find({ courseId });

@@ -22,7 +22,7 @@ describe('bookings.containers.bookings_list', () => {
         'bookings.ids'
       ]);
     });
-    it('should call onData with booking, course and facilitator', () => {
+    it('should call onData with booking, course', () => {
       const LocalState = {get: stub().returns(null)};
       const Meteor = {
         subscribe: stub().returns({ready: () => true})
