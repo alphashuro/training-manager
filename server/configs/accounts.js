@@ -1,5 +1,6 @@
 import {Accounts} from 'meteor/accounts-base';
 import {Meteor} from 'meteor/meteor';
+import {Users} from '/lib/collections';
 
 export default function () {
   Accounts.urls.enrollAccount = function (token) {
