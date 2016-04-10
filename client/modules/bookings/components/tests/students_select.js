@@ -1,7 +1,7 @@
 const {describe, it} = global;
 import React from 'react';
 import {spy, assert} from 'sinon';
-import {shallow, render, mount} from 'enzyme';
+import {shallow, render} from 'enzyme';
 import {expect} from 'chai';
 import StudentsSelect from '../students_select.jsx';
 
