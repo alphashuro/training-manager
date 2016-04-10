@@ -39,4 +39,4 @@ const Container = composeAll(
   useDeps(depsMapper)
 )(ClassesListItem);
 
-export default ClassesListItem;
+export default Container;
