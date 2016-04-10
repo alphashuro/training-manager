@@ -15,7 +15,7 @@
     "start": "meteor"
   },
   "author": "Alpha Shuro",
-  "devDependencies": {
+  "dependencies": {
     "babel-core": "6.x.x",
     "babel-plugin-react-require": "2.x.x",
     "babel-polyfill": "6.x.x",
@@ -27,9 +27,7 @@
     "eslint-plugin-react": "^3.15.0",
     "mocha": "2.x.x",
     "react-addons-test-utils": "^0.14.6",
-    "sinon": "1.17.x"
-  },
-  "dependencies": {
+    "sinon": "1.17.x",
     "babel-eslint": "^6.0.0",
     "babel-plugin-transform-class-properties": "^6.6.0",
     "babel-plugin-transform-runtime": "^6.7.5",
