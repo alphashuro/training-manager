@@ -12,7 +12,7 @@ export default function () {
     return Students.find({clientId});
   });
 
-  Meteor.publish('clients.students.ids', function (clientId) {
+  Meteor.publish('client.students.ids', function (clientId) {
     check(clientId, String);
 
     if (!this.userId) { return this.ready(); }

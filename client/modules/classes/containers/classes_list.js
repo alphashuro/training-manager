@@ -4,7 +4,7 @@ import {useDeps, composeWithTracker, composeAll} from 'mantra-core';
 export const composer = ({context, courseId, clearErrors}, onData) => {
   const {Meteor, Collections, LocalState} = context();
 
-  const sub = Meteor.subscribe('classes.ids', courseId);
+  const sub = Meteor.subscribe('course.classes.ids', courseId);
 
   if (sub.ready()) {
     const classesIds = Collections.Classes.find()
