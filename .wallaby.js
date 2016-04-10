@@ -14,12 +14,32 @@ module.exports = function (wallaby) {
     compilers: {
       '**/*.js*': wallaby.compilers.babel({
         babel: load('babel-core'),
-        presets: [ 'es2015', 'stage-0', 'react', 'meteor' ]
+        presets: [ 'es2015', 'stage-2', 'react' ]
       })
     },
     testFramework: 'mocha',
     env: {
       type: 'node'
+    },
+    setup: function( wallaby ) {
+      var jsdom = require('jsdom').jsdom;
+
+      var exposedProperties = [
+        'window', 'navigator', 'document'
+      ];
+
+      global.document = jsdom('');
+      global.window = document.defaultView;
+      Object.keys(document.defaultView).forEach((property) => {
+        if (typeof global[property] === 'undefined') {
+          exposedProperties.push(property);
+          global[property] = document.defaultView[property];
+        }
+      });
+      global.navigator = {
+        userAgent: 'node.js'
+      };
     }
   };
 };
+
