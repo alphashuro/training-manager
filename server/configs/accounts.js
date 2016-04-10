@@ -13,4 +13,15 @@ export default function () {
   Accounts.urls.verifyEmail = function (token) {
     return Meteor.absoluteUrl(`verify-email/${token}`);
   };
+
+  // Create a default admin user using ADMIN_USER and ADMIN_PASS environment variables
+  const email = process.env.TM_ADMIN_USER;
+  const password = process.env.TM_ADMIN_PASS;
+
+  const defaultUser = Accounts.findUserByEmail(email);
+
+  if (!defaultUser) {
+    const id = Accounts.createUser({ email, password });
+    Roles.addUsersToRoles(id, 'admin');
+  }
 }
