@@ -1,6 +1,7 @@
 import React from 'react';
 import {Table, PageHeader, Button} from 'react-bootstrap';
 import ClientsListItem from '../containers/clients_list_item';
+import EmptyRow from '../../util/components/EmptyRow.jsx';
 
 const ClientsList = ({clientIds}) => (
   <div>
@@ -19,11 +20,10 @@ const ClientsList = ({clientIds}) => (
       </thead>
       <tbody>
       {
-        clientIds.map( id => (
-          <ClientsListItem
-            key={id}
-            clientId={id} />
-      ))}
+        clientIds.length ? clientIds.map(
+          id => <ClientsListItem key={id} clientId={id} />
+        ) : <EmptyRow/>
+      }
       </tbody>
     </Table>
   </div>

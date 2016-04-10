@@ -1,6 +1,7 @@
 import React from 'react';
 import {Table, PageHeader, Button} from 'react-bootstrap';
 import BookingsListItem from '../containers/bookings_list_item';
+import EmptyRow from '../../util/components/EmptyRow.jsx';
 
 export const BookingsList = ({bookingIds}) => (
   <div>
@@ -20,12 +21,10 @@ export const BookingsList = ({bookingIds}) => (
       </thead>
       <tbody>
       {
-        bookingIds.map( id => (
-          <BookingsListItem
-            key={id}
-            bookingId={id}
-            />
-      ))}
+        bookingIds.length ? bookingIds.map(
+          id => <BookingsListItem key={id} bookingId={id}/>
+        ) : <EmptyRow/>
+      }
       </tbody>
     </Table>
   </div>
