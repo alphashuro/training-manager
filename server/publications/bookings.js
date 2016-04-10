@@ -1,5 +1,5 @@
 import {Bookings, Sessions, Users} from '/lib/collections';
-
+import moment from 'moment';
 import {Meteor} from 'meteor/meteor';
 import {check} from 'meteor/check';
 
@@ -34,6 +34,25 @@ export default function () {
         }
       }
     ]
+  });
+  // publish bookings with sessions coming up in a month
+  Meteor.publishComposite('bookings.coming_up', {
+    find() {
+      if (!this.userId) { return this.ready(); }
+      if (!Users.findOne(this.userId)) { return this.ready(); }
+
+      const now = new Date();
+      const aMonthFromNow = moment().add(1, 'months').toDate();
+
+      const bookingIds = Sessions.find({
+        date: {
+          $gt: now,
+          $lt: aMonthFromNow
+        }
+      }, { fields: { bookingId: 1 } }).fetch();
+
+      return Bookings.find({_id: { $in: bookingIds }});
+    }
   });
 
   Meteor.publishComposite('bookings.ids', function () {
