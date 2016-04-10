@@ -15,9 +15,9 @@ const Login = ({error, handleLogin}) => (
               Login
             </Button>
           </form>
-          <Button className='signup' bsStyle='default' href='/signup'>
+          {/*<Button className='signup' bsStyle='default' href='/signup'>
               Sign up
-          </Button>
+          </Button>*/}
         </Well>
       </Col>
     </Row>
