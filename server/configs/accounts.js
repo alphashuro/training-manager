@@ -1,5 +1,6 @@
 import {Accounts} from 'meteor/accounts-base';
 import {Meteor} from 'meteor/meteor';
+import {Users} from 'lib/collections';
 
 export default function () {
   Accounts.urls.enrollAccount = function (token) {
@@ -13,4 +14,17 @@ export default function () {
   Accounts.urls.verifyEmail = function (token) {
     return Meteor.absoluteUrl(`verify-email/${token}`);
   };
+
+  // Create a default admin user using ADMIN_USER and ADMIN_PASS environment variables
+  const email = process.env.ADMIN_USER;
+  const password = process.env.ADMIN_PASS;
+
+  const defaultUser = Accounts.findUserByEmail(email);
+
+  if (!defaultUser) {
+    const id = Accounts.createUser({
+      email, password
+    });
+    Roles.addUsersToRoles(id, 'admin');
+  }
 }
