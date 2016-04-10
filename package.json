@@ -11,7 +11,8 @@
     "deploy-staging": "meteor deploy aep-training",
     "deploy-production": "cd .deploy/production && mup deploy",
     "stage": "npm run deploy-staging",
-    "prod": "npm run deploy-production"
+    "prod": "npm run deploy-production",
+    "start": "meteor"
   },
   "author": "Alpha Shuro",
   "devDependencies": {
