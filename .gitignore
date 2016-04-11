@@ -3,3 +3,4 @@ node_modules
 deployment_token.json
 build
 .env
+.deploy
