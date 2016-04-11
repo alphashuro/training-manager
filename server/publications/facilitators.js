@@ -15,7 +15,7 @@ export default function () {
     if (!this.userId) { return this.ready(); }
     if (!Users.findOne(this.userId)) { return this.ready(); }
 
-    return Users.find({ roles: 'facilitator' }, { fields: { _id: 1 }});
+    return Users.find({ roles: 'facilitator' }, { fields: { _id: 1, roles: 1 }});
   });
 
   Meteor.publish('facilitators.single', function (_id) {
