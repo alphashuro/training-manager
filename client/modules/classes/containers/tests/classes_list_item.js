@@ -13,7 +13,7 @@ describe('classes.containers.class_list_item', () => {
 
       const context = () => ({Meteor});
       const _id = '1';
- 
+
       composer({context, _id});
 
       expect(Meteor.subscribe.calledOnce).to.be.equal(true);
@@ -67,7 +67,7 @@ describe('classes.containers.class_list_item', () => {
       props.handleRemove('id');
     });
 
-    it('should map handleUpdate to update given id with passed values from event target', () => {
+    it('should map handleUpdate to update given id with passed values from event target, converting duration and price to numbers', () => {
       const context = {Meteor: {}, Collections: {}};
       const actions = {classes: {remove: spy(), update: spy()}};
 
@@ -79,8 +79,8 @@ describe('classes.containers.class_list_item', () => {
           dummyProp: 'xyz',
           title: {value: 'title'},
           description: {value: 'description'},
-          duration: {value: 2},
-          price: {value :2},
+          duration: {value: '2'},
+          price: {value: '2'},
         },
       };
       props.handleUpdate('id', event);
