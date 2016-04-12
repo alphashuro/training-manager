@@ -11,4 +11,11 @@ export default function () {
 
     return Classes.find({courseId});
   });
+  Meteor.publish('classes.single', function(_id) {
+    check(_id, String);
+
+    if (!this.userId) { return this.ready(); }
+
+    return Classes.find(_id);
+  })
 }
