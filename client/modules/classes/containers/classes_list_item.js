@@ -25,7 +25,7 @@ export const depsMapper = (context, actions) => {
     const form = e.target;
     const values = {
       title: form.title.value,
-      description: form.duration.value,
+      description: form.description.value,
       duration: Number(form.duration.value),
       price: Number(form.price.value),
     }
