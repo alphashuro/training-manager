@@ -1,16 +1,23 @@
 import React, { PropTypes } from 'react';
 
+import { Grid, Row, Col, Well, Button, PageHeader, Input, Alert } from 'react-bootstrap';
+
 const Enroll = ({error, username, token, handleSubmit}) => (
-  <div>
-    <h2>Set your new password.</h2>
-    <p>{username}, Please set your new password.</p>
-    { error ? <p>{error}</p> : null}
-    <form name="enroll" onSubmit={handleSubmit.bind(null, token)}>
-      <input name="password" type="password" placeholder="new password"/>
-      <input name="confirm" type="password" placeholder="confirm password"/>
-      <button type="submit">Save</button>
-    </form>
-  </div>
+  <Grid>
+    <Row>
+      <Col md={6} mdOffset={3}>
+        <Well>
+          <PageHeader>Set your new password.<br/> <small>{username}</small></PageHeader>
+          { error ? <Alert bsStyle='danger'>{error}</Alert> : null}
+          <form name="enroll" onSubmit={handleSubmit.bind(null, token)}>
+            <Input name="password" type="password" placeholder="new password"/>
+            <Input name="confirm" type="password" placeholder="confirm password"/>
+            <Button type="submit" bsStyle='default'>Save</Button>
+          </form>
+        </Well>
+      </Col>
+    </Row>
+  </Grid>
 );
 
 Enroll.propTypes = {
