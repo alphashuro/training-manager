@@ -23,11 +23,12 @@ export const depsMapper = (context, actions) => {
   props.handleUpdate = (_id, e) => {
     e.preventDefault();
     const form = e.target;
-    const keys = ['title', 'description', 'duration', 'price'];
-    const values = _.mapObject(
-      _.pick(form, ...keys),
-      (val, key) => val.value,
-    );
+    const values = {
+      title: form.title.value,
+      description: form.duration.value,
+      duration: Number(form.duration.value),
+      price: Number(form.price.value),
+    }
     actions.classes.update(_id, values);
   };
 
