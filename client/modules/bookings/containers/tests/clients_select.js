@@ -15,16 +15,29 @@ describe('bookings.containers.clients_select', () => {
     it('should subscribe to clients.list', () => {
       const Meteor = {
         subscribe: stub().returns({ready: () => false})};
+      const LocalState = { get: spy() };
 
-      const context = () => ({Meteor});
+      const context = () => ({Meteor, LocalState});
       const onData = spy();
       composer({context}, onData);
       expect(Meteor.subscribe.args[0]).to.deep.equal([
         'clients.list'
       ]);
     });
-    it('should call onData with clients list', () => {
-      const LocalState = {get: stub().returns(null)};
+    it(`should get current clientId from LocalState`, () => {
+      const LocalState = { get: spy() };
+      const Meteor = {
+        subscribe: stub().returns({ready: () => false})
+      };
+
+      const context = () => ({Meteor, LocalState});
+      composer({context}, spy());
+
+      assert.calledOnce(LocalState.get);
+      assert.calledWithExactly(LocalState.get, 'SELECTED_CLIENT');
+    });
+    it('should call onData with clients list and current clientId', () => {
+      const LocalState = {get: stub().returns('clientId')};
       const Meteor = {
         subscribe: stub().returns({ready: () => true})
       };
@@ -35,12 +48,13 @@ describe('bookings.containers.clients_select', () => {
       const Collections = getCollections(clients);
       const clearErrors = spy();
 
-      const context = () => ({Meteor, Collections});
+      const context = () => ({Meteor, Collections, LocalState});
       const onData = spy();
       composer({context}, onData);
 
       expect(onData.args[0][0]).to.deep.equal(null);
       expect(onData.args[0][1]).to.deep.equal({
+        selectedClient: 'clientId',
         clients
       });
     });
