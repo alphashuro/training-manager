@@ -11,6 +11,7 @@ const ClientsSelect = ({ clients, handleClientSelected }) => (
       label='Select Client'
       placeholder='Client X...'
       onChange={handleClientSelected}>
+      <option value="">Select a client</option>
       {
         clients.map(({ _id, name }) => (
           <option key={_id} value={_id}> {name} </option>
