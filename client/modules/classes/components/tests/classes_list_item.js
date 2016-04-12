@@ -67,7 +67,7 @@ describe('class.components.class_list_item', () => {
     expect(props.handleRemove.calledOnce).to.be.equal(true);
     assert.calledWithExactly(props.handleRemove, props._id);
   });
-  it('should call handleUpdate when form is submitted', () => {
+  it('should call handleUpdate with id when form is submitted', () => {
     const props = getProps();
 
     const el = shallow(<ClassesListItem {...props}/>);
@@ -75,6 +75,7 @@ describe('class.components.class_list_item', () => {
 
     form.simulate('submit');
 
-    expect(props.handleUpdate.calledOnce).to.be.equal(true);
+    assert.calledOnce(props.handleUpdate);
+    assert.calledWith(props.handleUpdate, props._id);
   });
 });

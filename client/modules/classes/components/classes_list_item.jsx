@@ -4,7 +4,7 @@ import {ListGroupItem, Input, Button} from 'react-bootstrap';
 
 const ClassesListItem = ({ _id, title, description, duration, price, handleUpdate, handleRemove}) => (
   <ListGroupItem>
-    <form name='edit-class' onSubmit={handleUpdate}>
+    <form name='edit-class' onSubmit={handleUpdate.bind(this, _id)}>
       <Input
         type='text'
         name='title'
