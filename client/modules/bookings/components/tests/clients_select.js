@@ -12,7 +12,8 @@ describe('bookings.components.clients_select', () => {
       {_id: 'id2', name: 'name2'},
       {_id: 'id3', name: 'name3'}
     ],
-    handleClientSelected: spy()
+    handleClientSelected: spy(),
+    selectedClient: null,
   });
   describe(`clients select`, () => {
     it(`should have a default first option of 'Select a client'`, () => {
@@ -32,6 +33,16 @@ describe('bookings.components.clients_select', () => {
 
       expect(sel).to.have.length(1);
       expect(sel.find('option')).to.have.length(4);
+    });
+    it(`should have the selectedClient already selected if its not null`, () => {
+      const props = getProps();
+      props.selectedClient = props.clients[0]._id;
+      const el = shallow(<ClientsSelect {...props}/>);
+      const sel = el.render().find('select[name="client"]');
+      const option = sel.find(`option[value="${props.clients[0]._id}"]`);
+      
+      expect(option).to.have.length(1);
+      expect(option.get(0).attribs.selected).not.to.be.equal(undefined);
     });
     it(`should call select with the selected client's id
     when a client is selected`, () => {

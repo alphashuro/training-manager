@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 
 import { Input } from 'react-bootstrap';
 
-const ClientsSelect = ({ clients, handleClientSelected }) => (
+const ClientsSelect = ({ clients, handleClientSelected, selectedClient }) => (
   <div>
     <h3>Select a client</h3>
     <Input
@@ -10,7 +10,8 @@ const ClientsSelect = ({ clients, handleClientSelected }) => (
       type='select'
       label='Select Client'
       placeholder='Client X...'
-      onChange={handleClientSelected}>
+      onChange={handleClientSelected}
+      defaultValue={selectedClient}>
       <option value="">Select a client</option>
       {
         clients.map(({ _id, name }) => (
@@ -23,6 +24,7 @@ const ClientsSelect = ({ clients, handleClientSelected }) => (
 
 ClientsSelect.propTypes = {
   clients: PropTypes.array,
+  selectedClient: PropTypes.string,
   handleClientSelected: PropTypes.func.isRequired,
 };
 
