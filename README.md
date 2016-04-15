@@ -20,6 +20,9 @@ Codeship has the development configuration setup, and will automatically deploy 
   - pushes to master are deployed to all clients
 
 ## Version history
+- v2.1
+  - __Add Email invitation and enrollment for facilitators__
+  - __Various bug fixes__
 - v2.0
   - __One company per deploy__
     * Instead of one app for all companies, the app should be deployed and run seperately for each company.

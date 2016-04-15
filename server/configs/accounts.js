@@ -15,6 +15,17 @@ export default function () {
     return Meteor.absoluteUrl(`verify-email/${token}`);
   };
 
+  Accounts.emailTemplates.from = "Training Manager <alpha@aepit.co.za>";
+  Accounts.emailTemplates.enrollAccount.subject = function (user) {
+    return user.profile.name + ", you've been invited to use the Training App.";
+  Accounts.emailTemplates.enrollAccount.text = function (user, url) {
+    return  "Hello " + user.profile.name,
+            + "You have been invited to use the Training App.\n\n"
+            + "To activate your account, simply click the link below:\n\n"
+            + url;
+  };
+};
+
   // Create a default admin user using ADMIN_USER and ADMIN_PASS environment variables
   const email = process.env.TM_ADMIN_USER;
   const password = process.env.TM_ADMIN_PASS;

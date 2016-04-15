@@ -5,6 +5,7 @@ import courses from './courses';
 import classes from './classes';
 import bookings from './bookings';
 import sessions from './sessions';
+import users from './users';
 
 export default function () {
   facilitators();
@@ -14,4 +15,5 @@ export default function () {
   classes();
   bookings();
   sessions();
+  users();
 }

@@ -1,6 +1,6 @@
 {
   "name": "training-manager",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Training Manager",
   "scripts": {
     "lint": "eslint ./libs ./client ./server --ext .js --ext .jsx",
