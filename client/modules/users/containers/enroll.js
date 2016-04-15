@@ -1,24 +1,32 @@
 import Enroll from '../components/enroll.jsx';
 import {useDeps, composeWithTracker, composeAll} from 'mantra-core';
 
-export const compose = ({context, token}, onData) => {
-  const {Meteor, Collections} = context();
+export const composer = ({context, token}, onData) => {
+  const {Meteor, Collections, LocalState} = context();
 
-  const sub = Meteor.subscribe('users.enrolled', token);
+  const error = LocalState.get('ENROLL_ERROR');
+  const sub = Meteor.subscribe('users.invited', token);
   if (sub.ready()) {
-    const user = Collections.Users.findOne();
-    onData(null, {user, token});
+    const { Users } = Collections;
+    const user = Users.findOne({'services.password.reset.token': token});
+    onData(null, { error, username: user.profile.name, token });
+  } else {
+    onData(null, { error });
   }
 };
 
-export const depsMapper = (context) => {
+export const depsMapper = (context, actions) => {
   const props = {};
   props.context = () => context;
-
+  props.handleSubmit = (token, e) => {
+    e.preventDefault();
+    const form = e.target;
+    actions.users.setPassword(token, form.password.value, form.confirm.value);
+  }
   return props;
 };
 
 export default composeAll(
-  composeWithTracker(compose),
+  composeWithTracker(composer),
   useDeps(depsMapper)
 )(Enroll);
