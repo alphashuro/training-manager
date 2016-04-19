@@ -13,7 +13,7 @@ const Navigation = ({handleLogout, email, path}) => {
     if (path === '/') {
       return 0;
     }
-    const paths = [/\/client/, /\/course/, /\/facilitator/, /\/booking/];
+    const paths = [/\/client/, /\/course/, /\/facilitator/, /\/booking/, /\/users/];
     return _(paths).findIndex(p => p.test(path)) + 1;
   }
   return (
@@ -31,6 +31,7 @@ const Navigation = ({handleLogout, email, path}) => {
           <NavItem eventKey={2} href="/courses">Courses</NavItem>
           <NavItem eventKey={3} href="/facilitators">Facilitators</NavItem>
           <NavItem eventKey={4} href="/bookings">Bookings</NavItem>
+          <NavItem eventKey={5} href="/users">Users</NavItem>
         </Nav>
 
         <Nav pullRight>

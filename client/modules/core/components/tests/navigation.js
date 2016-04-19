@@ -13,7 +13,7 @@ describe('core.components.navigation', () => {
   });
   it(`should contain a link to
   home, clients, courses,
-  facilitators and bookings`, () => {
+  facilitators, bookings and users`, () => {
     const props = getProps();
 
     const el = shallow(<Nav {...props}/>);
@@ -22,6 +22,7 @@ describe('core.components.navigation', () => {
     expect(el.contains({href: '/courses'})).to.be.equal(true);
     expect(el.contains({href: '/facilitators'})).to.be.equal(true);
     expect(el.contains({href: '/bookings'})).to.be.equal(true);
+    expect(el.contains({href: '/users'})).to.be.equal(true);
   });
     it('should render a nav with activekey that matches current path', () => {
       const props = getProps();
