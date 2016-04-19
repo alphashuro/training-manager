@@ -15,6 +15,7 @@ export const composer = ({context, userId, clearErrors}, onData) => {
       email: doc.email(),
       name: doc.name(),
       phone: doc.phone(),
+      roles: doc.roles,
     };
     onData(null, {user, error});
   }
@@ -32,8 +33,11 @@ export const depsMapper = (context, actions) => {
 
     const name = form.name.value;
     const phone = form.phone.value;
+    const roles = [];
+    if (form.isAdmin.checked) roles.push('admin');
+    if (form.isFacilitator.checked) roles.push('facilitator');
 
-    actions.users.update(id, {name, phone});
+    actions.users.update(id, {name, phone, roles});
   };
   props.clearErrors = actions.users.clearErrors;
 

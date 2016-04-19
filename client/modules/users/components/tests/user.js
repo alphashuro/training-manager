@@ -12,6 +12,7 @@ describe('users.components.user', () => {
       email: 'email@address.com',
       name: 'name',
       phone: 'phone',
+      roles: [ 'admin', 'facilitator' ]
     },
     handleUpdateUser: spy(),
   });

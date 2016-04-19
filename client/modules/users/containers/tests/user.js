@@ -13,7 +13,8 @@ describe('users.containers.user', () => {
         phone: 'phone',
       },
       name() { return this.profile.name },
-      phone() { return this.profile.phone }
+      phone() { return this.profile.phone },
+      roles: ['admin', 'facilitator']
     });
     const getContext = () => ({
       Meteor: { subscribe: stub().returns({ ready: () => false })},
@@ -47,6 +48,7 @@ describe('users.containers.user', () => {
           name: user.profile.name,
           phone: user.profile.phone,
           email: user.email(),
+          roles: user.roles
         });
         expect(props.error).to.be.equal(undefined);
       });
@@ -96,6 +98,7 @@ describe('users.containers.user', () => {
         name: 'name',
         email: 'email',
         phone: 'phone',
+        roles: ['admin']
       };
       const event = {
         preventDefault: spy(),
@@ -103,13 +106,16 @@ describe('users.containers.user', () => {
           name: {value: user.name},
           email: {value: user.email},
           phone: {value: user.phone},
+          isAdmin: { checked: true},
+          isFacilitator: { checked: false}
         }
       };
       props.handleUpdateUser('id', event);
       assert.calledOnce(actions.users.update);
       assert.calledWithExactly(actions.users.update, 'id', {
         name: user.name,
-        phone: user.phone
+        phone: user.phone,
+        roles: user.roles
       });
     });
     it('should map users.clearErrors to clearErrors', () => {

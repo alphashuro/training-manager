@@ -2,14 +2,14 @@ import React, { PropTypes } from 'react';
 
 import { Row, Col, Button, Panel, Input, Alert, PageHeader } from 'react-bootstrap';
 
-const User = ({ error, user: { _id, name, phone, email }, handleUpdateUser }) => (
+const User = ({ error, user: { _id, name, phone, email, roles }, handleUpdateUser }) => (
     <div>
       <PageHeader>{ name }</PageHeader>
 
       <Row>
         <Col md={ 6 } mdOffset={ 3 } >
           <Panel>
-            <PageHeader> User Info </PageHeader>
+            <PageHeader> User Details </PageHeader>
             { error ? <Alert bsStyle='danger'>{error}</Alert> : null }
 
             <form name='edit-user' onSubmit={handleUpdateUser.bind(null, _id)}>
@@ -25,6 +25,10 @@ const User = ({ error, user: { _id, name, phone, email }, handleUpdateUser }) =>
                 placeholder="email@address.com"
                 label="Email"
                 value={email} readOnly/>
+              <Input type="checkbox" name="isAdmin" label="Admin"
+                defaultChecked={roles.includes('admin')}/>
+              <Input type="checkbox" name="isFacilitator" label="Facilitator"
+                defaultChecked={roles.includes('facilitator')}/>
               <Button type="submit" bsStyle="default"> Save </Button>
             </form>
           </Panel>
