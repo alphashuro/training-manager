@@ -101,6 +101,93 @@ describe('users.actions.users', () => {
     });
   });
 
+  describe(`update`, () => {
+    const getContext = () => ({
+      LocalState: { set: spy() },
+      Meteor: { call: stub() }
+    });
+    const getUserInfo = () => ({
+      name: 'name',
+      phone: 'phone',
+      roles: ['role'],
+    });
+    it(`should reject if id is not given`, () => {
+      const context = getContext();
+      const user = getUserInfo();
+      actions.update(context, null, user)
+
+      assert.calledOnce(context.LocalState.set);
+      const [stateVar, errorMessage] = context.LocalState.set.args[0];
+
+      expect(stateVar).to.be.equal('USER_ERROR');
+      expect(errorMessage).to.match(/(id).+(required)/i);
+    });
+    it(`should reject if name is not given`, () => {
+      const context = getContext();
+      const user = getUserInfo();
+      user.name = null;
+      actions.update(context, 'id', user)
+
+      assert.calledOnce(context.LocalState.set);
+      const [stateVar, errorMessage] = context.LocalState.set.args[0];
+
+      expect(stateVar).to.be.equal('USER_ERROR');
+      expect(errorMessage).to.match(/(name).+(required)/i);
+    });
+    it(`should reject if phone is not given`, () => {
+      const context = getContext();
+      const user = getUserInfo();
+      user.phone = null;
+      actions.update(context, 'id', user)
+
+      assert.calledOnce(context.LocalState.set);
+      const [stateVar, errorMessage] = context.LocalState.set.args[0];
+
+      expect(stateVar).to.be.equal('USER_ERROR');
+      expect(errorMessage).to.match(/(phone).+(required)/i);
+    });
+    it(`should reject if roles is not given`, () => {
+      const context = getContext();
+      const user = getUserInfo();
+      user.roles = null;
+      actions.update(context, 'id', user)
+
+      assert.calledOnce(context.LocalState.set);
+      const [stateVar, errorMessage] = context.LocalState.set.args[0];
+
+      expect(stateVar).to.be.equal('USER_ERROR');
+      expect(errorMessage).to.match(/(roles).+(required)/i);
+    });
+    it(`should call Meteor.call to update the user`, () => {
+      const context = getContext();
+      const user = getUserInfo();
+      actions.update(context, 'id', user);
+
+      assert.calledOnce(context.Meteor.call);
+      const [method, userId, info, callback] = context.Meteor.call.args[0];
+
+      expect(method).to.be.equal('users.update');
+      expect(userId).to.be.equal('id');
+      expect(info).to.deep.equal(user);
+      expect(callback).to.be.a('function');
+    });
+    describe(`after Meteor.call`, () => {
+      describe(`if there is error`, () => {
+        it(`should set USER_ERROR with the error message`, () => {
+          const context = getContext();
+          const error = { reason: 'oops' };
+          context.Meteor.call.callsArgWith(3, error);
+          const user = getUserInfo();
+
+          actions.update(context, 'id', user);
+
+          assert.calledOnce(context.LocalState.set);
+          assert.calledWithExactly(context.LocalState.set, 'USER_ERROR', error.reason)
+        });
+      });
+    });
+  });
+
   describe('clearErrors', () => {
     it('should clear USERS_ERROR local state', () => {
       const LocalState = { set: spy() };

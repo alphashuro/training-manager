@@ -34,6 +34,18 @@ export default {
     });
   },
 
+  // TODO: add the ability to update and add/remove emails
+  update({LocalState, Meteor}, id, {name, phone, roles}) {
+    if (!id) return LocalState.set('USER_ERROR', 'Id is required to update a user');
+    if (!name) return LocalState.set('USER_ERROR', 'Name is required to update a user');
+    if (!phone) return LocalState.set('USER_ERROR', 'Phone is required to update a user');
+    if (!roles) return LocalState.set('USER_ERROR', 'Roles are required to update a user');
+
+    Meteor.call('users.update', id, {name, phone, roles}, function updateUserCallback(error) {
+      if (error) { LocalState.set('USER_ERROR', error.reason); }
+    });
+  },
+
   clearErrors({LocalState}) {
     LocalState.set('USERS_ERROR', null);
   }
